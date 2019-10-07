@@ -275,7 +275,7 @@ body {
 .featured-projects .col-1-4 > a.project-constitucional:hover img,
 .featured-projects .col-1-4 > a.project-bettween:hover img,
 .featured-projects .col-1-4 > a.project-intune:hover img,
-.featured-projects .col-1-4 > a.project-cdx:hover img { transform: translate(-50%, -50%) scale(.5); }
+.featured-projects .col-1-4 > a.project-canutin:hover img { transform: translate(-50%, -50%) scale(.5); }
 
 .featured-projects .col-1-4 > a.project-openplay { background-color: rgba(74,144,226,.9); }
 .featured-projects .col-1-4 > a.project-openplay:hover { background-color: rgba(74,144,226,1); z-index: 1; }
@@ -289,8 +289,8 @@ body {
 .featured-projects .col-1-4 > a.project-bettween { background-color: rgba(40,59,77,.9); }
 .featured-projects .col-1-4 > a.project-bettween:hover { background-color: rgba(40,59,77,1); z-index: 1; }
 
-.featured-projects .col-1-4 > a.project-cdx { background-color: rgba(13,219,154,.9); }
-.featured-projects .col-1-4 > a.project-cdx:hover { background-color: rgba(13,219,154,1); z-index: 1; }
+.featured-projects .col-1-4 > a.project-canutin { background-color: rgba(20,20,20,.8); }
+.featured-projects .col-1-4 > a.project-canutin:hover { background-color: rgba(20,20,20,.9); z-index: 1; }
 
 
 /* Media Queries
