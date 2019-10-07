@@ -68,12 +68,12 @@ table {
 
 @font-face {
     font-family: 'Calibre';
-    src: url('../fonts/Calibre-SemiBold.eot');
-    src: url('../fonts/Calibre-SemiBold.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Calibre-SemiBold.woff') format('woff'),
-				 url('../fonts/Calibre-SemiBold.woff2') format('woff2'),
-         url('../fonts/Calibre-SemiBold.ttf') format('truetype'),
-         url('../fonts/Calibre-SemiBold.svg#Calibre-SemiBold') format('svg');
+    src: url('../fonts/Calibre-Semibold.eot');
+    src: url('../fonts/Calibre-Semibold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Calibre-Semibold.woff') format('woff'),
+				 url('../fonts/Calibre-Semibold.woff2') format('woff2'),
+         url('../fonts/Calibre-Semibold.ttf') format('truetype'),
+         url('../fonts/Calibre-Semibold.svg#Calibre-Semibold') format('svg');
     font-weight: 500;
     font-style: normal;
 }
