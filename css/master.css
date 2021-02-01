@@ -1,139 +1,3 @@
-/* Reset styles
--------------------------------------------- */
-
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* Custom styles
--------------------------------------------- */
-
 @font-face {
   font-family: "Calibre";
   src: url("../fonts/Calibre-Bold.eot");
@@ -174,367 +38,109 @@ table {
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  background-color: #ececec;
-  display: table;
-  margin: 0;
+html {
   font-family: "Calibre", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #ececec;
 }
 
-.outer-wrapper {
-  display: table-cell;
-  height: 100%;
-  vertical-align: middle;
-}
-
-.inner-wrapper {
+body {
+  display: flex;
   margin: 0 auto;
-  max-width: 1170px;
-  box-shadow: 0 15px 75px rgba(0, 0, 0, 0.25);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  max-width: 704px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 10vw;
+}
+@media (max-width: 512px) {
+  html {
+    font-size: 14px;
+  }
 }
 
-.inner-wrapper > div {
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
-}
-
-.row:after {
-  clear: both;
-  display: table;
-  content: " ";
-}
-
-[class*="col-"] {
-  float: left;
-}
-
-.col-1-2 {
-  width: 50%;
-}
-.col-1-3 {
-  width: 33.3%;
-}
-.col-1-4 {
-  width: 25%;
-}
-
-.about-me > .col-1-2 {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 8%;
-}
-
-.about-me nav.social-links {
-  position: absolute;
-  right: -50px;
-  top: 8%;
-  display: none;
-}
-
-.about-me nav.social-links a {
-  position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  filter: saturate(0%);
-  background-color: rgba(47, 47, 47, 0.35);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-}
-
-.about-me nav.social-links a:hover {
-  filter: saturate(100%);
-}
-
-.about-me nav.social-links a img {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.2);
-  position: absolute;
-  display: inline-block;
-  transition: all 200ms;
-}
-
-.about-me nav.social-links a:hover img,
-.about-me nav.social-links a:hover img,
-.about-me nav.social-links a:hover img,
-.about-me nav.social-links a:hover img {
-  transform: translate(-50%, -50%) scale(0.25);
-}
-
-.about-me nav.social-links a.social-twitter:hover {
-  background-color: rgba(0, 182, 255, 1);
-  z-index: 1;
-}
-
-.about-me nav.social-links a.social-github:hover {
-  background-color: rgba(0, 0, 0, 1);
-  z-index: 1;
-}
-
-.about-me nav.social-links a.social-dribbble:hover {
-  background-color: rgba(252, 93, 183, 1);
-  z-index: 1;
-}
-
-.about-me nav.social-links a.social-email:hover {
-  background-color: rgba(244, 48, 13, 1);
-  z-index: 1;
-}
-
-/* .about-me h1 {
-  font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  color: #9B9B9B;
-  font-weight: 100;
-  margin-bottom:0;
-  font-weight: 100;
-	margin-bottom: 10px;
-} */
-
-.about-me h1 {
-  font-size: 96px;
+h1 {
+  font-size: 6rem;
   color: #fff;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.15);
   letter-spacing: -0.05em;
   font-weight: 600;
   text-indent: -5px;
-  margin-bottom: 10%;
+  margin-top: 0;
+  margin-bottom: 2rem;
   line-height: 0.75em;
 }
+@media (max-width: 512px) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 320px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
 
-.about-me h3 {
+h2 {
   font-size: 20px;
   font-weight: 500;
   color: #333;
   letter-spacing: -0.03em;
   line-height: 1.3em;
-}
-
-.about-me p {
-  font-weight: 300;
-  font-size: 18px;
-  color: #666;
-  line-height: 1.3em;
-  margin-bottom: 5%;
-}
-
-.about-me p:last-child {
   margin-bottom: 0;
 }
 
-.about-me p a {
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: #666;
+  line-height: 1.3em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
   text-decoration: none;
   font-weight: 300;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid #ccc;
   color: #333;
   transition: all 100ms;
 }
 
-.about-me p a.social-link--dribbble {
+a.social-link--dribbble {
   color: rgba(252, 93, 183, 1);
 }
-.about-me p a.social-link--dribbble:hover {
+a.social-link--dribbble:hover {
   border-color: rgba(252, 93, 183, 1);
 }
 
-.about-me p a.social-link--github {
+a.social-link--github {
   color: rgba(0, 0, 0, 1);
 }
-.about-me p a.social-link--github:hover {
+a.social-link--github:hover {
   border-color: rgba(0, 0, 0, 1);
 }
 
-.about-me p a.social-link--twitter {
+a.social-link--twitter {
   color: rgba(0, 182, 255, 1);
 }
-.about-me p a.social-link--twitter:hover {
+a.social-link--twitter:hover {
   border-color: rgba(0, 182, 255, 1);
 }
 
-.about-me p a.social-link--linkedin {
+a.social-link--linkedin {
   color: #0a66c2;
 }
-.about-me p a.social-link--linkedin:hover {
+a.social-link--linkedin:hover {
   border-color: #0a66c2;
 }
 
-.about-me p a.social-link--email {
+a.social-link--email {
   color: rgba(244, 48, 13, 1);
 }
-.about-me p a.social-link--email:hover {
+a.social-link--email:hover {
   border-color: rgba(244, 48, 13, 1);
-}
-
-.featured-projects {
-  display: none;
-}
-
-.featured-projects .col-1-4 > a {
-  position: relative;
-  display: block;
-  height: 150px;
-  text-align: center;
-  transition: all 200ms;
-}
-
-.featured-projects .col-1-4 > a:hover {
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-}
-
-.featured-projects .col-1-4 > a img {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.45);
-  position: absolute;
-  display: inline-block;
-  transition: all 200ms;
-}
-
-.featured-projects .col-1-4 > a.project-openplay:hover img,
-.featured-projects .col-1-4 > a.project-constitucional:hover img,
-.featured-projects .col-1-4 > a.project-bettween:hover img,
-.featured-projects .col-1-4 > a.project-intune:hover img,
-.featured-projects .col-1-4 > a.project-canutin:hover img {
-  transform: translate(-50%, -50%) scale(0.5);
-}
-
-.featured-projects .col-1-4 > a.project-openplay {
-  background-color: rgba(74, 144, 226, 0.9);
-}
-.featured-projects .col-1-4 > a.project-openplay:hover {
-  background-color: rgba(74, 144, 226, 1);
-  z-index: 1;
-}
-
-.featured-projects .col-1-4 > a.project-constitucional {
-  background-color: rgba(255, 191, 0, 0.95);
-}
-.featured-projects .col-1-4 > a.project-constitucional:hover {
-  background-color: rgba(255, 191, 0, 1);
-  z-index: 1;
-}
-
-.featured-projects .col-1-4 > a.project-intune {
-  background-color: rgba(168, 116, 179, 0.9);
-}
-.featured-projects .col-1-4 > a.project-intune:hover {
-  background-color: rgba(168, 116, 179, 1);
-  z-index: 1;
-}
-
-.featured-projects .col-1-4 > a.project-bettween {
-  background-color: rgba(40, 59, 77, 0.9);
-}
-.featured-projects .col-1-4 > a.project-bettween:hover {
-  background-color: rgba(40, 59, 77, 1);
-  z-index: 1;
-}
-
-.featured-projects .col-1-4 > a.project-canutin {
-  background-color: rgba(20, 20, 20, 0.8);
-}
-.featured-projects .col-1-4 > a.project-canutin:hover {
-  background-color: rgba(20, 20, 20, 0.9);
-  z-index: 1;
-}
-
-/* Media Queries
--------------------------------------------- */
-
-@media screen and (max-width: 1170px), screen and (max-height: 800px) {
-  .inner-wrapper {
-    height: 100%;
-  }
-  .inner-wrapper .about-me {
-    height: calc(100% - 150px);
-  }
-
-  .inner-wrapper .about-me .col-1-2 {
-    height: 100%;
-    float: none;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .inner-wrapper .about-me {
-    height: calc(100% - 400px);
-  }
-  .inner-wrapper .about-me .col-1-2 {
-    width: 75%;
-  }
-
-  .featured-projects .col-1-4 {
-    float: none;
-    width: 75%;
-  }
-
-  .featured-projects .col-1-4 > a {
-    height: 100px;
-  }
-  .featured-projects .col-1-4 > a img {
-    transform: translate(-50%, -50%) scale(0.4);
-  }
-  .featured-projects .col-1-4 > a.project-openplay:hover img,
-  .featured-projects .col-1-4 > a.project-constitucional:hover img,
-  .featured-projects .col-1-4 > a.project-bettween:hover img,
-  .featured-projects .col-1-4 > a.project-cdx:hover img {
-    transform: translate(-50%, -50%) scale(0.45);
-  }
-}
-
-@media screen and (max-width: 515px) {
-  .inner-wrapper .about-me .col-1-2,
-  .featured-projects .col-1-4 {
-    width: calc(100% - 100px);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .outer-wrapper {
-    padding-top: 175px;
-  }
-
-  .inner-wrapper > div {
-    margin-top: -350px;
-    height: 350px;
-  }
-
-  .inner-wrapper > div > video {
-    top: 50% !important;
-    width: 125%;
-    height: initial !important;
-  }
-
-  .inner-wrapper {
-    background-color: #fff;
-  }
-
-  .about-me nav.social-links {
-    display: none;
-  }
-  .inner-wrapper .about-me .col-1-2 {
-    padding: 13% 10%;
-    overflow: hidden;
-  }
-  .inner-wrapper .about-me .col-1-2 h2 {
-    font-size: 63px;
-  }
-  .inner-wrapper .about-me .col-1-2,
-  .featured-projects .col-1-4 {
-    width: 100%;
-  }
-  .about-me p span {
-    display: inline;
-  }
 }
