@@ -1,56 +1,22 @@
-@font-face {
-  font-family: "Calibre";
-  src: url("../fonts/Calibre-Bold.eot");
-  src: url("../fonts/Calibre-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Calibre-Bold.woff") format("woff"),
-    url("../fonts/Calibre-Bold.woff2") format("woff2"),
-    url("../fonts/Calibre-Bold.ttf") format("truetype"),
-    url("../fonts/Calibre-Bold.svg#Calibre-Bold") format("svg");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Calibre";
-  src: url("../fonts/Calibre-Semibold.eot");
-  src: url("../fonts/Calibre-Semibold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Calibre-Semibold.woff") format("woff"),
-    url("../fonts/Calibre-Semibold.woff2") format("woff2"),
-    url("../fonts/Calibre-Semibold.ttf") format("truetype"),
-    url("../fonts/Calibre-Semibold.svg#Calibre-Semibold") format("svg");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Calibre";
-  src: url("../fonts/Calibre-Light.eot");
-  src: url("../fonts/Calibre-Light.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Calibre-Light.woff") format("woff"),
-    url("../fonts/Calibre-Light.woff2") format("woff2"),
-    url("../fonts/Calibre-Light.ttf") format("truetype"),
-    url("../fonts/Calibre-Light.svg#Calibre-Light") format("svg");
-  font-weight: 100;
-  font-style: normal;
-}
-
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: "Calibre", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ececec;
 }
 
 body {
   display: flex;
   margin: 0 auto;
-  max-width: 768px;
+  max-width: 480px;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 10%;
+  padding-block: 64px;
+  padding-inline: 32px;
+  box-sizing: border-box;
 }
 @media (max-width: 512px) {
   html {
@@ -59,40 +25,43 @@ body {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4.75rem;
   color: #fff;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.15);
   letter-spacing: -0.05em;
-  font-weight: 600;
+  font-weight: 900;
   text-indent: -5px;
   margin-top: 0;
-  margin-bottom: 2rem;
-  line-height: 0.75em;
+  margin-bottom: 3.5rem;
+  line-height: 1em;
 }
 @media (max-width: 512px) {
   h1 {
     font-size: 5rem;
+    line-height: 0.8em;
   }
 }
 @media (max-width: 320px) {
   h1 {
     font-size: 4rem;
+    line-height: 0.7em;
   }
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   color: #333;
   letter-spacing: -0.03em;
   line-height: 1.3em;
-  margin-bottom: 0;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 1.25rem;
   color: #666;
   line-height: 1.3em;
@@ -143,4 +112,12 @@ a.social-link--email {
 }
 a.social-link--email:hover {
   border-color: rgba(244, 48, 13, 1);
+}
+
+a.social-link--project {
+  color: rgb(8, 45, 228);
+  line-height: 2em;
+}
+a.social-link--project:hover {
+  border-color: rgba(8, 45, 228, 1);
 }
