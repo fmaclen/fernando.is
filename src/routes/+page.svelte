@@ -45,6 +45,7 @@
     column-gap: 16px;
     row-gap: 16px;
     list-style: none;
+    margin: 64px;
   }
 
   li.ul__li {
