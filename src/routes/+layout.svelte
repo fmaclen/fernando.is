@@ -3,12 +3,13 @@
 	import IconGithub from '$lib/icons/IconGithub.svg.svelte';
 	import IconX from '$lib/icons/IconX.svg.svelte';
 	import IconEmail from '$lib/icons/IconEmail.svg.svelte';
+	import Time from '$lib/Time.svelte';
 </script>
 
 <div class="layout">
 	<aside class="aside">
 		<section class="aside__section aside__section--last-updated">
-			<time class="time">Last updated today</time>
+			<Time date={new Date()} />
 		</section>
 
 		<section class="aside__section aside__section--call-to-action">
@@ -58,7 +59,7 @@
 
 	div.layout {
 		display: grid;
-		grid-template-columns: 0.33fr 0.66fr;
+		grid-template-columns: minmax(384px,1fr) 3fr;
 		width: 100dvw;
 		height: 100dvh;
 	}
@@ -89,7 +90,7 @@
 		&--profile {
 			display: flex;
 			flex-direction: column;
-			row-gap: 64px;
+			row-gap: 32px;
 			border-top: 1px solid hsl(0, 0%, 20%);
 		}
 	}
@@ -110,28 +111,22 @@
 		margin: unset;
 	}
 
-	time.time,
 	h1.h1 {
 		font-family: 'JetBrains Mono', monospace;
 	}
 
 	h1.h1 {
-		font-size: 40px;
+		font-size: 32px;
 		line-height: 135%;
 		color: hsl(0, 0%, 50%);
 	}
 
 	h2.h2 {
 		font-size: 32px;
-		letter-spacing: -0.025em;
+		line-height: 1.1em;
+		letter-spacing: -0.05em;
 		font-weight: 500;
 		color: hsl(0, 0%, 95%);
-	}
-
-	time.time {
-		font-size: 12px;
-		color: hsl(0, 0%, 40%);
-		text-transform: uppercase;
 	}
 
 	p.p {
