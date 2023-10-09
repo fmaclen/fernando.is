@@ -6,6 +6,7 @@ specifiers:
   '@sveltejs/kit': ^1.20.4
   '@typescript-eslint/eslint-plugin': ^6.0.0
   '@typescript-eslint/parser': ^6.0.0
+  date-fns: ^2.30.0
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte: ^2.30.0
@@ -24,6 +25,7 @@ devDependencies:
   '@sveltejs/kit': 1.25.1_svelte@4.2.1+vite@4.4.11
   '@typescript-eslint/eslint-plugin': 6.7.4_rxhn7267eepyb7vujibrg5kg6a
   '@typescript-eslint/parser': 6.7.4_srhnpoqmhm6ulnern6fnsuapfi
+  date-fns: 2.30.0
   eslint: 8.51.0
   eslint-config-prettier: 8.10.0_eslint@8.51.0
   eslint-plugin-svelte: 2.34.0_eslint@8.51.0+svelte@4.2.1
@@ -49,6 +51,13 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
+    dev: true
+
+  /@babel/runtime/7.23.1:
+    resolution: {integrity: sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
     dev: true
 
   /@esbuild/android-arm/0.18.20:
@@ -768,6 +777,13 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /date-fns/2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.23.1
     dev: true
 
   /debug/4.3.4:
@@ -1534,6 +1550,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: true
+
+  /regenerator-runtime/0.14.0:
+    resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
     dev: true
 
   /resolve-from/4.0.0:

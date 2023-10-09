@@ -1,29 +1,18 @@
 <script>
-	import IconDribbble from '$lib/icons/IconDribbble.svg.svelte';
-	import IconGithub from '$lib/icons/IconGithub.svg.svelte';
-	import IconX from '$lib/icons/IconX.svg.svelte';
-	import IconEmail from '$lib/icons/IconEmail.svg.svelte';
-	import Time from '$lib/Time.svelte';
+	import IconDribbble from '$lib/components/icons/IconDribbble.svg.svelte';
+	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
+	import IconX from '$lib/components/icons/IconX.svg.svelte';
+	import IconEmail from '$lib/components/icons/IconEmail.svg.svelte';
 </script>
 
 <div class="layout">
 	<aside class="aside">
-		<section class="aside__section aside__section--last-updated">
-			<Time date={new Date()} />
-		</section>
-
-		<section class="aside__section aside__section--call-to-action">
-			<h1 class="h1">
-				If you are working on an interesting problem and my skillset can be useful,
-				<wbr /><a class="a" href="mailto:hello@fernando.is">talk to me</a>.
-			</h1>
-		</section>
-
 		<section class="aside__section aside__section--profile">
 			<header class="aside__header">
 				<h2 class="h2">Fernando Maclen</h2>
 				<p class="p p--in-aside">Designer & software developer</p>
 			</header>
+
 			<nav class="social">
 				<a class="social__a" href="https://x.com/fmaclen">
 					<IconX />
@@ -39,6 +28,13 @@
 				</a>
 			</nav>
 		</section>
+
+		<section class="aside__section aside__section--call-to-action">
+			<h1 class="h1">
+				If you are working on an interesting problem and my skillset can be useful,
+				<wbr /><a class="a" href="mailto:hello@fernando.is">talk to me</a>.
+			</h1>
+		</section>
 	</aside>
 
 	<main class="main">
@@ -47,7 +43,7 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=JetBrains+Mono:wght@100&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=JetBrains+Mono:wght@100&display=swap');
 
 	:global(body.body) {
 		color: hsl(0, 0%, 75%);
@@ -66,32 +62,27 @@
 
 	aside.aside {
 		display: grid;
-		grid-template-rows: max-content auto max-content;
+		grid-template-rows: max-content auto;
 		box-sizing: border-box;
-		row-gap: 64px;
 		height: 100%;
 		border-right: 1px solid hsl(0, 0%, 20%);
 		background-color: hsl(0, 0%, 10%);
 	}
 
 	section.aside__section {
-		padding-inline: 64px;
-		padding-block: 64px;
-
-		&--last-updated {
-			padding-bottom: unset;
-		}
+		padding-inline: 56px;
+		padding-block: 56px;
 
 		&--call-to-action {
 			height: auto;
-			place-self: center;
+			place-self: flex-start;
 		}
 
 		&--profile {
 			display: flex;
 			flex-direction: column;
-			row-gap: 32px;
-			border-top: 1px solid hsl(0, 0%, 20%);
+			row-gap: 64px;
+			border-bottom: 1px solid hsl(0, 0%, 20%);
 		}
 	}
 
@@ -103,6 +94,12 @@
 
 	a.a {
 		color: #23c88d;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(35, 200, 141, 1);
+
+		&:hover {
+			border-bottom-color: transparent;
+		}
 	}
 
 	h1.h1,
@@ -116,7 +113,7 @@
 	}
 
 	h1.h1 {
-		font-size: 32px;
+		font-size: 24px;
 		line-height: 135%;
 		color: hsl(0, 0%, 50%);
 	}
@@ -125,7 +122,7 @@
 		font-size: 32px;
 		line-height: 1.1em;
 		letter-spacing: -0.05em;
-		font-weight: 500;
+		font-weight: 600;
 		color: hsl(0, 0%, 95%);
 	}
 
@@ -134,14 +131,14 @@
 		line-height: 120%;
 
 		&--in-aside {
-			color: #23c88d;
+			color: #666;
 		}
 	}
 
 	nav.social {
 		display: flex;
 		gap: 12px;
-		transform: translate(-12px, 12px);
+		transform: translate(-6px, 6px);
 	}
 
 	a.social__a {
