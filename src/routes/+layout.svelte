@@ -32,7 +32,7 @@
 		<section class="aside__section aside__section--call-to-action">
 			<h1 class="h1">
 				If you are working on an interesting problem and my skillset can be useful,
-				<wbr /><a class="a" href="mailto:hello@fernando.is">talk to me</a>.
+				<wbr><a class="a" href="mailto:hello@fernando.is">talk to me</a>.<wbr/>
 			</h1>
 		</section>
 	</aside>
@@ -58,6 +58,10 @@
 		grid-template-columns: minmax(384px,1fr) 3fr;
 		width: 100dvw;
 		height: 100dvh;
+
+		@media (max-width: 880px) {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	aside.aside {
@@ -72,6 +76,20 @@
 	section.aside__section {
 		padding-inline: 56px;
 		padding-block: 56px;
+		
+		@media (max-width: 1366px) {
+			padding-inline: 48px;
+			padding-block: 48px;
+		}
+
+		@media (max-width: 1024px) {
+			padding-inline: 32px;
+		}
+		
+		@media (max-width: 880px) {
+			padding-block: 32px;
+			padding-inline: 24px;
+		}
 
 		&--call-to-action {
 			height: auto;
@@ -83,6 +101,14 @@
 			flex-direction: column;
 			row-gap: 64px;
 			border-bottom: 1px solid hsl(0, 0%, 20%);
+
+			@media (max-width: 1024px) {
+				row-gap: 32px;
+			}
+
+			@media (max-width: 880px) {
+				row-gap: 20px;
+			}
 		}
 	}
 
@@ -110,12 +136,14 @@
 
 	h1.h1 {
 		font-family: 'JetBrains Mono', monospace;
-	}
-
-	h1.h1 {
+		font-weight: 100;
 		font-size: 24px;
 		line-height: 135%;
 		color: hsl(0, 0%, 50%);
+
+		@media (max-width: 880px) {
+			font-size: 18px;
+		}
 	}
 
 	h2.h2 {
@@ -124,11 +152,19 @@
 		letter-spacing: -0.05em;
 		font-weight: 600;
 		color: hsl(0, 0%, 95%);
+
+		@media (max-width: 880px) {
+			font-size: 26px;
+		}
 	}
 
 	p.p {
 		font-size: 16px;
 		line-height: 120%;
+
+		@media (max-width: 880px) {
+			font-size: 14px;
+		}
 
 		&--in-aside {
 			color: #666;
@@ -153,5 +189,10 @@
 	main.main {
 		max-height: 100dvh;
 		overflow-y: auto;
+
+		@media (max-width: 880px) {
+			max-height: unset;
+			overflow-y: unset;
+		}
 	}
 </style>

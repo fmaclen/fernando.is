@@ -18,7 +18,8 @@
 		column-gap: 16px;
 		list-style: none;
 		margin-block: unset;
-		padding: 64px;
+		padding-inline: 64px;
+		padding-block: 64px;
 		min-height: 100dvh;
 		box-sizing: border-box;
 		max-width: 1366px;
@@ -40,11 +41,22 @@
 		@media (max-width: 1366px) {
 			column-count: 1;
 			max-width: 768px;
+			padding-inline: 48px;
+			padding-block: 48px;
 
 			&::before {
 				width: unset;
 				border-right: unset;
 			}
+		}
+
+		@media (max-width: 1024px) {
+			padding-inline: 32px;
+		}
+		
+		@media (max-width: 880px) {
+			padding-block: 32px;
+			padding-inline: 24px;
 		}
 	}
 

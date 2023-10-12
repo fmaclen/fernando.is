@@ -31,8 +31,12 @@
   p.p {
     width: 50%;
 
-    @media (min-width: 1366px) {
+    @media (max-width: 1366px) {
       width: 75%;
+    }
+
+    @media (max-width: 1024px) {
+      width: 100%;
     }
   }
 
