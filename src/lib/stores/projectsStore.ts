@@ -18,14 +18,14 @@ export interface Project {
 let projects: Project[] = [
 	{
 		title: 'fernando.is',
-		description: 'This is so meta',
+		description: 'This very website',
 		url: 'https://fernando.is',
 		repo: 'fmaclen/fernando.is',
 		theme: 'fernando-is'
 	},
 	{
 		title: 'Canutin',
-		description: 'A personal finance desktop application',
+		description: 'A personal finance application for macOS, Windows & Linux',
 		url: 'https://canutin.com',
 		repo: 'fmaclen/canutin-desktop',
 		theme: 'canutin'
@@ -46,7 +46,7 @@ let projects: Project[] = [
 	},
 	{
 		title: 'auto-garden',
-		description: 'Computers that garden for you',
+		description: 'Moisture monitor and irrigation system for my plants',
 		url: 'https://github.com/fmaclen/auto-garden',
 		repo: 'fmaclen/auto-garden',
 		theme: 'auto-garden'
@@ -67,7 +67,7 @@ let projects: Project[] = [
 	},
 	{
 		title: 'Oak Hall',
-		description: 'Oak Hall is a family run estate located in Northport, Maine',
+		description: 'A historic family-run estate located in Northport, Maine',
 		url: 'https://oakhallestate.org/',
 		updatedAt: '2021-08-06T00:00:00Z',
 		theme: 'oak-hall'
