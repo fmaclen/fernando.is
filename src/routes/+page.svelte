@@ -1,8 +1,6 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import projectsStore from '$lib/stores/projectsStore';
-
-  console.log($projectsStore);
 </script>
 
 <ul class="ul">

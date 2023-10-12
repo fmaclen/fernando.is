@@ -67,11 +67,11 @@ let projects: Project[] = [
 	}
 ];
 
+// Being nice to the Github API by caching the results for an hour
 const localStorageLastChecked = browser
 	? window.localStorage.getItem(LOCAL_STORAGE_LAST_CHECK_KEY)
 	: null;
 
-// Being nice to the Github API by caching the results for an hour
 const shouldGetLastProjectUpdate =
 	!localStorageLastChecked ||
 	new Date().getTime() - new Date(localStorageLastChecked).getTime() > ONE_HOUR_IN_MS;
@@ -80,14 +80,27 @@ const localStorageProjects = browser ? window.localStorage.getItem(LOCAL_STORAGE
 const projectsStore = writable<Project[]>([]);
 
 async function getLastProjectUpdate(project: Project) {
-	const response = await fetch(`${GITHUB_API_BASE_URL}/${project.repo}`);
-	const data = await response.json();
-	project.updatedAt = data.pushed_at ? data.pushed_at : undefined;
-	projectsStore.set(projects);
+	try {
+		const response = await fetch(`${GITHUB_API_BASE_URL}/${project.repo}`);
+		if (!response.ok) return project;
+	
+		const data = await response.json();
+		return {
+			...project,
+			updatedAt: data.pushed_at ? data.pushed_at : undefined
+		};
+	} catch (_) {
+		return project;
+	}
+}
+
+async function fetchAllProjectsUpdates(projects: Project[]) {
+	const updatedProjects = await Promise.all(projects.map(getLastProjectUpdate));
+	projectsStore.set(updatedProjects);
 }
 
 if (shouldGetLastProjectUpdate) {
-	for (const project of projects) getLastProjectUpdate(project);
+	fetchAllProjectsUpdates(projects);
 } else {
 	if (typeof localStorageProjects === 'string') {
 		projects = JSON.parse(localStorageProjects) as Project[];
@@ -95,14 +108,15 @@ if (shouldGetLastProjectUpdate) {
 	}
 }
 
-// Update the browser's local storage when the store changes
 projectsStore.subscribe((projects) => {
+	// Sort the projects by last updated
 	projects.sort((a, b) => {
 		if (!a.updatedAt) return 1;
 		if (!b.updatedAt) return -1;
 		return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
 	});
 
+	// Cache the projects with the `updatedAt` value to local storage
 	if (!browser) return;
 	if (shouldGetLastProjectUpdate) {
 		window.localStorage.setItem(LOCAL_STORAGE_PROJECTS_KEY, JSON.stringify(projects));
