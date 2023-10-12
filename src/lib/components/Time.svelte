@@ -1,5 +1,5 @@
 <script lang="ts">
-  import formatDistance from 'date-fns/formatDistance'
+  import { formatDistance } from 'date-fns'
 
   export let date: string | undefined;
   const currentDate = date ? new Date(date).toDateString() : undefined;
