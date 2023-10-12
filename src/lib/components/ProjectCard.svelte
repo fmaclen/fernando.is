@@ -8,9 +8,11 @@
 
 <article class="article {project.theme ? `article--${project.theme}` : ''}">
   <nav class="article__nav">
-    <a href={`https://github.com/${project.repo}`} class="article__a article__a--repo" target="_blank">
-      <IconGithub />
-    </a>
+    {#if project.repo}
+      <a href={`https://github.com/${project.repo}`} class="article__a article__a--repo" target="_blank">
+        <IconGithub />
+      </a>
+    {/if}
     <Time date={project.updatedAt} />
   </nav>
   <slot />
@@ -27,10 +29,10 @@
   }
 
   p.p {
-    width: 75%;
+    width: 50%;
 
     @media (min-width: 1366px) {
-      width: 50%;
+      width: 75%;
     }
   }
 
@@ -46,14 +48,11 @@
     &--canutin { background-color: #1347FF; }
     &--fernando-is { background-color: #191919; }
     &--svelte-currency-input { background-color: #E25F36; }
-    &--julia-sanfrancisco { background-color: #A28B67; }
+    &--julia-sanfrancisco { background-color: #67403a; }
     &--auto-garden { background-color: #488E3C }
     &--promptspree { background-color: #2F2F2F }
     &--rule-of-three { background-color: #57B0E5 }
-
-    &:hover {
-      transform: scale(1.025);
-    }
+    &--oak-hall { background-color: #A28B67 }
   }
 
   nav.article__nav {
@@ -68,14 +67,15 @@
     row-gap: 6px;
     text-decoration: unset;
     color: hsl(0, 0%, 100%);
+    transition: opacity 0.1s ease-in-out;
+    opacity: .9;
 
     &--repo {
-      transition: opacity 0.1s ease-in-out;
       opacity: 0.4;
+    }
 
-      &:hover {
-        opacity: 1;
-      }
+    &:hover {
+      opacity: 1;
     }
   }
 </style>

@@ -10,7 +10,7 @@ export interface Project {
 	title: string;
 	description: string;
 	url: string;
-	repo: string;
+	repo?: string;
 	updatedAt?: string;
 	theme?: string;
 }
@@ -64,6 +64,13 @@ let projects: Project[] = [
 		url: 'https://github.com/fmaclen/rule-of-three',
 		repo: 'fmaclen/rule-of-three',
 		theme: 'rule-of-three'
+	},
+	{
+		title: 'Oak Hall',
+		description: 'Oak Hall is a family run estate located in Northport, Maine',
+		url: 'https://oakhallestate.org/',
+		updatedAt: '2021-08-06T00:00:00Z',
+		theme: 'oak-hall'
 	}
 ];
 
