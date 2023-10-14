@@ -33,8 +33,8 @@
 			bottom: 0;
 			width: calc(50% - 32px);
 			transform: translateX(-50%);
-			border-left: 1px solid hsl(0, 0%, 20%);
-			border-right: 1px solid hsl(0, 0%, 20%);
+			border-left: 1px solid var(--color-border);
+			border-right: 1px solid var(--color-border);
 			z-index: -1;
 		}
 

@@ -46,8 +46,9 @@
     row-gap: 24px;
     border-radius: 8px;
     padding: 24px;
-    background-color: hsl(0, 0%, 10%);
-    transition: transform 0.1s ease-in-out;
+    background-color: var(--color-neutral-10);
+    transition: scale 0.1s ease-in-out;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 
     &--canutin { background-color: #1347FF; }
     &--fernando-is { background-color: #191919; }
@@ -57,6 +58,10 @@
     &--promptspree { background-color: #2F2F2F }
     &--rule-of-three { background-color: #57B0E5 }
     &--oak-hall { background-color: #A28B67 }
+
+    &:hover {
+      scale: 1.025;
+    }
   }
 
   nav.article__nav {
@@ -68,17 +73,18 @@
   a.article__a {
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
     text-decoration: unset;
-    color: hsl(0, 0%, 100%);
+    color: #FFF;
     transition: opacity 0.1s ease-in-out;
-    opacity: .9;
+    row-gap: 6px;
+    opacity: 0.9;
 
     &--repo {
       opacity: 0.4;
     }
 
     &:hover {
+      color: #FFF;
       opacity: 1;
     }
   }

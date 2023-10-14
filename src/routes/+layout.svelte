@@ -45,9 +45,38 @@
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=JetBrains+Mono:wght@100&display=swap');
 
+	:root {
+		// Light mode (default)
+		color-scheme: light;
+
+		--color-neutral-10: hsl(0, 0%, 91%);
+		--color-neutral-13: hsl(0, 0%, 87%);
+		--color-neutral-50: hsl(0, 0%, 40%);
+		--color-neutral-75: hsl(0, 0%, 25%);
+		--color-neutral-95: hsl(0, 0%, 5%);
+		--color-neutral-100: hsl(0, 0%, 0%);
+
+		--color-accent: #0439d9;
+		--color-border: hsl(0, 0%, 80%);
+
+		@media (prefers-color-scheme: dark) {
+			color-scheme: dark;
+
+			--color-neutral-10: hsl(0, 0%, 10%);
+			--color-neutral-13: hsl(0, 0%, 13%);
+			--color-neutral-50: hsl(0, 0%, 60%);
+			--color-neutral-75: hsl(0, 0%, 75%);
+			--color-neutral-95: hsl(0, 0%, 95%);
+			--color-neutral-100: hsl(0, 0%, 100%);
+
+			--color-accent: #02f2ce;
+			--color-border: hsl(0, 0%, 20%);
+		}
+	}
+
 	:global(body.body) {
-		color: hsl(0, 0%, 75%);
-		background-color: hsl(0, 0%, 13%);
+		color: var(--color-neutral-75);
+		background-color: var(--color-neutral-13);
 		margin: unset;
 		font-family: 'Inter', sans-serif;
 		font-weight: 300;
@@ -69,8 +98,7 @@
 		grid-template-rows: max-content auto;
 		box-sizing: border-box;
 		height: 100%;
-		border-right: 1px solid hsl(0, 0%, 20%);
-		background-color: hsl(0, 0%, 10%);
+		border-right: 1px solid var(--color-border);
 	}
 
 	section.aside__section {
@@ -100,7 +128,7 @@
 			display: flex;
 			flex-direction: column;
 			row-gap: 64px;
-			border-bottom: 1px solid hsl(0, 0%, 20%);
+			border-bottom: 1px solid var(--color-border);
 
 			@media (max-width: 1024px) {
 				row-gap: 32px;
@@ -119,9 +147,9 @@
 	}
 
 	a.a {
-		color: #23c88d;
+		color: var(--color-accent);
 		text-decoration: none;
-		border-bottom: 1px solid rgba(35, 200, 141, 1);
+		border-bottom: 1px solid var(--color-accent);
 
 		&:hover {
 			border-bottom-color: transparent;
@@ -139,7 +167,7 @@
 		font-weight: 100;
 		font-size: 24px;
 		line-height: 135%;
-		color: hsl(0, 0%, 50%);
+		color: var(--color-neutral-50);
 
 		@media (max-width: 880px) {
 			font-size: 18px;
@@ -151,7 +179,7 @@
 		line-height: 1.1em;
 		letter-spacing: -0.05em;
 		font-weight: 600;
-		color: hsl(0, 0%, 95%);
+		color: var(--color-neutral-95);
 
 		@media (max-width: 880px) {
 			font-size: 26px;
@@ -167,7 +195,7 @@
 		}
 
 		&--in-aside {
-			color: #666;
+			color: var(--color-accent);
 		}
 	}
 
@@ -180,6 +208,11 @@
 	a.social__a {
 		opacity: 0.25;
 		padding: 6px;
+		filter: invert(1); // Logo is black, so invert it to white in "light mode"
+		
+		@media (prefers-color-scheme: dark) {
+			filter: unset;
+		}
 
 		&:hover {
 			opacity: 1;
