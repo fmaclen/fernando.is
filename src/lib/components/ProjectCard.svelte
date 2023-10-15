@@ -13,18 +13,22 @@
 				<IconGithub />
 			</a>
 		{/if}
+
 		<Time date={project.updatedAt} />
 	</nav>
+
 	<nav class="gallery {!project.images ? 'gallery--no-gallery' : ''}">
 		{#if project.images}
 			{#each project.images as image}
 				{@const imagePath = `/projects/${image}`}
+
 				<a class="gallery__a" href={imagePath}>
 					<img class="gallery__img" src={imagePath} alt={`A screenshot of ${project.title}`} />
 				</a>
 			{/each}
 		{/if}
 	</nav>
+
 	<a href={project.url} class="article__a">
 		<h3 class="h3">{project.title}</h3>
 		<p class="p">{project.description}</p>
