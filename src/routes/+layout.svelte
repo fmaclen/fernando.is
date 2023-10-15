@@ -76,7 +76,7 @@
 
 	:global(body.body) {
 		color: var(--color-neutral-75);
-		background-color: var(--color-neutral-13);
+		background-color: var(--color-neutral-10);
 		margin: unset;
 		font-family: 'Inter', sans-serif;
 		font-weight: 300;
@@ -98,9 +98,11 @@
 		grid-template-rows: max-content auto;
 		box-sizing: border-box;
 		height: 100%;
+		max-width: 480px;
 		border-right: 1px solid var(--color-border);
 
 		@media (max-width: 880px) {
+			max-width: unset;
 			border-right: unset;
 		}
 	}
