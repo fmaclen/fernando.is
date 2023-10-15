@@ -17,5 +17,9 @@
 		color: rgba(255, 255, 255, 0.5);
 		text-transform: uppercase;
     cursor: help;
+
+    @media (max-width: 800px) {
+			font-size: 11px;
+    }
   }
 </style>
