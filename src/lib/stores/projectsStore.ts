@@ -36,7 +36,7 @@ let projects: Project[] = [
 			'canutin-data.png',
 			'canutin-trends.png',
 			'canutin-transactions.png',
-			'canutin-dashboard-dark.png',
+			'canutin-dashboard-dark.png'
 		]
 	},
 	{
@@ -63,7 +63,7 @@ let projects: Project[] = [
 			'julia-sanfrancisco-paris.png',
 			'julia-sanfrancisco-stevedore.png',
 			'julia-sanfrancisco-house-detective.png',
-			'julia-sanfrancisco-headquarters.png',
+			'julia-sanfrancisco-headquarters.png'
 		]
 	},
 	{
@@ -84,7 +84,7 @@ let projects: Project[] = [
 			'promptspree-article.png',
 			'promptspree-footer.png',
 			'promptspree-chat.png',
-			'promptspree-completion.png',
+			'promptspree-completion.png'
 		]
 	},
 	{
@@ -93,9 +93,7 @@ let projects: Project[] = [
 		url: 'https://github.com/fmaclen/rule-of-three',
 		repo: 'fmaclen/rule-of-three',
 		theme: 'rule-of-three',
-		images: [
-			'rule-of-three-default.png'
-		]
+		images: ['rule-of-three-default.png']
 	},
 	{
 		title: 'Oak Hall',
@@ -107,7 +105,7 @@ let projects: Project[] = [
 			'oak-hall-cover.png',
 			'oak-hall-library.png',
 			'oak-hall-gardens.png',
-			'oak-hall-footer.png',
+			'oak-hall-footer.png'
 		]
 	}
 ];
@@ -128,7 +126,7 @@ async function getLastProjectUpdate(project: Project) {
 	try {
 		const response = await fetch(`${GITHUB_API_BASE_URL}/${project.repo}`);
 		if (!response.ok) return project;
-	
+
 		const data = await response.json();
 		return {
 			...project,
