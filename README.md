@@ -1,6 +1,6 @@
 # fernando.is
 
-Using SvelteKit as a static site generator
+![image](https://github.com/fmaclen/fernando.is/assets/1434675/544434b7-7994-4056-9904-29920e5ebbae)
 
 ## Developing
 

@@ -53,7 +53,7 @@
 		@media (max-width: 1024px) {
 			padding-inline: 32px;
 		}
-		
+
 		@media (max-width: 880px) {
 			padding-block: 32px;
 			padding-inline: 24px;

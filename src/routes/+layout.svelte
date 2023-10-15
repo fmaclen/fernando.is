@@ -32,7 +32,7 @@
 		<section class="aside__section aside__section--call-to-action">
 			<h1 class="h1">
 				If you are working on an interesting problem and my skillset can be useful,
-				<wbr><a class="a" href="mailto:hello@fernando.is">talk to me</a>.<wbr/>
+				<a class="a" href="mailto:hello@fernando.is">talk to me</a>.
 			</h1>
 		</section>
 	</aside>
@@ -76,7 +76,7 @@
 
 	:global(body.body) {
 		color: var(--color-neutral-75);
-		background-color: var(--color-neutral-13);
+		background-color: var(--color-neutral-10);
 		margin: unset;
 		font-family: 'Inter', sans-serif;
 		font-weight: 300;
@@ -84,7 +84,7 @@
 
 	div.layout {
 		display: grid;
-		grid-template-columns: minmax(384px,1fr) 3fr;
+		grid-template-columns: minmax(384px, 1fr) 3fr;
 		width: 100dvw;
 		height: 100dvh;
 
@@ -98,13 +98,19 @@
 		grid-template-rows: max-content auto;
 		box-sizing: border-box;
 		height: 100%;
+		max-width: 480px;
 		border-right: 1px solid var(--color-border);
+
+		@media (max-width: 880px) {
+			max-width: unset;
+			border-right: unset;
+		}
 	}
 
 	section.aside__section {
 		padding-inline: 56px;
 		padding-block: 56px;
-		
+
 		@media (max-width: 1366px) {
 			padding-inline: 48px;
 			padding-block: 48px;
@@ -113,7 +119,7 @@
 		@media (max-width: 1024px) {
 			padding-inline: 32px;
 		}
-		
+
 		@media (max-width: 880px) {
 			padding-block: 32px;
 			padding-inline: 24px;
@@ -122,6 +128,10 @@
 		&--call-to-action {
 			height: auto;
 			place-self: flex-start;
+
+			@media (max-width: 880px) {
+				border-bottom: 1px solid var(--color-border);
+			}
 		}
 
 		&--profile {
@@ -209,7 +219,7 @@
 		opacity: 0.25;
 		padding: 6px;
 		filter: invert(1); // Logo is black, so invert it to white in "light mode"
-		
+
 		@media (prefers-color-scheme: dark) {
 			filter: unset;
 		}
