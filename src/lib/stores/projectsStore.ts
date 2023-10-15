@@ -82,7 +82,7 @@ let projects: Project[] = [
 		images: [
 			'promptspree-homepage.png',
 			'promptspree-article.png',
-			'promptspree-fotoer.png',
+			'promptspree-footer.png',
 			'promptspree-chat.png',
 			'promptspree-completion.png',
 		]
