@@ -32,7 +32,7 @@
 		<section class="aside__section aside__section--call-to-action">
 			<h1 class="h1">
 				If you are working on an interesting problem and my skillset can be useful,
-				<wbr><a class="a" href="mailto:hello@fernando.is">talk to me</a>.</wbr>
+				<a class="a" href="mailto:hello@fernando.is">talk to me</a>.
 			</h1>
 		</section>
 	</aside>
