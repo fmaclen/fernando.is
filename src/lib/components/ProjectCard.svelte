@@ -79,7 +79,7 @@
 		}
 
 		&--fernando-is {
-			background-color: #191919;
+			background-color: #000;
 		}
 
 		&--svelte-currency-input {
@@ -95,7 +95,8 @@
 		}
 
 		&--promptspree {
-			background-color: #2f2f2f;
+			background-image: linear-gradient(45deg, #4C5EFF 4.62%, #F25E5E 54.67%, #F2C65E 99.78%);
+			background-color: #4C5EFF;
 		}
 
 		&--rule-of-three {
@@ -134,17 +135,18 @@
 		flex-direction: column;
 		text-decoration: unset;
 		color: #fff;
-		border-left: 4px solid transparent;
-		transition: opacity 0.1s ease-in-out;
+		transition: opacity 0.1s ease-in-out, padding-left 0.1s ease-in-out;
 		padding-inline: var(--article-inner-spacing);
 		margin-bottom: var(--article-inner-spacing);
+
+		border-left: 6px solid transparent;
 		row-gap: 6px;
 		opacity: 0.9;
 
 		&:hover {
 			color: #fff;
 			opacity: 1;
-
+			padding-left: calc(var(--article-inner-spacing) + 6px);
 			border-left-color: rgba(255, 255, 255, 0.25);
 		}
 	}
