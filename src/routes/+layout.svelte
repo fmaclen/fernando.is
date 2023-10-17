@@ -83,13 +83,12 @@
 	}
 
 	div.layout {
-		display: grid;
-		grid-template-columns: minmax(384px, 1fr) 3fr;
+		display: flex;
 		width: 100dvw;
 		height: 100dvh;
 
 		@media (max-width: 880px) {
-			grid-template-columns: 1fr;
+			flex-direction: column;
 		}
 	}
 
@@ -98,11 +97,12 @@
 		grid-template-rows: max-content auto;
 		box-sizing: border-box;
 		height: 100%;
-		max-width: 480px;
+		width: clamp(384px, 100%, 512px);
 		border-right: 1px solid var(--color-border);
 
 		@media (max-width: 880px) {
-			max-width: unset;
+			width: unset;
+			height: max-content;
 			border-right: unset;
 		}
 	}
@@ -159,10 +159,12 @@
 	a.a {
 		color: var(--color-accent);
 		text-decoration: none;
-		border-bottom: 1px solid var(--color-accent);
+		transition: box-shadow 0.1s ease-in-out;
+		box-shadow: inset 0 -1px 0 var(--color-accent);
 
 		&:hover {
-			border-bottom-color: transparent;
+			color: var(--color-neutral-10);
+			box-shadow: inset 0 -40px 0 var(--color-accent);
 		}
 	}
 
@@ -216,6 +218,8 @@
 	}
 
 	a.social__a {
+		display: flex;
+		align-items: center;
 		opacity: 0.25;
 		padding: 6px;
 		filter: invert(1); // Logo is black, so invert it to white in "light mode"
@@ -230,10 +234,13 @@
 	}
 
 	main.main {
+		width: 100%;
+		height: 100%;
 		max-height: 100dvh;
 		overflow-y: auto;
 
 		@media (max-width: 880px) {
+			justify-content: center;
 			max-height: unset;
 			overflow-y: unset;
 		}
