@@ -101,7 +101,8 @@
 		border-right: 1px solid var(--color-border);
 
 		@media (max-width: 880px) {
-			max-width: unset;
+			width: unset;
+			height: max-content;
 			border-right: unset;
 		}
 	}
@@ -233,11 +234,13 @@
 	}
 
 	main.main {
+		width: 100%;
+		height: 100%;
 		max-height: 100dvh;
 		overflow-y: auto;
-		width: 100%;
 
 		@media (max-width: 880px) {
+			justify-content: center;
 			max-height: unset;
 			overflow-y: unset;
 		}
