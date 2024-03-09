@@ -10,7 +10,7 @@
 		<section class="aside__section aside__section--profile">
 			<header class="aside__header">
 				<h2 class="h2">Fernando Maclen</h2>
-				<p class="p p--in-aside">Designer & software developer</p>
+				<p class="p p--in-aside"><strong>Designer & software developer</strong>, truly full-stack.</p>
 			</header>
 
 			<nav class="social">
