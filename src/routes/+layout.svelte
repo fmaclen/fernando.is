@@ -172,6 +172,7 @@
 	h2.h2,
 	p.p {
 		margin: unset;
+		text-wrap: balance;
 	}
 
 	h1.h1 {

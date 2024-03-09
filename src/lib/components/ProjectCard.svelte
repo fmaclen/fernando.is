@@ -1,4 +1,6 @@
 <script lang="ts">
+	import emblaCarouselSvelte from 'embla-carousel-svelte';
+
 	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
 	import type { Project } from '$lib/stores/projectsStore';
 	import Time from '$lib/components/Time.svelte';
@@ -7,7 +9,7 @@
 </script>
 
 <article class="article {project.theme ? `article--${project.theme}` : ''}">
-	<nav class="article__nav">
+	<nav class="article__nav {project.images ? 'article__nav--with-gallery' : ''}">
 		{#if project.repo}
 			<a href={`https://github.com/${project.repo}`} class="article__repo" target="_blank">
 				<IconGithub />
@@ -17,17 +19,25 @@
 		<Time date={project.updatedAt} />
 	</nav>
 
-	<nav class="gallery {!project.images ? 'gallery--no-gallery' : ''}">
-		{#if project.images}
-			{#each project.images as image}
-				{@const imagePath = `/projects/${image}`}
+	{#if project.images}
+		<nav
+			class="gallery"
+			use:emblaCarouselSvelte={{
+				options: { skipSnaps: true, align: 'center' },
+				plugins: []
+			}}
+		>
+			<div class="gallery__container">
+				{#each project.images as image}
+					{@const imagePath = `/projects/${image}`}
 
-				<a class="gallery__a" href={imagePath}>
-					<img class="gallery__img" src={imagePath} alt={`A screenshot of ${project.title}`} />
-				</a>
-			{/each}
-		{/if}
-	</nav>
+					<a class="gallery__a" href={imagePath}>
+						<img class="gallery__img {project.images.length === 1 ? 'gallery__img--single-image' : ''}" src={imagePath} alt={`A screenshot of ${project.title}`} />
+					</a>
+				{/each}
+			</div>
+		</nav>
+	{/if}
 
 	<a href={project.url} class="article__a">
 		<h3 class="h3">{project.title}</h3>
@@ -42,6 +52,7 @@
 	}
 
 	p.p {
+		text-wrap: balance;
 		width: 75%;
 
 		@media (max-width: 1024px) {
@@ -95,8 +106,8 @@
 		}
 
 		&--promptspree {
-			background-image: linear-gradient(45deg, #4C5EFF 4.62%, #F25E5E 54.67%, #F2C65E 99.78%);
-			background-color: #4C5EFF;
+			background-image: linear-gradient(45deg, #4c5eff 4.62%, #f25e5e 54.67%, #f2c65e 99.78%);
+			background-color: #4c5eff;
 		}
 
 		&--rule-of-three {
@@ -112,8 +123,12 @@
 		display: flex;
 		align-items: center;
 		gap: calc(var(--article-inner-spacing) / 2);
-		margin-top: var(--article-inner-spacing);
+		margin-block: var(--article-inner-spacing);
 		margin-inline: var(--article-inner-spacing);
+
+		&--with-gallery {
+			margin-bottom: unset;
+		}
 
 		@media (max-width: 880px) {
 			gap: var(--article-inner-spacing);
@@ -135,35 +150,39 @@
 		flex-direction: column;
 		text-decoration: unset;
 		color: #fff;
-		transition: opacity 0.1s ease-in-out, padding-left 0.1s ease-in-out;
+		transition:
+			opacity 0.1s ease-in-out,
+			padding-left 0.1s ease-in-out;
 		padding-inline: var(--article-inner-spacing);
-		margin-bottom: var(--article-inner-spacing);
-
+		padding-block: var(--article-inner-spacing);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
 		border-left: 6px solid transparent;
+		border-bottom-left-radius: 8px;
 		row-gap: 6px;
 		opacity: 0.9;
 
-		&:hover {
-			color: #fff;
-			opacity: 1;
-			padding-left: calc(var(--article-inner-spacing) + 6px);
-			border-left-color: rgba(255, 255, 255, 0.25);
+		// Don't apply hover styles on touch devices
+		@media (hover: hover) {
+			&:hover {
+				color: #fff;
+				opacity: 1;
+				padding-left: calc(var(--article-inner-spacing) + 6px);
+				border-left-color: rgba(255, 255, 255, 0.25);
+			}
 		}
 	}
 
-	nav.gallery {
-		display: flex;
-		gap: 8px;
+	.gallery {
 		max-width: 100%;
 		box-sizing: border-box;
-		overflow-x: scroll;
 		padding-block: var(--article-inner-spacing);
 		padding-inline: var(--article-inner-spacing);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		margin-bottom: var(--article-inner-spacing);
+		overflow: hidden;
+		cursor: grab;
 
-		&--no-gallery {
-			padding-bottom: unset;
+		&__container {
+			display: flex;
+			gap: 8px;
 		}
 	}
 
@@ -187,5 +206,9 @@
 		border-radius: 8px;
 		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
 			rgba(0, 0, 0, 0.1);
+
+			&--single-image {
+				max-width: 100%;
+			}
 	}
 </style>
