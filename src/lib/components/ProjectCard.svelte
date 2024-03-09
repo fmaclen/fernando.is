@@ -1,12 +1,82 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 
 	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
 	import type { Project } from '$lib/stores/projectsStore';
 	import Time from '$lib/components/Time.svelte';
+	import IconClose from './icons/IconClose.svg.svelte';
+	import IconPrevious from './icons/IconPrevious.svg.svelte';
+	import IconNext from './icons/IconNext.svg.svelte';
 
 	export let project: Project;
+	let dialog: HTMLDialogElement;
+	let dialogImageIndex: number;
+
+	function imagePath(image: string) {
+		return `/projects/${image}`;
+	}
+
+	function loadDialogGallery(index: number) {
+		dialogImageIndex = index;
+		dialog.showModal();
+	}
+
+	function previousImage() {
+		if (!project.images) return;
+		dialogImageIndex = dialogImageIndex === 0 ? project.images.length - 1 : dialogImageIndex - 1;
+	}
+
+	function nextImage() {
+		if (!project.images) return;
+		dialogImageIndex = dialogImageIndex === project.images.length - 1 ? 0 : dialogImageIndex + 1;
+	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'ArrowLeft') {
+			previousImage();
+		} else if (event.key === 'ArrowRight') {
+			nextImage();
+		}
+	}
+
+	onMount(() => {
+		window.addEventListener('keydown', handleKeydown);
+
+		return () => {
+			window.removeEventListener('keydown', handleKeydown);
+		};
+	});
 </script>
+
+{#if project.images}
+	{@const indexOfTotal = `${dialogImageIndex + 1} of ${project.images.length}`}
+	<dialog class="dialog" bind:this={dialog}>
+		<header class="dialog__header">
+			<h3 class="h3">{project.title}</h3>
+			<p class="p p--in-dialog">{indexOfTotal}</p>
+		</header>
+		<div class="dialog__container">
+			<img
+				class="dialog__img"
+				src={imagePath(project.images[dialogImageIndex])}
+				alt="Screenshot of the project ({indexOfTotal})"
+			/>
+		</div>
+
+		<nav class="dialog__nav">
+			<button class="dialog__button" type="button" on:click={previousImage}>
+				<IconPrevious />
+			</button>
+			<button class="dialog__button" type="button" on:click={() => dialog.close()}>
+				<IconClose />
+			</button>
+			<button class="dialog__button" type="button" on:click={nextImage}>
+				<IconNext />
+			</button>
+		</nav>
+	</dialog>
+{/if}
 
 <article class="article {project.theme ? `article--${project.theme}` : ''}">
 	<nav class="article__nav {project.images ? 'article__nav--with-gallery' : ''}">
@@ -28,12 +98,14 @@
 			}}
 		>
 			<div class="gallery__container">
-				{#each project.images as image}
-					{@const imagePath = `/projects/${image}`}
-
-					<a class="gallery__a" href={imagePath}>
-						<img class="gallery__img {project.images.length === 1 ? 'gallery__img--single-image' : ''}" src={imagePath} alt={`A screenshot of ${project.title}`} />
-					</a>
+				{#each project.images as image, index}
+					<button class="gallery__button" on:click={() => loadDialogGallery(index)}>
+						<img
+							class="gallery__img {project.images.length === 1 ? 'gallery__img--single-image' : ''}"
+							src={imagePath(image)}
+							alt={`A screenshot of ${project.title}`}
+						/>
+					</button>
 				{/each}
 			</div>
 		</nav>
@@ -57,6 +129,11 @@
 
 		@media (max-width: 1024px) {
 			width: 100%;
+		}
+
+		&--in-dialog {
+			width: 100%;
+			opacity: .5;
 		}
 	}
 
@@ -186,9 +263,18 @@
 		}
 	}
 
+	button.gallery__button {
+		display: block;
+		background: unset;
+		border: unset;
+		padding: unset;
+		outline: unset;
+		cursor: pointer;
+	}
+
 	// Don't scale on touch devices
 	@media (hover: hover) {
-		a.gallery__a {
+		button.gallery__button {
 			scale: 1;
 
 			transition: scale 0.1s ease-in-out;
@@ -207,8 +293,79 @@
 		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
 			rgba(0, 0, 0, 0.1);
 
-			&--single-image {
-				max-width: 100%;
+		&--single-image {
+			max-width: 100%;
+		}
+	}
+
+	.dialog {
+		max-width: unset;
+		max-height: unset;
+		width: 100dvw;
+		height: 100dvh;
+		border: unset;
+		margin: unset;
+		padding: unset;
+
+		&:modal {
+			display: grid;
+			grid-template-rows: max-content auto max-content;
+		}
+
+		&__header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: max-content;
+			flex-direction: column;
+			gap: 4px;
+			padding: 40px;
+			text-align: center;
+			margin-inline: auto;
+		}
+
+		&__container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 8px;
+			box-sizing: border-box;
+			padding-inline: 16px;
+		}
+
+		&__img {
+			max-width: 100%;
+			max-height: 90dvh;
+			object-fit: contain;
+			margin-inline: auto;
+			border-radius: 8px;
+			box-shadow: 0 calc(18px / 2) 18px rgba(0, 0, 0, 0.1);
+		}
+
+		&__nav {
+			display: flex;
+			margin-top: auto;
+			padding: 40px;
+			gap: 40px;
+			margin-inline: auto;
+		}
+
+		&__button {
+			border: unset;
+			padding: unset;
+			background: unset;
+			opacity: 0.33;
+			filter: invert(1); // Logo is black, so invert it to white in "light mode"
+			outline: unset;
+			cursor: pointer;
+
+			@media (prefers-color-scheme: dark) {
+				filter: unset;
 			}
+
+			&:hover {
+				opacity: 1;
+			}
+		}
 	}
 </style>
