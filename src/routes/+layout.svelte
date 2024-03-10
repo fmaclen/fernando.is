@@ -106,16 +106,19 @@
 		color-scheme: dark;
 
 		--dark-accent: var(--yellow-4);
-		--dark-border-1: var(--stone-10);
-		--dark-background-1: var(--stone-12);
-		--dark-background-2: var(--stone-11);
-		--dark-text-1: var(--stone-0);
-		--dark-text-2: var(--stone-5);
-
 		--accent: var(--dark-accent);
+
+		--dark-border-1: var(--stone-10);
 		--border-1: var(--dark-border-1);
+
+		--dark-background-1: var(--stone-12);
 		--background-1: var(--dark-background-1);
+		--dark-background-2: var(--stone-11);
+		--background-2: var(--dark-background-2);
+
+		--dark-text-1: var(--stone-0);
 		--text-1: var(--dark-text-1);
+		--dark-text-2: var(--stone-5);
 		--text-2: var(--dark-text-2);
 	}
 
@@ -123,17 +126,19 @@
 		color-scheme: light;
 
 		--light-accent: var(--indigo-8);
-		--light-border-1: var(--stone-4);
-		--light-background-1: var(--stone-1);
-		--light-background-2: var(--stone-2);
-		--light-text-1: var(--stone-12);
-		--light-text-2: var(--stone-8);
-
 		--accent: var(--light-accent);
+
+		--light-border-1: var(--stone-4);
 		--border-1: var(--light-border-1);
+
+		--light-background-1: var(--stone-1);
 		--background-1: var(--light-background-1);
+		--light-background-2: var(--stone-2);
 		--background-2: var(--light-background-2);
+
+		--light-text-1: var(--stone-12);
 		--text-1: var(--light-text-1);
+		--light-text-2: var(--stone-8);
 		--text-2: var(--light-text-2);
 	}
 
@@ -277,6 +282,7 @@
 		height: 100%;
 		max-height: 100dvh;
 		overflow-y: auto;
+		background-color: var(--background-2);
 
 		@media (max-width: 880px) {
 			justify-content: center;

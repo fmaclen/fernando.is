@@ -26,6 +26,7 @@
 
 		&::before {
 			content: '';
+			z-index: 0;
 			position: absolute;
 			top: 0;
 			left: 50%;
@@ -34,7 +35,7 @@
 			transform: translateX(-50%);
 			border-left: var(--border-size-1) solid var(--border-1);
 			border-right: var(--border-size-1) solid var(--border-1);
-			z-index: 0;
+			transition: border-color 500ms;
 		}
 
 		// @media (max-width: 1366px) {
