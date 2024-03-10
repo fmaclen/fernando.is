@@ -97,6 +97,7 @@
 </div>
 
 <style lang="scss">
+	@import "$lib/mixins";
 	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap');
 
 	:global(html) {
@@ -193,6 +194,11 @@
 		width: 100dvw;
 		height: 100dvh;
 		background-color: var(--background-1);
+
+		@media (max-width: $breakpoint-4) {
+			grid-template-columns: unset;
+			grid-auto-flow: rows;
+		}
 	}
 
 	.aside {
@@ -203,6 +209,10 @@
 		padding: var(--size-9);
 		border-right: var(--border-size-1) solid var(--border-1);
 		gap: var(--size-8);
+
+		@media (max-width: $breakpoint-2) {
+			padding: var(--size-7);
+		}
 	}
 
 	.header {
@@ -213,11 +223,16 @@
 		&__h1,
 		&__p {
 			margin: 0;
+			text-wrap: balance;
 			font-weight: var(--font-weight-1);
 			color: var(--text-2);
 			line-height: var(--font-lineheight-2);
 			font-size: var(--size-5);
-			text-wrap: balance;
+			max-width: var(--size-content-3);
+
+			@media (max-width: $breakpoint-2) {
+				font-size: var(--size-4);
+			}
 		}
 
 		strong {
@@ -257,14 +272,14 @@
 			margin-top: auto;
 			height: max-content;
 
-			button.icons__button,
-			a.icons__a {
-				opacity: 0.66;
+			// button.icons__button,
+			// a.icons__a {
+			// 	opacity: 0.66;
 
-				&:hover {
-					opacity: 1;
-				}
-			}
+			// 	&:hover {
+			// 		opacity: 1;
+			// 	}
+			// }
 		}
 
 		&__button {

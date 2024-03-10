@@ -12,6 +12,8 @@
 </ul>
 
 <style lang="scss">
+	@import "$lib/mixins";
+
 	ul.ul {
 		column-gap: var(--size-2);
 		padding: var(--size-9);
@@ -38,26 +40,20 @@
 			transition: border-color 500ms;
 		}
 
-		// @media (max-width: 1366px) {
-		// 	column-count: 1;
-		// 	max-width: 768px;
-		// 	padding-inline: 48px;
-		// 	padding-block: 48px;
+		@media (max-width: $breakpoint-1) {
+			column-count: 1;
+			width: 100%;
+			max-width: $breakpoint-4;
 
-		// 	&::before {
-		// 		width: unset;
-		// 		border-right: unset;
-		// 	}
-		// }
+			&::before {
+				width: unset;
+				border-right: unset;
+			}
+		}
 
-		// @media (max-width: 1024px) {
-		// 	padding-inline: 32px;
-		// }
-
-		// @media (max-width: 880px) {
-		// 	padding-block: 32px;
-		// 	padding-inline: 24px;
-		// }
+		@media (max-width: $breakpoint-2) {
+			padding: var(--size-7);
+		}
 	}
 
 	li.ul__li {
