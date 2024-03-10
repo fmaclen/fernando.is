@@ -118,16 +118,15 @@
 		--text-2: var(--dark-text-2);
 	}
 
-	
 	:global(html[data-theme='light']) {
 		color-scheme: light;
-		
+
 		--light-accent: var(--indigo-8);
 		--light-border-1: var(--stone-4);
 		--light-background-1: var(--stone-1);
 		--light-text-1: var(--stone-12);
 		--light-text-2: var(--stone-8);
-		
+
 		--accent: var(--light-accent);
 		--border-1: var(--light-border-1);
 		--background-1: var(--light-background-1);
@@ -137,12 +136,17 @@
 
 	:global(*) {
 		// Makes the transition between dark/light modes smooth
-		transition: color 150ms, background-color 500ms, border-color 500ms, fill 500ms;
+		transition:
+			color 150ms,
+			background-color 500ms,
+			border-color 500ms,
+			fill 500ms;
 	}
 
 	:global(svg.svg-icon) {
 		width: 20px;
 		height: 20px;
+		padding: var(--size-2);
 	}
 
 	:global(svg.svg-icon--themable path) {
@@ -209,7 +213,9 @@
 			color: var(--link-theme);
 			text-decoration: unset;
 			border-bottom: var(--border-size-2) solid var(--link-theme);
-			transition: color 250ms, border-color 250ms;
+			transition:
+				color 250ms,
+				border-color 250ms;
 
 			&:hover {
 				--link-theme: var(--text-1);
@@ -229,6 +235,15 @@
 		&--theme-toggle {
 			margin-top: auto;
 			height: max-content;
+
+			button.icons__button,
+			a.icons__a {
+				opacity: 0.66;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
 		}
 
 		&__button {
@@ -242,8 +257,8 @@
 		&__a {
 			display: flex;
 			align-items: center;
-			padding: var(--size-2);
 			opacity: 0.33;
+			transition: opacity 250ms;
 
 			&:hover {
 				opacity: 1;
