@@ -160,6 +160,16 @@
 		padding: var(--size-2);
 	}
 
+	:global(svg.svg-icon--dialog) {
+		width: var(--size-6);
+		height: var(--size-6);
+	}
+
+	:global(svg.svg-icon--dialog line),
+	:global(svg.svg-icon--dialog g) {
+		stroke: var(--text-1);
+	}
+
 	:global(svg.svg-icon--themable path) {
 		fill: var(--text-1);
 	}

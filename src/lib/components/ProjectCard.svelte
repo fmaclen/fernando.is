@@ -54,7 +54,7 @@
 	{@const indexOfTotal = `${dialogImageIndex + 1} of ${project.images.length}`}
 	<dialog class="dialog" bind:this={dialog}>
 		<header class="dialog__header">
-			<h3 class="h3">{project.title}</h3>
+			<h3 class="h3 h3--in-dialog">{project.title}</h3>
 			<p class="p p--in-dialog">{indexOfTotal}</p>
 		</header>
 		<div class="dialog__container">
@@ -117,10 +117,10 @@
 		</nav>
 	{/if}
 
-	<a href={project.url} class="article__a">
+	<header class="article__header">
 		<h3 class="h3">{project.title}</h3>
 		<p class="p">{project.description}</p>
-	</a>
+	</header>
 </article>
 
 <style lang="scss">
@@ -128,42 +128,30 @@
 	h3.h3 {
 		font-size: var(--font-size-fluid-0);
 		margin: unset;
+
+		&--in-dialog {
+			color: var(--text-1);
+		}
 	}
 
 	p.p {
 		width: var(--size-header-3);
 		font-weight: var(--font-weight-1);
 		text-wrap: balance;
+		opacity: 0.66;
 
 		&--in-dialog {
 			width: 100%;
-			opacity: .5;
+			opacity: 0.5;
 		}
 	}
 
 	.article {
-		// --article-inner-spacing: 24px;
-
-		// @media (max-width: 1024px) {
-		// 	font-size: 15px;
-		// 	--article-inner-spacing: 20px;
-		// }
-
-		// @media (max-width: 800px) {
-		// 	font-size: 14px;
-		// 	--article-inner-spacing: 18px;
-		// }
-
-		// @media (max-width: 640px) {
-		// 	font-size: 13px;
-		// 	--article-inner-spacing: 16px;
-		// }
-
 		display: grid;
 		grid-template-columns: auto;
 		border-radius: 8px;
 		background-color: var(--background-2);
-		box-shadow: var(--shadow-3);
+		box-shadow: var(--shadow-2);
 
 		&--canutin {
 			background-color: #1347ff;
@@ -201,29 +189,43 @@
 		&__time {
 			margin-left: auto;
 		}
-	}
 
-	nav.article__nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: var(--size-3);
-		align-items: center;
-		margin-block: var(--size-3);
-		margin-inline: var(--size-4);
+		&__nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			align-items: center;
+			gap: var(--size-3);
+			margin-block: var(--size-3);
+			margin-inline: var(--size-4);
 
-		:global(.svg-icon--themable) {
-			padding: unset;
+			&--with-gallery {
+				margin-bottom: unset;
+			}
+
+			:global(.svg-icon--themable) {
+				padding: unset;
+			}
+
+			:global(.svg-icon--themable path) {
+				fill: unset;
+			}
 		}
 
-		:global(.svg-icon--themable path) {
-			fill: unset;
+		&__header {
+			display: flex;
+			flex-direction: column;
+			text-decoration: unset;
+			color: #fff;
+			row-gap: var(--size-2);
+			padding-inline: var(--size-5);
+			padding-block: var(--size-5);
+			border-top: var(--border-size-1) solid rgba(255, 255, 255, 0.15);
+			border-bottom-left-radius: var(--radius-1);
+			transition:
+				opacity 0.1s ease-in-out,
+				padding-left 0.1s ease-in-out;
 		}
-
-
-		// @media (max-width: 880px) {
-		// 	gap: var(--article-inner-spacing);
-		// }
 	}
 
 	a.article__repo {
@@ -231,44 +233,16 @@
 		padding-inline: unset;
 		transition: opacity 0.1s ease-in-out;
 		opacity: 0.4;
-		// transform: translateX(calc(var(--size-2) * -1));
 
 		&:hover {
 			opacity: 1;
 		}
 	}
 
-	a.article__a {
-		display: flex;
-		flex-direction: column;
-		text-decoration: unset;
-		color: #fff;
-		transition:
-			opacity 0.1s ease-in-out,
-			padding-left 0.1s ease-in-out;
-		padding-inline: var(--size-5);
-		padding-block: var(--size-5);
-		border-top: var(--border-size-1) dashed rgba(255, 255, 255, 0.25);
-		// border-left: 6px solid transparent;
-		border-bottom-left-radius: 8px;
-		row-gap: 6px;
-		opacity: 0.9;
-
-		// Don't apply hover styles on touch devices
-		// @media (hover: hover) {
-		// 	&:hover {
-		// 		color: #fff;
-		// 		opacity: 1;
-		// 		padding-left: calc(var(--size-5) + 6px);
-		// 		border-left-color: rgba(255, 255, 255, 0.25);
-		// 	}
-		// }
-	}
-
 	.gallery {
 		max-width: 100%;
 		box-sizing: border-box;
-		padding-bottom: var(--size-5);
+		padding-block: var(--size-5);
 		padding-inline: var(--size-5);
 		overflow: hidden;
 		cursor: grab;
@@ -305,7 +279,7 @@
 		display: block;
 		max-width: 640px;
 		max-height: 320px;
-		border-radius: 8px;
+		border-radius: var(--radius-2);
 		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
 			rgba(0, 0, 0, 0.1);
 
@@ -317,11 +291,12 @@
 	.dialog {
 		max-width: unset;
 		max-height: unset;
-		width: 100dvw;
-		height: 100dvh;
 		border: unset;
 		margin: unset;
 		padding: unset;
+		width: 100dvw;
+		height: 100dvh;
+		background-color: var(--background-2);
 
 		&:modal {
 			display: grid;
@@ -334,8 +309,8 @@
 			justify-content: center;
 			width: max-content;
 			flex-direction: column;
-			gap: 4px;
-			padding: 40px;
+			gap: var(--size-1);
+			padding: var(--size-6);
 			text-align: center;
 			margin-inline: auto;
 		}
@@ -354,8 +329,8 @@
 			max-height: 90dvh;
 			object-fit: contain;
 			margin-inline: auto;
-			border-radius: 8px;
-			box-shadow: 0 calc(18px / 2) 18px rgba(0, 0, 0, 0.1);
+			border-radius: var(--radius-3);
+			box-shadow: var(--shadow-2);
 		}
 
 		&__nav {
@@ -371,13 +346,8 @@
 			padding: unset;
 			background: unset;
 			opacity: 0.33;
-			filter: invert(1); // Logo is black, so invert it to white in "light mode"
 			outline: unset;
 			cursor: pointer;
-
-			@media (prefers-color-scheme: dark) {
-				filter: unset;
-			}
 
 			&:hover {
 				opacity: 1;
