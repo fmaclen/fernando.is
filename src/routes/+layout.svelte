@@ -1,40 +1,94 @@
-<script>
+<script lang="ts">
+	import 'open-props/open-props.min.css';
+	import { onMount } from 'svelte';
+
 	import IconDribbble from '$lib/components/icons/IconDribbble.svg.svelte';
 	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
 	import IconX from '$lib/components/icons/IconX.svg.svelte';
 	import IconEmail from '$lib/components/icons/IconEmail.svg.svelte';
+	import IconLinkedin from '$lib/components/icons/IconLinkedin.svg.svelte';
+	import IconDark from '$lib/components/icons/IconDark.svg.svelte';
+	import IconLight from '$lib/components/icons/IconLight.svg.svelte';
+
+	const THEME_KEY = 'colorTheme';
+	const THEME_DARK = 'dark';
+	const THEME_LIGHT = 'light';
+
+	let html: HTMLElement | null = null;
+	let isDarkMode = true;
+
+	function toggleTheme() {
+		if (!html) return;
+
+		isDarkMode = !isDarkMode;
+		html.dataset.theme = isDarkMode ? THEME_DARK : THEME_LIGHT;
+
+		// Store the user's preference in localStorage
+		localStorage.setItem(THEME_KEY, isDarkMode ? THEME_DARK : THEME_LIGHT);
+	}
+
+	onMount(() => {
+		// Check the browser's preferred color scheme
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+			isDarkMode = false;
+		}
+
+		// Check if a user preference is stored in localStorage
+		const userPreference = localStorage.getItem(THEME_KEY);
+		if (userPreference === THEME_DARK) {
+			isDarkMode = true;
+		} else if (userPreference === THEME_LIGHT) {
+			isDarkMode = false;
+		}
+
+		html = document.querySelector('html');
+	});
 </script>
 
 <div class="layout">
 	<aside class="aside">
-		<section class="aside__section aside__section--profile">
-			<header class="aside__header">
-				<h2 class="h2">Fernando Maclen</h2>
-				<p class="p p--in-aside"><strong>Designer & software developer</strong>, truly full-stack.</p>
-			</header>
-
-			<nav class="social">
-				<a class="social__a" href="https://x.com/fmaclen">
-					<IconX />
-				</a>
-				<a class="social__a" href="https://github.com/fmaclen">
-					<IconGithub />
-				</a>
-				<a class="social__a" href="https://dribbble.com/fmaclen">
-					<IconDribbble />
-				</a>
-				<a class="social__a" href="mailto:hello@fernando.is">
-					<IconEmail />
-				</a>
-			</nav>
-		</section>
-
-		<section class="aside__section aside__section--call-to-action">
-			<h1 class="h1">
-				If you are working on an interesting problem and my skillset can be useful,
-				<a class="a" href="mailto:hello@fernando.is">talk to me</a>.
+		<header class="header">
+			<p class="header__p">Hello,</p>
+			<h1 class="header__h1">
+				I'm <strong>Fernando Maclen</strong>, a Miami-based
+				<strong>designer & software developer</strong>; <em>truly full-stack.</em>
 			</h1>
-		</section>
+			<p class="header__p">This portfolio showcases my recent work across design & code.</p>
+			<p class="header__p">
+				If you have an interesting project that could benefit from my end-to-end abilities, <a
+					class="header__a"
+					href="mailto:hello@fernando.is">let's talk</a
+				>.
+			</p>
+		</header>
+
+		<nav class="icons">
+			<a class="icons__a" target="_blank" href="https://x.com/fmaclen">
+				<IconX />
+			</a>
+			<a class="icons__a" target="_blank" href="https://github.com/fmaclen">
+				<IconGithub />
+			</a>
+			<a class="icons__a" target="_blank" href="https://dribbble.com/fmaclen">
+				<IconDribbble />
+			</a>
+			<a class="icons__a" target="_blank" href="https://www.linkedin.com/in/fmaclen/">
+				<IconLinkedin />
+			</a>
+			<a class="icons__a" target="_blank" href="mailto:hello@fernando.is">
+				<IconEmail />
+			</a>
+		</nav>
+
+		<nav class="icons icons--theme-toggle">
+			<button class="icons__button" on:click={toggleTheme}>
+				{#if isDarkMode}
+					<IconLight />
+				{:else}
+					<IconDark />
+				{/if}
+			</button>
+		</nav>
 	</aside>
 
 	<main class="main">
@@ -43,194 +97,157 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=JetBrains+Mono:wght@100&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap');
 
-	:root {
-		// Light mode (default)
+	:global(html) {
+		--font-family: 'JetBrains Mono', monospace;
+
+		// Dark theme is the default
+		color-scheme: dark;
+
+		--dark-accent: var(--yellow-4);
+		--dark-border-1: var(--stone-10);
+		--dark-background-1: var(--stone-12);
+		--dark-text-1: var(--stone-0);
+		--dark-text-2: var(--stone-5);
+
+		--accent: var(--dark-accent);
+		--border-1: var(--dark-border-1);
+		--background-1: var(--dark-background-1);
+		--text-1: var(--dark-text-1);
+		--text-2: var(--dark-text-2);
+	}
+
+	
+	:global(html[data-theme='light']) {
 		color-scheme: light;
+		
+		--light-accent: var(--indigo-8);
+		--light-border-1: var(--stone-4);
+		--light-background-1: var(--stone-1);
+		--light-text-1: var(--stone-12);
+		--light-text-2: var(--stone-8);
+		
+		--accent: var(--light-accent);
+		--border-1: var(--light-border-1);
+		--background-1: var(--light-background-1);
+		--text-1: var(--light-text-1);
+		--text-2: var(--light-text-2);
+	}
 
-		--color-neutral-10: hsl(0, 0%, 91%);
-		--color-neutral-13: hsl(0, 0%, 87%);
-		--color-neutral-50: hsl(0, 0%, 40%);
-		--color-neutral-75: hsl(0, 0%, 25%);
-		--color-neutral-95: hsl(0, 0%, 5%);
-		--color-neutral-100: hsl(0, 0%, 0%);
+	:global(*) {
+		// Makes the transition between dark/light modes smooth
+		transition: color 150ms, background-color 500ms, border-color 500ms, fill 500ms;
+	}
 
-		--color-accent: #0439d9;
-		--color-border: hsl(0, 0%, 80%);
+	:global(svg.svg-icon) {
+		width: 20px;
+		height: 20px;
+	}
 
-		@media (prefers-color-scheme: dark) {
-			color-scheme: dark;
+	:global(svg.svg-icon--themable path) {
+		fill: var(--text-1);
+	}
 
-			--color-neutral-10: hsl(0, 0%, 10%);
-			--color-neutral-13: hsl(0, 0%, 13%);
-			--color-neutral-50: hsl(0, 0%, 60%);
-			--color-neutral-75: hsl(0, 0%, 75%);
-			--color-neutral-95: hsl(0, 0%, 95%);
-			--color-neutral-100: hsl(0, 0%, 100%);
+	:global(svg.svg-icon--light g, svg.svg-icon--light circle) {
+		fill: var(--dark-accent);
+	}
 
-			--color-accent: #02f2ce;
-			--color-border: hsl(0, 0%, 20%);
-		}
+	:global(svg.svg-icon--dark path) {
+		fill: var(--light-accent);
 	}
 
 	:global(body.body) {
-		color: var(--color-neutral-75);
-		background-color: var(--color-neutral-10);
 		margin: unset;
-		font-family: 'Inter', sans-serif;
-		font-weight: 300;
+		font-family: var(--font-family);
 	}
 
 	div.layout {
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr 3fr;
 		width: 100dvw;
 		height: 100dvh;
-
-		@media (max-width: 880px) {
-			flex-direction: column;
-		}
+		background-color: var(--background-1);
 	}
 
-	aside.aside {
-		display: grid;
-		grid-template-rows: max-content auto;
-		box-sizing: border-box;
-		height: 100%;
-		width: clamp(384px, 100%, 512px);
-		border-right: 1px solid var(--color-border);
-
-		@media (max-width: 880px) {
-			width: unset;
-			height: max-content;
-			border-right: unset;
-		}
-	}
-
-	section.aside__section {
-		padding-inline: 56px;
-		padding-block: 56px;
-
-		@media (max-width: 1366px) {
-			padding-inline: 48px;
-			padding-block: 48px;
-		}
-
-		@media (max-width: 1024px) {
-			padding-inline: 32px;
-		}
-
-		@media (max-width: 880px) {
-			padding-block: 32px;
-			padding-inline: 24px;
-		}
-
-		&--call-to-action {
-			height: auto;
-			place-self: flex-start;
-
-			@media (max-width: 880px) {
-				border-bottom: 1px solid var(--color-border);
-			}
-		}
-
-		&--profile {
-			display: flex;
-			flex-direction: column;
-			row-gap: 64px;
-			border-bottom: 1px solid var(--color-border);
-
-			@media (max-width: 1024px) {
-				row-gap: 32px;
-			}
-
-			@media (max-width: 880px) {
-				row-gap: 20px;
-			}
-		}
-	}
-
-	header.aside__header {
+	.aside {
 		display: flex;
 		flex-direction: column;
-		row-gap: 8px;
+		box-sizing: border-box;
+		height: 100%;
+		padding: var(--size-9);
+		border-right: var(--border-size-1) solid var(--border-1);
+		gap: var(--size-8);
 	}
 
-	a.a {
-		color: var(--color-accent);
-		text-decoration: none;
-		transition: box-shadow 0.1s ease-in-out;
-		box-shadow: inset 0 -1px 0 var(--color-accent);
+	.header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-5);
 
-		&:hover {
-			color: var(--color-neutral-10);
-			box-shadow: inset 0 -40px 0 var(--color-accent);
+		&__h1,
+		&__p {
+			margin: 0;
+			font-weight: var(--font-weight-1);
+			color: var(--text-2);
+			line-height: var(--font-lineheight-2);
+			font-size: var(--size-5);
+			text-wrap: balance;
+		}
+
+		strong {
+			color: var(--text-1);
+		}
+
+		em {
+			font-style: unset;
+			color: var(--accent);
+		}
+
+		&__a {
+			--link-theme: var(--accent);
+			color: var(--link-theme);
+			text-decoration: unset;
+			border-bottom: var(--border-size-2) solid var(--link-theme);
+			transition: color 250ms, border-color 250ms;
+
+			&:hover {
+				--link-theme: var(--text-1);
+			}
 		}
 	}
 
-	h1.h1,
-	h2.h2,
-	p.p {
-		margin: unset;
-		text-wrap: balance;
-	}
-
-	h1.h1 {
-		font-family: 'JetBrains Mono', monospace;
-		font-weight: 100;
-		font-size: 24px;
-		line-height: 135%;
-		color: var(--color-neutral-50);
-
-		@media (max-width: 880px) {
-			font-size: 18px;
-		}
-	}
-
-	h2.h2 {
-		font-size: 32px;
-		line-height: 1.1em;
-		letter-spacing: -0.05em;
-		font-weight: 600;
-		color: var(--color-neutral-95);
-
-		@media (max-width: 880px) {
-			font-size: 26px;
-		}
-	}
-
-	p.p {
-		font-size: 16px;
-		line-height: 120%;
-
-		@media (max-width: 880px) {
-			font-size: 14px;
-		}
-
-		&--in-aside {
-			color: var(--color-accent);
-		}
-	}
-
-	nav.social {
+	.icons {
 		display: flex;
 		gap: 12px;
 		transform: translate(-6px, 6px);
-	}
 
-	a.social__a {
-		display: flex;
-		align-items: center;
-		opacity: 0.25;
-		padding: 6px;
-		filter: invert(1); // Logo is black, so invert it to white in "light mode"
-
-		@media (prefers-color-scheme: dark) {
-			filter: unset;
+		:not(.icons--theme-toggle) {
+			margin-top: auto;
 		}
 
-		&:hover {
-			opacity: 1;
+		&--theme-toggle {
+			margin-top: auto;
+			height: max-content;
+		}
+
+		&__button {
+			background-color: transparent;
+			border: none;
+			padding: unset;
+			cursor: pointer;
+		}
+
+		&__button,
+		&__a {
+			display: flex;
+			align-items: center;
+			padding: 6px;
+			opacity: 0.33;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 
