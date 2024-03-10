@@ -108,6 +108,7 @@
 		--dark-accent: var(--yellow-4);
 		--dark-border-1: var(--stone-10);
 		--dark-background-1: var(--stone-12);
+		--dark-background-2: var(--stone-11);
 		--dark-text-1: var(--stone-0);
 		--dark-text-2: var(--stone-5);
 
@@ -124,12 +125,14 @@
 		--light-accent: var(--indigo-8);
 		--light-border-1: var(--stone-4);
 		--light-background-1: var(--stone-1);
+		--light-background-2: var(--stone-2);
 		--light-text-1: var(--stone-12);
 		--light-text-2: var(--stone-8);
 
 		--accent: var(--light-accent);
 		--border-1: var(--light-border-1);
 		--background-1: var(--light-background-1);
+		--background-2: var(--light-background-2);
 		--text-1: var(--light-text-1);
 		--text-2: var(--light-text-2);
 	}
@@ -144,8 +147,11 @@
 	}
 
 	:global(svg.svg-icon) {
-		width: 20px;
-		height: 20px;
+		width: var(--size-4);
+		height: var(--size-4);
+	}
+
+	:global(.svg-icon--themable) {
 		padding: var(--size-2);
 	}
 

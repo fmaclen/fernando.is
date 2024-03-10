@@ -8,6 +8,7 @@
 	import IconClose from './icons/IconClose.svg.svelte';
 	import IconPrevious from './icons/IconPrevious.svg.svelte';
 	import IconNext from './icons/IconNext.svg.svelte';
+	import IconLink from './icons/IconLink.svg.svelte';
 
 	export let project: Project;
 	let dialog: HTMLDialogElement;
@@ -80,13 +81,18 @@
 
 <article class="article {project.theme ? `article--${project.theme}` : ''}">
 	<nav class="article__nav {project.images ? 'article__nav--with-gallery' : ''}">
+		<a href={project.url} class="article__repo" target="_blank">
+			<IconLink />
+		</a>
 		{#if project.repo}
 			<a href={`https://github.com/${project.repo}`} class="article__repo" target="_blank">
 				<IconGithub />
 			</a>
 		{/if}
 
-		<Time date={project.updatedAt} />
+		<div class="article__time">
+			<Time date={project.updatedAt} />
+		</div>
 	</nav>
 
 	{#if project.images}
@@ -120,16 +126,14 @@
 <style lang="scss">
 	p.p,
 	h3.h3 {
+		font-size: var(--font-size-fluid-0);
 		margin: unset;
 	}
 
 	p.p {
+		width: var(--size-header-3);
+		font-weight: var(--font-weight-1);
 		text-wrap: balance;
-		width: 75%;
-
-		@media (max-width: 1024px) {
-			width: 100%;
-		}
 
 		&--in-dialog {
 			width: 100%;
@@ -137,30 +141,29 @@
 		}
 	}
 
-	article.article {
-		--article-inner-spacing: 24px;
+	.article {
+		// --article-inner-spacing: 24px;
 
-		@media (max-width: 1024px) {
-			font-size: 15px;
-			--article-inner-spacing: 20px;
-		}
+		// @media (max-width: 1024px) {
+		// 	font-size: 15px;
+		// 	--article-inner-spacing: 20px;
+		// }
 
-		@media (max-width: 800px) {
-			font-size: 14px;
-			--article-inner-spacing: 18px;
-		}
+		// @media (max-width: 800px) {
+		// 	font-size: 14px;
+		// 	--article-inner-spacing: 18px;
+		// }
 
-		@media (max-width: 640px) {
-			font-size: 13px;
-			--article-inner-spacing: 16px;
-		}
+		// @media (max-width: 640px) {
+		// 	font-size: 13px;
+		// 	--article-inner-spacing: 16px;
+		// }
 
 		display: grid;
 		grid-template-columns: auto;
 		border-radius: 8px;
-		background-color: var(--color-neutral-10);
-		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
-			rgba(0, 0, 0, 0.1);
+		background-color: var(--background-2);
+		box-shadow: var(--shadow-3);
 
 		&--canutin {
 			background-color: #1347ff;
@@ -194,28 +197,41 @@
 		&--oak-hall {
 			background-color: #a28b67;
 		}
+
+		&__time {
+			margin-left: auto;
+		}
 	}
 
 	nav.article__nav {
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		gap: calc(var(--article-inner-spacing) / 2);
-		margin-block: var(--article-inner-spacing);
-		margin-inline: var(--article-inner-spacing);
+		gap: var(--size-3);
+		align-items: center;
+		margin-block: var(--size-3);
+		margin-inline: var(--size-4);
 
-		&--with-gallery {
-			margin-bottom: unset;
+		:global(.svg-icon--themable) {
+			padding: unset;
 		}
 
-		@media (max-width: 880px) {
-			gap: var(--article-inner-spacing);
+		:global(.svg-icon--themable path) {
+			fill: unset;
 		}
+
+
+		// @media (max-width: 880px) {
+		// 	gap: var(--article-inner-spacing);
+		// }
 	}
 
 	a.article__repo {
+		display: block;
 		padding-inline: unset;
 		transition: opacity 0.1s ease-in-out;
 		opacity: 0.4;
+		// transform: translateX(calc(var(--size-2) * -1));
 
 		&:hover {
 			opacity: 1;
@@ -230,36 +246,36 @@
 		transition:
 			opacity 0.1s ease-in-out,
 			padding-left 0.1s ease-in-out;
-		padding-inline: var(--article-inner-spacing);
-		padding-block: var(--article-inner-spacing);
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
-		border-left: 6px solid transparent;
+		padding-inline: var(--size-5);
+		padding-block: var(--size-5);
+		border-top: var(--border-size-1) dashed rgba(255, 255, 255, 0.25);
+		// border-left: 6px solid transparent;
 		border-bottom-left-radius: 8px;
 		row-gap: 6px;
 		opacity: 0.9;
 
 		// Don't apply hover styles on touch devices
-		@media (hover: hover) {
-			&:hover {
-				color: #fff;
-				opacity: 1;
-				padding-left: calc(var(--article-inner-spacing) + 6px);
-				border-left-color: rgba(255, 255, 255, 0.25);
-			}
-		}
+		// @media (hover: hover) {
+		// 	&:hover {
+		// 		color: #fff;
+		// 		opacity: 1;
+		// 		padding-left: calc(var(--size-5) + 6px);
+		// 		border-left-color: rgba(255, 255, 255, 0.25);
+		// 	}
+		// }
 	}
 
 	.gallery {
 		max-width: 100%;
 		box-sizing: border-box;
-		padding-block: var(--article-inner-spacing);
-		padding-inline: var(--article-inner-spacing);
+		padding-bottom: var(--size-5);
+		padding-inline: var(--size-5);
 		overflow: hidden;
 		cursor: grab;
 
 		&__container {
 			display: flex;
-			gap: 8px;
+			gap: var(--size-2);
 		}
 	}
 
