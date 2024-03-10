@@ -219,8 +219,8 @@
 
 	.icons {
 		display: flex;
-		gap: 12px;
-		transform: translate(-6px, 6px);
+		gap: var(--size-4);
+		transform: translate(calc(var(--size-2) * -1), var(--size-2));
 
 		:not(.icons--theme-toggle) {
 			margin-top: auto;
@@ -242,7 +242,7 @@
 		&__a {
 			display: flex;
 			align-items: center;
-			padding: 6px;
+			padding: var(--size-2);
 			opacity: 0.33;
 
 			&:hover {
