@@ -5,7 +5,7 @@
 	import Icon from '$lib/components/icons/Icon.svelte';
 	import { Icons, IconModifier } from '$lib/components/icons/icons';
 
-	const THEME_KEY = 'colorTheme';
+	const THEME_KEY = 'fernando.is-colorTheme';
 	const THEME_DARK = 'dark';
 	const THEME_LIGHT = 'light';
 
