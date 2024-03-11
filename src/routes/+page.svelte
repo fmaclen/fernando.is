@@ -16,7 +16,7 @@
 
 	ul.ul {
 		column-gap: var(--size-2);
-		padding: var(--size-fluid-4);
+		padding: var(--size-fluid-5);
 		position: relative;
 		list-style: none;
 		margin-block: unset;
@@ -51,9 +51,7 @@
 			}
 		}
 
-		@media (max-width: $breakpoint-2) {
-			padding: var(--size-7);
-		}
+		@include layout-padding;
 	}
 
 	li.ul__li {

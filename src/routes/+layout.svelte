@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 
 	import Icon from '$lib/components/icons/Icon.svelte';
-	import { Icons, IconModifier } from "$lib/components/icons/icons";
+	import { Icons, IconModifier } from '$lib/components/icons/icons';
 
 	const THEME_KEY = 'colorTheme';
 	const THEME_DARK = 'dark';
@@ -48,7 +48,11 @@
 				I'm <strong>Fernando Maclen</strong>, a Miami-based
 				<strong>designer & software developer</strong>; <em>truly full-stack.</em>
 			</h1>
-			<p class="header__p">This portfolio showcases my recent work across design & code.</p>
+			<p class="header__p">
+				This portfolio showcases my <a class="header__a header__a--mobile-only" href="#recent-work"
+					>recent work</a
+				> across design & code.
+			</p>
 			<p class="header__p">
 				If you have an interesting project that could benefit from my end-to-end abilities, <a
 					class="header__a"
@@ -57,42 +61,44 @@
 			</p>
 		</header>
 
-		<nav class="icons">
-			<a class="icons__a" target="_blank" href="https://x.com/fmaclen">
-				<Icon icon={Icons.X} />
-			</a>
-			<a class="icons__a" target="_blank" href="https://github.com/fmaclen">
-				<Icon icon={Icons.GITHUB} />
-			</a>
-			<a class="icons__a" target="_blank" href="https://dribbble.com/fmaclen">
-				<Icon icon={Icons.DRIBBBLE} />
-			</a>
-			<a class="icons__a" target="_blank" href="https://www.linkedin.com/in/fmaclen/">
-				<Icon icon={Icons.LINKEDIN} />
-			</a>
-			<a class="icons__a" target="_blank" href="mailto:hello@fernando.is">
-				<Icon icon={Icons.EMAIL} />
-			</a>
-		</nav>
+		<div class="icons">
+			<nav class="icons__nav">
+				<a class="icons__a" target="_blank" href="https://x.com/fmaclen">
+					<Icon icon={Icons.X} modifier={IconModifier.THEMABLE} />
+				</a>
+				<a class="icons__a" target="_blank" href="https://github.com/fmaclen">
+					<Icon icon={Icons.GITHUB} modifier={IconModifier.THEMABLE} />
+				</a>
+				<a class="icons__a" target="_blank" href="https://dribbble.com/fmaclen">
+					<Icon icon={Icons.DRIBBBLE} modifier={IconModifier.THEMABLE} />
+				</a>
+				<a class="icons__a" target="_blank" href="https://www.linkedin.com/in/fmaclen/">
+					<Icon icon={Icons.LINKEDIN} modifier={IconModifier.THEMABLE} />
+				</a>
+				<a class="icons__a" target="_blank" href="mailto:hello@fernando.is">
+					<Icon icon={Icons.EMAIL} modifier={IconModifier.THEMABLE} />
+				</a>
+			</nav>
 
-		<nav class="icons icons--theme-toggle">
-			<button class="icons__button" on:click={toggleTheme}>
-				{#if isDarkMode}
-					<Icon icon={Icons.LIGHT} modifier={IconModifier.DARK_MODE} />
-				{:else}
-					<Icon icon={Icons.DARK} modifier={IconModifier.LIGHT_MODE} />
-				{/if}
-			</button>
-		</nav>
+			<nav class="icons__nav icons--theme-toggle">
+				<button class="icons__button" on:click={toggleTheme}>
+					{#if isDarkMode}
+						<Icon icon={Icons.LIGHT} modifier={IconModifier.DARK_MODE} />
+					{:else}
+						<Icon icon={Icons.DARK} modifier={IconModifier.LIGHT_MODE} />
+					{/if}
+				</button>
+			</nav>
+		</div>
 	</aside>
 
-	<main class="main">
+	<main id="recent-work" class="main">
 		<slot />
 	</main>
 </div>
 
 <style lang="scss">
-	@import "$lib/mixins";
+	@import '$lib/mixins';
 	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap');
 
 	:global(html) {
@@ -116,6 +122,11 @@
 		--text-1: var(--dark-text-1);
 		--dark-text-2: var(--stone-5);
 		--text-2: var(--dark-text-2);
+
+		background-color: var(--background-1);
+		@media (max-width: $breakpoint-4) {
+			scroll-behavior: smooth;
+		}
 	}
 
 	:global(html[data-theme='light']) {
@@ -154,10 +165,14 @@
 
 	div.layout {
 		display: grid;
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: max-content 3fr;
 		width: 100dvw;
 		height: 100dvh;
 		background-color: var(--background-1);
+
+		@media (max-width: $breakpoint-2) {
+			grid-template-columns: 1.5fr 2.5fr;
+		}
 
 		@media (max-width: $breakpoint-4) {
 			grid-template-columns: unset;
@@ -166,16 +181,16 @@
 	}
 
 	.aside {
+		@include layout-padding;
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
-		height: 100%;
-		padding: var(--size-fluid-4);
 		border-right: var(--border-size-1) solid var(--border-1);
 		gap: var(--size-8);
+		max-height: 100dvh;
 
-		@media (max-width: $breakpoint-2) {
-			padding: var(--size-7);
+		@media (max-width: $breakpoint-3) {
+			max-height: unset;
 		}
 	}
 
@@ -183,6 +198,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-5);
+		max-width: var(--size-header-3);
 
 		&__h1,
 		&__p {
@@ -208,7 +224,7 @@
 			color: var(--accent);
 		}
 
-		&__a {
+		@mixin header-a {
 			--link-theme: var(--accent);
 			color: var(--link-theme);
 			text-decoration: unset;
@@ -221,19 +237,39 @@
 				--link-theme: var(--text-1);
 			}
 		}
+
+		&__a {
+			&:not(.header__a--mobile-only) {
+				@include header-a;
+			}
+
+			&--mobile-only {
+				@media (min-width: $breakpoint-4) {
+					text-decoration: unset;
+					color: inherit;
+					pointer-events: none;
+				}
+
+				@media (max-width: $breakpoint-4) {
+					@include header-a;
+				}
+			}
+		}
 	}
 
 	.icons {
 		display: flex;
-		gap: var(--size-4);
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100%;
 
-		:not(.icons--theme-toggle) {
-			margin-top: auto;
+		@media (max-width: $breakpoint-4) {
+			flex-direction: unset;
 		}
 
-		&--theme-toggle {
-			margin-top: auto;
-			height: max-content;
+		&__nav {
+			display: flex;
+			gap: var(--size-4);
 		}
 
 		&__button {
@@ -247,7 +283,7 @@
 		&__a {
 			display: flex;
 			align-items: center;
-			opacity: 0.33;
+			opacity: 0.5;
 			transition: opacity 250ms;
 
 			&:hover {

@@ -2,4 +2,24 @@ $breakpoint-1: 1366px;
 $breakpoint-2: 960px;
 $breakpoint-3: 880px;
 $breakpoint-4: 720px;
-// $breakpoint-5: 480px;
+$breakpoint-5: 480px;
+
+@mixin layout-padding {
+  padding: var(--size-fluid-5);
+
+  @media (max-width: $breakpoint-2) {
+    padding: var(--size-8);
+  }
+
+  @media (max-width: $breakpoint-3) {
+    padding-block: var(--size-9);
+  }
+
+  @media (max-width: $breakpoint-4) {
+    padding-inline: var(--size-9);
+  }
+
+  @media (max-width: $breakpoint-5) {
+    padding-inline: var(--size-7);
+  }
+}
