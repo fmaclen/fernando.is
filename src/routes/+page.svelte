@@ -37,7 +37,7 @@
 			transform: translateX(-50%);
 			border-left: var(--border-size-1) solid var(--border-1);
 			border-right: var(--border-size-1) solid var(--border-1);
-			transition: border-color 500ms;
+			transition: border-color 1000ms;
 		}
 
 		@media (max-width: $breakpoint-xl) {
@@ -52,6 +52,10 @@
 		}
 
 		@include layout-padding;
+		
+		&:hover .ul__li:not(:hover) {
+			filter: brightness(0.33) grayscale(.66) contrast(.8);
+		}
 	}
 
 	li.ul__li {
@@ -60,5 +64,6 @@
 		display: inline-block;
 		width: 100%;
 		margin-bottom: var(--size-2);
+		transition: filter 500ms;
 	}
 </style>

@@ -160,7 +160,7 @@
 		}
 
 		&--fernando-is {
-			background-color: #000;
+			background-color: #111;
 		}
 
 		&--svelte-currency-input {
@@ -168,7 +168,7 @@
 		}
 
 		&--julia-sanfrancisco {
-			background-color: #67403a;
+			background-color: #9b554b;
 		}
 
 		&--auto-garden {
@@ -189,8 +189,7 @@
 		}
 
 		&--pantai {
-			background-image: linear-gradient(45deg, #1F2837 4.62%, #2e234d 54.67%, #121720 99.78%);
-			background-color: #1F2837;
+			background-color: hsl(222, 33%, 45%);;
 		}
 
 		&__time {
