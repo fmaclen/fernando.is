@@ -97,7 +97,7 @@
 
 <style lang="scss">
 	@import '$lib/mixins';
-	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;700&display=swap');
 
 	:global(html) {
 		--font-family: 'JetBrains Mono', monospace;
