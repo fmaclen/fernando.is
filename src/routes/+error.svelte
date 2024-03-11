@@ -1,6 +1,6 @@
 <section class="error">
   <h2 class="error__h2">Error 404</h2>
-  <p class="error__p">No content found. Perhaps there's a typo in the address or followed a broken link.</p>
+  <p class="error__p"><strong>No content found.</strong> Perhaps there's a typo in the address or followed a broken link. <a href="/" class="error__a">Try starting over</a>.</p>
 </section>
 
 <style lang="scss">
@@ -19,7 +19,6 @@
 
     @media (max-width: $breakpoint-xl) {
       flex-direction: column;
-      text-align: center;
 		}
   }
 
@@ -27,6 +26,10 @@
   p.error__p {
     margin-block: unset;
     place-self: center;
+
+    @media (max-width: $breakpoint-xl) {
+      place-self: unset;
+    }
   }
 
   h2.error__h2 {
@@ -48,11 +51,19 @@
     text-wrap: balance;
     color: var(--text-2);
     font-weight: var(--font-weight-1);
-    max-width: var(--size-content-2);
+    max-width: var(--size-content-3);
     font-size: var(--size-4);
+
+    strong {
+      color: var(--text-1);
+    }
 
     @media (max-width: $breakpoint-md) {
       font-size: var(--size-3);
 		}
+  }
+
+  a.error__a {
+    @include a;
   }
 </style>

@@ -229,21 +229,7 @@
 		}
 
 		@mixin header-a {
-			--link-theme: var(--accent);
-			color: var(--link-theme);
-			text-decoration: unset;
-			border-bottom: var(--border-size-2) solid var(--link-theme);
-			transition:
-				color 250ms,
-				border-color 250ms;
-
-			&:hover {
-				--link-theme: var(--text-1);
-			}
-
-			@media (max-width: $breakpoint-md) {
-				border-bottom-width: var(--border-size-1);
-			}
+			@include a;
 		}
 
 		&__a {
