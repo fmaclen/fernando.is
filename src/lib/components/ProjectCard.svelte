@@ -132,6 +132,10 @@
 		}
 	}
 
+	h3.h3 {
+		letter-spacing: var(--font-letterspacing-0);
+	}
+
 	p.p {
 		max-width: var(--size-header-3);
 		font-weight: var(--font-weight-1);
@@ -215,7 +219,7 @@
 			flex-direction: column;
 			text-decoration: unset;
 			color: #fff;
-			row-gap: var(--size-2);
+			row-gap: var(--size-1);
 			padding-inline: var(--size-5);
 			padding-block: var(--size-5);
 			border-top: var(--border-size-1) solid rgba(255, 255, 255, 0.15);

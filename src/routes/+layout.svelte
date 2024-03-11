@@ -49,15 +49,13 @@
 				<strong>designer & software developer</strong>; <em>truly full-stack.</em>
 			</h1>
 			<p class="header__p">
-				This portfolio showcases my <a class="header__a header__a--mobile-only" href="#recent-work"
-					>recent work</a
-				> across design & code.
+				This portfolio showcases my
+				<a class="header__a header__a--mobile-only" href="/#recent-work"> recent work </a>
+				across design & code.
 			</p>
 			<p class="header__p">
-				If you have an interesting project that could benefit from my end-to-end abilities, <a
-					class="header__a"
-					href="mailto:hello@fernando.is">let's talk</a
-				>.
+				If you have an interesting project that could benefit from my end-to-end abilities,
+				<a class="header__a" href="mailto:hello@fernando.is">let's talk</a>.
 			</p>
 		</header>
 
@@ -176,7 +174,7 @@
 
 		@media (max-width: $breakpoint-md) {
 			grid-template-columns: unset;
-			grid-auto-flow: rows;
+			grid-template-rows: max-content auto;
 		}
 	}
 
@@ -190,7 +188,7 @@
 		max-height: 100dvh;
 
 		@media (max-width: $breakpoint-md) {
-			max-height: unset;
+			max-height: max-content;
 			border: unset;
 		}
 	}
@@ -214,10 +212,15 @@
 			@media (max-width: $breakpoint-lg) {
 				font-size: var(--size-4);
 			}
+
+			@media (max-width: $breakpoint-sm) {
+				font-size: var(--size-3);
+			}
 		}
 
 		strong {
 			color: var(--text-1);
+			letter-spacing: var(--font-letterspacing-0);
 		}
 
 		em {
@@ -236,6 +239,10 @@
 
 			&:hover {
 				--link-theme: var(--text-1);
+			}
+
+			@media (max-width: $breakpoint-md) {
+				border-bottom-width: var(--border-size-1);
 			}
 		}
 
@@ -315,7 +322,7 @@
 		overflow-y: auto;
 		background-color: var(--background-2);
 
-		@media (max-width: 880px) {
+		@media (max-width: $breakpoint-md) {
 			justify-content: center;
 			max-height: unset;
 			overflow-y: unset;

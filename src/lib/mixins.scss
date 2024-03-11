@@ -1,8 +1,10 @@
+// Based on https://open-props.style/#media-queries
+
 $breakpoint-xl: 1440px;
 $breakpoint-lg: 1024px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 480px;
-$breakpoint-xs: 360px;
+// $breakpoint-xs: 360px;
 
 @mixin layout-padding {
   padding: var(--size-fluid-5);
@@ -17,10 +19,7 @@ $breakpoint-xs: 360px;
   }
 
   @media (max-width: $breakpoint-sm) {
-    padding-inline: var(--size-6);
-  }
-
-  @media (max-width: $breakpoint-xs) {
     padding-block: var(--size-8);
+    padding-inline: var(--size-6);
   }
 }
