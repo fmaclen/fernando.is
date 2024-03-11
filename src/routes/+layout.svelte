@@ -2,13 +2,8 @@
 	import 'open-props/open-props.min.css';
 	import { onMount } from 'svelte';
 
-	import IconDribbble from '$lib/components/icons/IconDribbble.svg.svelte';
-	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
-	import IconX from '$lib/components/icons/IconX.svg.svelte';
-	import IconEmail from '$lib/components/icons/IconEmail.svg.svelte';
-	import IconLinkedin from '$lib/components/icons/IconLinkedin.svg.svelte';
-	import IconDark from '$lib/components/icons/IconDark.svg.svelte';
-	import IconLight from '$lib/components/icons/IconLight.svg.svelte';
+	import Icon from '$lib/components/icons/Icon.svelte';
+	import { Icons, IconModifier } from "$lib/components/icons/icons";
 
 	const THEME_KEY = 'colorTheme';
 	const THEME_DARK = 'dark';
@@ -64,28 +59,28 @@
 
 		<nav class="icons">
 			<a class="icons__a" target="_blank" href="https://x.com/fmaclen">
-				<IconX />
+				<Icon icon={Icons.X} />
 			</a>
 			<a class="icons__a" target="_blank" href="https://github.com/fmaclen">
-				<IconGithub />
+				<Icon icon={Icons.GITHUB} />
 			</a>
 			<a class="icons__a" target="_blank" href="https://dribbble.com/fmaclen">
-				<IconDribbble />
+				<Icon icon={Icons.DRIBBBLE} />
 			</a>
 			<a class="icons__a" target="_blank" href="https://www.linkedin.com/in/fmaclen/">
-				<IconLinkedin />
+				<Icon icon={Icons.LINKEDIN} />
 			</a>
 			<a class="icons__a" target="_blank" href="mailto:hello@fernando.is">
-				<IconEmail />
+				<Icon icon={Icons.EMAIL} />
 			</a>
 		</nav>
 
 		<nav class="icons icons--theme-toggle">
 			<button class="icons__button" on:click={toggleTheme}>
 				{#if isDarkMode}
-					<IconLight />
+					<Icon icon={Icons.LIGHT} modifier={IconModifier.THEMABLE} />
 				{:else}
-					<IconDark />
+					<Icon icon={Icons.DARK} modifier={IconModifier.THEMABLE} />
 				{/if}
 			</button>
 		</nav>
@@ -150,37 +145,6 @@
 			background-color 500ms,
 			border-color 500ms,
 			fill 500ms;
-	}
-
-	:global(svg.svg-icon) {
-		width: var(--size-4);
-		height: var(--size-4);
-	}
-
-	:global(.svg-icon--themable) {
-		padding: var(--size-2);
-	}
-
-	:global(svg.svg-icon--dialog) {
-		width: var(--size-6);
-		height: var(--size-6);
-	}
-
-	:global(svg.svg-icon--dialog line),
-	:global(svg.svg-icon--dialog g) {
-		stroke: var(--text-1);
-	}
-
-	:global(svg.svg-icon--themable path) {
-		fill: var(--text-1);
-	}
-
-	:global(svg.svg-icon--light g, svg.svg-icon--light circle) {
-		fill: var(--dark-accent);
-	}
-
-	:global(svg.svg-icon--dark path) {
-		fill: var(--light-accent);
 	}
 
 	:global(body.body) {
