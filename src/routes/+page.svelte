@@ -12,7 +12,7 @@
 </ul>
 
 <style lang="scss">
-	@import "$lib/mixins";
+	@import '$lib/mixins';
 
 	ul.ul {
 		column-gap: var(--size-2);
@@ -52,9 +52,11 @@
 		}
 
 		@include layout-padding;
-		
+
 		&:hover .ul__li:not(:hover) {
-			filter: brightness(0.33) grayscale(.66) contrast(.8);
+			@media (hover: hover) {
+				filter: brightness(0.33) grayscale(0.66) contrast(0.8);
+			}
 		}
 	}
 
