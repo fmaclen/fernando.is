@@ -107,6 +107,19 @@ let projects: Project[] = [
 			'oak-hall-gardens.png',
 			'oak-hall-footer.png'
 		]
+	},
+	{
+		title: 'Pantai.io',
+		description: 'Artificial intelligence applied to the creation of tools that improve the machine-human interface',
+		url: 'https://pantai.io/',
+		updatedAt: '2024-01-17T00:00:00Z',
+		theme: 'pantai',
+		images: [
+			'pantai-homepage.png',
+			'pantai-legal.png',
+			'pantai-careers.png',
+			'pantai-about.png',
+		]
 	}
 ];
 

@@ -188,6 +188,11 @@
 			background-color: #a28b67;
 		}
 
+		&--pantai {
+			background-image: linear-gradient(45deg, #1F2837 4.62%, #2e234d 54.67%, #121720 99.78%);
+			background-color: #1F2837;
+		}
+
 		&__time {
 			margin-left: auto;
 		}
