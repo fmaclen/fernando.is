@@ -41,7 +41,7 @@ let projects: Project[] = [
 	},
 	{
 		title: 'svelte-currency-input',
-		description: 'A form input that converts numbers to localized currency formats as you type',
+		description: 'A masked form input that converts numbers to localized currency formats as you type',
 		url: 'https://npmjs.com/package/@canutin/svelte-currency-input',
 		repo: 'fmaclen/svelte-currency-input',
 		theme: 'svelte-currency-input'
