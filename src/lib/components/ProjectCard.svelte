@@ -10,7 +10,7 @@
 
 	export let project: Project;
 	let dialog: HTMLDialogElement;
-	let dialogImageIndex: number;
+	let dialogImageIndex: number = 0;
 
 	function imagePath(image: string) {
 		return `/projects/${image}`;
