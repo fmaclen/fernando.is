@@ -16,7 +16,7 @@
 
 	ul.ul {
 		column-gap: var(--size-2);
-		padding: var(--size-9);
+		padding: var(--size-fluid-4);
 		position: relative;
 		list-style: none;
 		margin-block: unset;

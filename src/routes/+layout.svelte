@@ -78,9 +78,9 @@
 		<nav class="icons icons--theme-toggle">
 			<button class="icons__button" on:click={toggleTheme}>
 				{#if isDarkMode}
-					<Icon icon={Icons.LIGHT} modifier={IconModifier.THEMABLE} />
+					<Icon icon={Icons.LIGHT} modifier={IconModifier.DARK_MODE} />
 				{:else}
-					<Icon icon={Icons.DARK} modifier={IconModifier.THEMABLE} />
+					<Icon icon={Icons.DARK} modifier={IconModifier.LIGHT_MODE} />
 				{/if}
 			</button>
 		</nav>
@@ -170,7 +170,7 @@
 		flex-direction: column;
 		box-sizing: border-box;
 		height: 100%;
-		padding: var(--size-9);
+		padding: var(--size-fluid-4);
 		border-right: var(--border-size-1) solid var(--border-1);
 		gap: var(--size-8);
 
@@ -226,7 +226,6 @@
 	.icons {
 		display: flex;
 		gap: var(--size-4);
-		transform: translate(calc(var(--size-2) * -1), var(--size-2));
 
 		:not(.icons--theme-toggle) {
 			margin-top: auto;
@@ -235,15 +234,6 @@
 		&--theme-toggle {
 			margin-top: auto;
 			height: max-content;
-
-			// button.icons__button,
-			// a.icons__a {
-			// 	opacity: 0.66;
-
-			// 	&:hover {
-			// 		opacity: 1;
-			// 	}
-			// }
 		}
 
 		&__button {

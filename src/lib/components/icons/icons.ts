@@ -15,4 +15,6 @@ export enum Icons {
 export enum IconModifier {
   THEMABLE = "themable",
   IN_DIALOG = "in-dialog",
+  DARK_MODE = "dark-mode",
+  LIGHT_MODE = "light-mode"
 }

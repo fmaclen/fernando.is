@@ -57,14 +57,14 @@
       }
 		}
 
-    &--light-mode {
+    &--dark-mode {
       :global(.svg-icon g),
       :global(.svg-icon circle) {
         fill: var(--dark-accent);
       }
     }
 
-    &--dark-mode {
+    &--light-mode {
       :global(.svg-icon path) {
         fill: var(--light-accent);
       }
