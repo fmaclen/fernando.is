@@ -1,4 +1,4 @@
-<svg class="svg-icon svg-icon--themable" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<path d="M10.8423 15.1515L4.40655 22.5H0.841797L9.1773 12.978L10.8423 15.1515Z" fill="white" />
 	<path d="M12.7881 8.241L18.6808 1.5H22.2433L14.4381 10.4265L12.7881 8.241Z" fill="white" />
 	<path
