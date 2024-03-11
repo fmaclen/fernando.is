@@ -1,25 +1,26 @@
-$breakpoint-1: 1366px;
-$breakpoint-2: 960px;
-$breakpoint-3: 880px;
-$breakpoint-4: 720px;
-$breakpoint-5: 480px;
+$breakpoint-xl: 1440px;
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 480px;
+$breakpoint-xs: 360px;
 
 @mixin layout-padding {
   padding: var(--size-fluid-5);
 
-  @media (max-width: $breakpoint-2) {
+  @media (max-width: $breakpoint-lg) {
     padding: var(--size-8);
   }
 
-  @media (max-width: $breakpoint-3) {
+  @media (max-width: $breakpoint-md) {
     padding-block: var(--size-9);
-  }
-
-  @media (max-width: $breakpoint-4) {
     padding-inline: var(--size-9);
   }
 
-  @media (max-width: $breakpoint-5) {
-    padding-inline: var(--size-7);
+  @media (max-width: $breakpoint-sm) {
+    padding-inline: var(--size-6);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    padding-block: var(--size-8);
   }
 }

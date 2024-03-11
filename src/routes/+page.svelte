@@ -24,7 +24,7 @@
 		margin-inline: auto;
 		column-count: 2;
 		min-height: 100dvh;
-		max-width: 1366px;
+		max-width: $breakpoint-xl;
 
 		&::before {
 			content: '';
@@ -40,10 +40,10 @@
 			transition: border-color 500ms;
 		}
 
-		@media (max-width: $breakpoint-1) {
+		@media (max-width: $breakpoint-xl) {
 			column-count: 1;
 			width: 100%;
-			max-width: $breakpoint-4;
+			max-width: $breakpoint-md;
 
 			&::before {
 				width: unset;

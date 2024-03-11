@@ -124,7 +124,7 @@
 		--text-2: var(--dark-text-2);
 
 		background-color: var(--background-1);
-		@media (max-width: $breakpoint-4) {
+		@media (max-width: $breakpoint-sm) {
 			scroll-behavior: smooth;
 		}
 	}
@@ -170,11 +170,11 @@
 		height: 100dvh;
 		background-color: var(--background-1);
 
-		@media (max-width: $breakpoint-2) {
+		@media (max-width: $breakpoint-lg) {
 			grid-template-columns: 1.5fr 2.5fr;
 		}
 
-		@media (max-width: $breakpoint-4) {
+		@media (max-width: $breakpoint-md) {
 			grid-template-columns: unset;
 			grid-auto-flow: rows;
 		}
@@ -189,8 +189,9 @@
 		gap: var(--size-8);
 		max-height: 100dvh;
 
-		@media (max-width: $breakpoint-3) {
+		@media (max-width: $breakpoint-md) {
 			max-height: unset;
+			border: unset;
 		}
 	}
 
@@ -210,7 +211,7 @@
 			font-size: var(--size-5);
 			max-width: var(--size-content-3);
 
-			@media (max-width: $breakpoint-2) {
+			@media (max-width: $breakpoint-lg) {
 				font-size: var(--size-4);
 			}
 		}
@@ -244,13 +245,13 @@
 			}
 
 			&--mobile-only {
-				@media (min-width: $breakpoint-4) {
+				@media (min-width: $breakpoint-md) {
 					text-decoration: unset;
 					color: inherit;
 					pointer-events: none;
 				}
 
-				@media (max-width: $breakpoint-4) {
+				@media (max-width: $breakpoint-md) {
 					@include header-a;
 				}
 			}
@@ -262,14 +263,29 @@
 		justify-content: space-between;
 		flex-direction: column;
 		height: 100%;
+		gap: var(--size-4);
 
-		@media (max-width: $breakpoint-4) {
+		@media (max-width: $breakpoint-md) {
 			flex-direction: unset;
 		}
 
 		&__nav {
 			display: flex;
 			gap: var(--size-4);
+
+			&:first-child {
+				@media (max-width: $breakpoint-sm) {
+					width: 100%;
+					justify-content: space-between;
+				}
+			}
+
+			&:last-child {
+				@media (max-width: $breakpoint-sm) {
+					border-left: 1px solid var(--border-1);
+					padding-left: var(--size-4);
+				}
+			}
 		}
 
 		&__button {

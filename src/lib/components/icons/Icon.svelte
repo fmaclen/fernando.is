@@ -44,14 +44,21 @@
 
 <style lang="scss">
 	.icon {
+		display: flex;
+		align-items: center;
+
 		:global(.svg-icon) {
 			width: var(--size-4);
 			height: var(--size-4);
 		}
 
-		&--themable {
+		&--themable,
+		&--dark-mode,
+		&--light-mode {
 			padding: var(--size-2);
+		}
 
+		&--themable {
       :global(.svg-icon path) {
         fill: var(--text-1);
       }
