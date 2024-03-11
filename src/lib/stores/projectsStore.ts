@@ -136,6 +136,8 @@ const localStorageProjects = browser ? window.localStorage.getItem(LOCAL_STORAGE
 const projectsStore = writable<Project[]>([]);
 
 async function getLastProjectUpdate(project: Project) {
+	if (!project.repo) return project;
+
 	try {
 		const response = await fetch(`${GITHUB_API_BASE_URL}/${project.repo}`);
 		if (!response.ok) return project;
