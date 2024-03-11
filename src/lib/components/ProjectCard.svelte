@@ -5,13 +5,12 @@
 	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
 	import type { Project } from '$lib/stores/projectsStore';
 	import Time from '$lib/components/Time.svelte';
-	import IconClose from './icons/IconClose.svg.svelte';
-	import IconPrevious from './icons/IconPrevious.svg.svelte';
-	import IconNext from './icons/IconNext.svg.svelte';
+	import Icon from '$lib/components/icons/Icon.svelte';
+	import { Icons, IconModifier } from "$lib/components/icons/icons";
 
 	export let project: Project;
 	let dialog: HTMLDialogElement;
-	let dialogImageIndex: number;
+	let dialogImageIndex: number = 0;
 
 	function imagePath(image: string) {
 		return `/projects/${image}`;
@@ -53,7 +52,7 @@
 	{@const indexOfTotal = `${dialogImageIndex + 1} of ${project.images.length}`}
 	<dialog class="dialog" bind:this={dialog}>
 		<header class="dialog__header">
-			<h3 class="h3">{project.title}</h3>
+			<h3 class="h3 h3--in-dialog">{project.title}</h3>
 			<p class="p p--in-dialog">{indexOfTotal}</p>
 		</header>
 		<div class="dialog__container">
@@ -66,13 +65,13 @@
 
 		<nav class="dialog__nav">
 			<button class="dialog__button" type="button" on:click={previousImage}>
-				<IconPrevious />
+				<Icon icon={Icons.PREVIOUS} modifier={IconModifier.IN_DIALOG} />
 			</button>
 			<button class="dialog__button" type="button" on:click={() => dialog.close()}>
-				<IconClose />
+				<Icon icon={Icons.CLOSE} modifier={IconModifier.IN_DIALOG} />
 			</button>
 			<button class="dialog__button" type="button" on:click={nextImage}>
-				<IconNext />
+				<Icon icon={Icons.NEXT} modifier={IconModifier.IN_DIALOG} />
 			</button>
 		</nav>
 	</dialog>
@@ -80,13 +79,18 @@
 
 <article class="article {project.theme ? `article--${project.theme}` : ''}">
 	<nav class="article__nav {project.images ? 'article__nav--with-gallery' : ''}">
+		<a href={project.url} class="article__repo" target="_blank">
+			<Icon icon={Icons.EXTERNAL_LINK} />
+		</a>
 		{#if project.repo}
 			<a href={`https://github.com/${project.repo}`} class="article__repo" target="_blank">
-				<IconGithub />
+				<Icon icon={Icons.GITHUB} />
 			</a>
 		{/if}
 
-		<Time date={project.updatedAt} />
+		<div class="article__time">
+			<Time date={project.updatedAt} />
+		</div>
 	</nav>
 
 	{#if project.images}
@@ -111,56 +115,45 @@
 		</nav>
 	{/if}
 
-	<a href={project.url} class="article__a">
+	<header class="article__header">
 		<h3 class="h3">{project.title}</h3>
 		<p class="p">{project.description}</p>
-	</a>
+	</header>
 </article>
 
 <style lang="scss">
 	p.p,
 	h3.h3 {
+		font-size: var(--font-size-fluid-0);
 		margin: unset;
+
+		&--in-dialog {
+			color: var(--text-1);
+		}
+	}
+
+	h3.h3 {
+		letter-spacing: var(--font-letterspacing-0);
 	}
 
 	p.p {
+		max-width: var(--size-header-3);
+		font-weight: var(--font-weight-1);
 		text-wrap: balance;
-		width: 75%;
-
-		@media (max-width: 1024px) {
-			width: 100%;
-		}
+		opacity: 0.66;
 
 		&--in-dialog {
 			width: 100%;
-			opacity: .5;
+			opacity: 0.5;
 		}
 	}
 
-	article.article {
-		--article-inner-spacing: 24px;
-
-		@media (max-width: 1024px) {
-			font-size: 15px;
-			--article-inner-spacing: 20px;
-		}
-
-		@media (max-width: 800px) {
-			font-size: 14px;
-			--article-inner-spacing: 18px;
-		}
-
-		@media (max-width: 640px) {
-			font-size: 13px;
-			--article-inner-spacing: 16px;
-		}
-
+	.article {
 		display: grid;
 		grid-template-columns: auto;
 		border-radius: 8px;
-		background-color: var(--color-neutral-10);
-		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
-			rgba(0, 0, 0, 0.1);
+		background-color: var(--background-2);
+		box-shadow: var(--shadow-2);
 
 		&--canutin {
 			background-color: #1347ff;
@@ -194,25 +187,51 @@
 		&--oak-hall {
 			background-color: #a28b67;
 		}
-	}
 
-	nav.article__nav {
-		display: flex;
-		align-items: center;
-		gap: calc(var(--article-inner-spacing) / 2);
-		margin-block: var(--article-inner-spacing);
-		margin-inline: var(--article-inner-spacing);
-
-		&--with-gallery {
-			margin-bottom: unset;
+		&__time {
+			margin-left: auto;
 		}
 
-		@media (max-width: 880px) {
-			gap: var(--article-inner-spacing);
+		&__nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			align-items: center;
+			gap: var(--size-3);
+			margin-block: var(--size-3);
+			margin-inline: var(--size-4);
+
+			&--with-gallery {
+				margin-bottom: unset;
+			}
+
+			:global(.svg-icon--themable) {
+				padding: unset;
+			}
+
+			:global(.svg-icon--themable path) {
+				fill: unset;
+			}
+		}
+
+		&__header {
+			display: flex;
+			flex-direction: column;
+			text-decoration: unset;
+			color: #fff;
+			row-gap: var(--size-1);
+			padding-inline: var(--size-5);
+			padding-block: var(--size-5);
+			border-top: var(--border-size-1) solid rgba(255, 255, 255, 0.15);
+			border-bottom-left-radius: var(--radius-1);
+			transition:
+				opacity 0.1s ease-in-out,
+				padding-left 0.1s ease-in-out;
 		}
 	}
 
 	a.article__repo {
+		display: block;
 		padding-inline: unset;
 		transition: opacity 0.1s ease-in-out;
 		opacity: 0.4;
@@ -222,44 +241,17 @@
 		}
 	}
 
-	a.article__a {
-		display: flex;
-		flex-direction: column;
-		text-decoration: unset;
-		color: #fff;
-		transition:
-			opacity 0.1s ease-in-out,
-			padding-left 0.1s ease-in-out;
-		padding-inline: var(--article-inner-spacing);
-		padding-block: var(--article-inner-spacing);
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
-		border-left: 6px solid transparent;
-		border-bottom-left-radius: 8px;
-		row-gap: 6px;
-		opacity: 0.9;
-
-		// Don't apply hover styles on touch devices
-		@media (hover: hover) {
-			&:hover {
-				color: #fff;
-				opacity: 1;
-				padding-left: calc(var(--article-inner-spacing) + 6px);
-				border-left-color: rgba(255, 255, 255, 0.25);
-			}
-		}
-	}
-
 	.gallery {
 		max-width: 100%;
 		box-sizing: border-box;
-		padding-block: var(--article-inner-spacing);
-		padding-inline: var(--article-inner-spacing);
+		padding-block: var(--size-5);
+		padding-inline: var(--size-5);
 		overflow: hidden;
 		cursor: grab;
 
 		&__container {
 			display: flex;
-			gap: 8px;
+			gap: var(--size-2);
 		}
 	}
 
@@ -289,7 +281,7 @@
 		display: block;
 		max-width: 640px;
 		max-height: 320px;
-		border-radius: 8px;
+		border-radius: var(--radius-2);
 		box-shadow: 0 calc(var(--article-inner-spacing) / 2) var(--article-inner-spacing)
 			rgba(0, 0, 0, 0.1);
 
@@ -301,11 +293,12 @@
 	.dialog {
 		max-width: unset;
 		max-height: unset;
-		width: 100dvw;
-		height: 100dvh;
 		border: unset;
 		margin: unset;
 		padding: unset;
+		width: 100dvw;
+		height: 100dvh;
+		background-color: var(--background-2);
 
 		&:modal {
 			display: grid;
@@ -318,8 +311,8 @@
 			justify-content: center;
 			width: max-content;
 			flex-direction: column;
-			gap: 4px;
-			padding: 40px;
+			gap: var(--size-1);
+			padding: var(--size-6);
 			text-align: center;
 			margin-inline: auto;
 		}
@@ -338,8 +331,8 @@
 			max-height: 90dvh;
 			object-fit: contain;
 			margin-inline: auto;
-			border-radius: 8px;
-			box-shadow: 0 calc(18px / 2) 18px rgba(0, 0, 0, 0.1);
+			border-radius: var(--radius-3);
+			box-shadow: var(--shadow-2);
 		}
 
 		&__nav {
@@ -355,13 +348,8 @@
 			padding: unset;
 			background: unset;
 			opacity: 0.33;
-			filter: invert(1); // Logo is black, so invert it to white in "light mode"
 			outline: unset;
 			cursor: pointer;
-
-			@media (prefers-color-scheme: dark) {
-				filter: unset;
-			}
 
 			&:hover {
 				opacity: 1;

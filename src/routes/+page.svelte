@@ -12,37 +12,38 @@
 </ul>
 
 <style lang="scss">
+	@import "$lib/mixins";
+
 	ul.ul {
+		column-gap: var(--size-2);
+		padding: var(--size-fluid-5);
 		position: relative;
-		column-count: 2;
-		column-gap: 16px;
 		list-style: none;
 		margin-block: unset;
-		padding-inline: 64px;
-		padding-block: 64px;
-		min-height: 100dvh;
 		box-sizing: border-box;
-		max-width: 1366px;
 		margin-inline: auto;
+		column-count: 2;
+		min-height: 100dvh;
+		max-width: $breakpoint-xl;
 
 		&::before {
 			content: '';
+			z-index: 0;
 			position: absolute;
 			top: 0;
 			left: 50%;
 			bottom: 0;
-			width: calc(50% - 32px);
+			width: calc(50% - var(--size-8));
 			transform: translateX(-50%);
-			border-left: 1px solid var(--color-border);
-			border-right: 1px solid var(--color-border);
-			z-index: -1;
+			border-left: var(--border-size-1) solid var(--border-1);
+			border-right: var(--border-size-1) solid var(--border-1);
+			transition: border-color 500ms;
 		}
 
-		@media (max-width: 1366px) {
+		@media (max-width: $breakpoint-xl) {
 			column-count: 1;
-			max-width: 768px;
-			padding-inline: 48px;
-			padding-block: 48px;
+			width: 100%;
+			max-width: $breakpoint-md;
 
 			&::before {
 				width: unset;
@@ -50,19 +51,14 @@
 			}
 		}
 
-		@media (max-width: 1024px) {
-			padding-inline: 32px;
-		}
-
-		@media (max-width: 880px) {
-			padding-block: 32px;
-			padding-inline: 24px;
-		}
+		@include layout-padding;
 	}
 
 	li.ul__li {
+		position: relative;
+		z-index: 1;
 		display: inline-block;
 		width: 100%;
-		margin-bottom: 16px;
+		margin-bottom: var(--size-2);
 	}
 </style>

@@ -1,0 +1,43 @@
+// Based on https://open-props.style/#media-queries
+
+$breakpoint-xl: 1440px;
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 480px;
+// $breakpoint-xs: 360px;
+
+@mixin layout-padding {
+  padding: var(--size-fluid-5);
+
+  @media (max-width: $breakpoint-lg) {
+    padding: var(--size-8);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding-block: var(--size-9);
+    padding-inline: var(--size-9);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-block: var(--size-8);
+    padding-inline: var(--size-6);
+  }
+}
+
+@mixin a {
+  --link-theme: var(--accent);
+  color: var(--link-theme);
+  text-decoration: unset;
+  border-bottom: var(--border-size-2) solid var(--link-theme);
+  transition:
+    color 250ms,
+    border-color 250ms;
+
+  &:hover {
+    --link-theme: var(--text-1);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    border-bottom-width: var(--border-size-1);
+  }
+}

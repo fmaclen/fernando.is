@@ -13,6 +13,8 @@
 {/if}
 
 <style lang="scss">
+	@import '$lib/mixins';
+
 	time.time {
 		font-family: 'JetBrains Mono', monospace;
 		font-size: 12px;
@@ -20,7 +22,7 @@
 		text-transform: uppercase;
 		cursor: help;
 
-		@media (max-width: 800px) {
+		@media (max-width: $breakpoint-md) {
 			font-size: 11px;
 		}
 	}

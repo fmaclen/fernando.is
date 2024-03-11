@@ -1,236 +1,303 @@
-<script>
-	import IconDribbble from '$lib/components/icons/IconDribbble.svg.svelte';
-	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
-	import IconX from '$lib/components/icons/IconX.svg.svelte';
-	import IconEmail from '$lib/components/icons/IconEmail.svg.svelte';
+<script lang="ts">
+	import 'open-props/open-props.min.css';
+	import { onMount } from 'svelte';
+
+	import Icon from '$lib/components/icons/Icon.svelte';
+	import { Icons, IconModifier } from '$lib/components/icons/icons';
+
+	const THEME_KEY = 'fernando.is-colorTheme';
+	const THEME_DARK = 'dark';
+	const THEME_LIGHT = 'light';
+
+	let html: HTMLElement | null = null;
+	let isDarkMode = true;
+
+	function toggleTheme() {
+		if (!html) return;
+
+		isDarkMode = !isDarkMode;
+		html.dataset.theme = isDarkMode ? THEME_DARK : THEME_LIGHT;
+
+		// Store the user's preference in localStorage
+		localStorage.setItem(THEME_KEY, isDarkMode ? THEME_DARK : THEME_LIGHT);
+	}
+
+	onMount(() => {
+		// Check the browser's preferred color scheme
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+			isDarkMode = false;
+		}
+
+		// Check if a user preference is stored in localStorage
+		const userPreference = localStorage.getItem(THEME_KEY);
+		if (userPreference === THEME_DARK) {
+			isDarkMode = true;
+		} else if (userPreference === THEME_LIGHT) {
+			isDarkMode = false;
+		}
+
+		html = document.querySelector('html');
+	});
 </script>
 
 <div class="layout">
 	<aside class="aside">
-		<section class="aside__section aside__section--profile">
-			<header class="aside__header">
-				<h2 class="h2">Fernando Maclen</h2>
-				<p class="p p--in-aside"><strong>Designer & software developer</strong>, truly full-stack.</p>
-			</header>
+		<header class="header">
+			<p class="header__p">Hello,</p>
+			<h1 class="header__h1">
+				I'm <strong>Fernando Maclen</strong>, a Miami-based
+				<strong>designer & software developer</strong>; <em>truly full-stack.</em>
+			</h1>
+			<p class="header__p">
+				This portfolio showcases my
+				<a class="header__a header__a--mobile-only" href="/#recent-work"> recent work </a>
+				across design & code.
+			</p>
+			<p class="header__p">
+				If you have an interesting project that could benefit from my end-to-end abilities,
+				<a class="header__a" href="mailto:hello@fernando.is">let's talk</a>.
+			</p>
+		</header>
 
-			<nav class="social">
-				<a class="social__a" href="https://x.com/fmaclen">
-					<IconX />
+		<div class="icons">
+			<nav class="icons__nav">
+				<a class="icons__a" target="_blank" href="https://x.com/fmaclen">
+					<Icon icon={Icons.X} modifier={IconModifier.THEMABLE} />
 				</a>
-				<a class="social__a" href="https://github.com/fmaclen">
-					<IconGithub />
+				<a class="icons__a" target="_blank" href="https://github.com/fmaclen">
+					<Icon icon={Icons.GITHUB} modifier={IconModifier.THEMABLE} />
 				</a>
-				<a class="social__a" href="https://dribbble.com/fmaclen">
-					<IconDribbble />
+				<a class="icons__a" target="_blank" href="https://dribbble.com/fmaclen">
+					<Icon icon={Icons.DRIBBBLE} modifier={IconModifier.THEMABLE} />
 				</a>
-				<a class="social__a" href="mailto:hello@fernando.is">
-					<IconEmail />
+				<a class="icons__a" target="_blank" href="https://www.linkedin.com/in/fmaclen/">
+					<Icon icon={Icons.LINKEDIN} modifier={IconModifier.THEMABLE} />
+				</a>
+				<a class="icons__a" target="_blank" href="mailto:hello@fernando.is">
+					<Icon icon={Icons.EMAIL} modifier={IconModifier.THEMABLE} />
 				</a>
 			</nav>
-		</section>
 
-		<section class="aside__section aside__section--call-to-action">
-			<h1 class="h1">
-				If you are working on an interesting problem and my skillset can be useful,
-				<a class="a" href="mailto:hello@fernando.is">talk to me</a>.
-			</h1>
-		</section>
+			<nav class="icons__nav icons--theme-toggle">
+				<button class="icons__button" on:click={toggleTheme}>
+					{#if isDarkMode}
+						<Icon icon={Icons.LIGHT} modifier={IconModifier.DARK_MODE} />
+					{:else}
+						<Icon icon={Icons.DARK} modifier={IconModifier.LIGHT_MODE} />
+					{/if}
+				</button>
+			</nav>
+		</div>
 	</aside>
 
-	<main class="main">
+	<main id="recent-work" class="main">
 		<slot />
 	</main>
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=JetBrains+Mono:wght@100&display=swap');
+	@import '$lib/mixins';
+	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;700&display=swap');
 
-	:root {
-		// Light mode (default)
+	:global(html) {
+		--font-family: 'JetBrains Mono', monospace;
+
+		// Dark theme is the default
+		color-scheme: dark;
+
+		--dark-accent: var(--yellow-4);
+		--accent: var(--dark-accent);
+
+		--dark-border-1: var(--stone-10);
+		--border-1: var(--dark-border-1);
+
+		--dark-background-1: var(--stone-12);
+		--background-1: var(--dark-background-1);
+		--dark-background-2: var(--stone-11);
+		--background-2: var(--dark-background-2);
+
+		--dark-text-1: var(--stone-0);
+		--text-1: var(--dark-text-1);
+		--dark-text-2: var(--stone-5);
+		--text-2: var(--dark-text-2);
+
+		background-color: var(--background-1);
+		@media (max-width: $breakpoint-sm) {
+			scroll-behavior: smooth;
+		}
+	}
+
+	:global(html[data-theme='light']) {
 		color-scheme: light;
 
-		--color-neutral-10: hsl(0, 0%, 91%);
-		--color-neutral-13: hsl(0, 0%, 87%);
-		--color-neutral-50: hsl(0, 0%, 40%);
-		--color-neutral-75: hsl(0, 0%, 25%);
-		--color-neutral-95: hsl(0, 0%, 5%);
-		--color-neutral-100: hsl(0, 0%, 0%);
+		--light-accent: var(--indigo-8);
+		--accent: var(--light-accent);
 
-		--color-accent: #0439d9;
-		--color-border: hsl(0, 0%, 80%);
+		--light-border-1: var(--stone-4);
+		--border-1: var(--light-border-1);
 
-		@media (prefers-color-scheme: dark) {
-			color-scheme: dark;
+		--light-background-1: var(--stone-1);
+		--background-1: var(--light-background-1);
+		--light-background-2: var(--stone-2);
+		--background-2: var(--light-background-2);
 
-			--color-neutral-10: hsl(0, 0%, 10%);
-			--color-neutral-13: hsl(0, 0%, 13%);
-			--color-neutral-50: hsl(0, 0%, 60%);
-			--color-neutral-75: hsl(0, 0%, 75%);
-			--color-neutral-95: hsl(0, 0%, 95%);
-			--color-neutral-100: hsl(0, 0%, 100%);
+		--light-text-1: var(--stone-12);
+		--text-1: var(--light-text-1);
+		--light-text-2: var(--stone-8);
+		--text-2: var(--light-text-2);
+	}
 
-			--color-accent: #02f2ce;
-			--color-border: hsl(0, 0%, 20%);
-		}
+	:global(*) {
+		// Makes the transition between dark/light modes smooth
+		transition:
+			color 150ms,
+			background-color 500ms,
+			border-color 500ms,
+			fill 500ms;
 	}
 
 	:global(body.body) {
-		color: var(--color-neutral-75);
-		background-color: var(--color-neutral-10);
 		margin: unset;
-		font-family: 'Inter', sans-serif;
-		font-weight: 300;
+		font-family: var(--font-family);
 	}
 
 	div.layout {
-		display: flex;
+		display: grid;
+		grid-template-columns: max-content 3fr;
 		width: 100dvw;
 		height: 100dvh;
+		background-color: var(--background-1);
 
-		@media (max-width: 880px) {
-			flex-direction: column;
+		@media (max-width: $breakpoint-lg) {
+			grid-template-columns: 1.5fr 2.5fr;
+		}
+
+		@media (max-width: $breakpoint-md) {
+			grid-template-columns: unset;
+			grid-template-rows: max-content auto;
 		}
 	}
 
-	aside.aside {
-		display: grid;
-		grid-template-rows: max-content auto;
-		box-sizing: border-box;
-		height: 100%;
-		width: clamp(384px, 100%, 512px);
-		border-right: 1px solid var(--color-border);
-
-		@media (max-width: 880px) {
-			width: unset;
-			height: max-content;
-			border-right: unset;
-		}
-	}
-
-	section.aside__section {
-		padding-inline: 56px;
-		padding-block: 56px;
-
-		@media (max-width: 1366px) {
-			padding-inline: 48px;
-			padding-block: 48px;
-		}
-
-		@media (max-width: 1024px) {
-			padding-inline: 32px;
-		}
-
-		@media (max-width: 880px) {
-			padding-block: 32px;
-			padding-inline: 24px;
-		}
-
-		&--call-to-action {
-			height: auto;
-			place-self: flex-start;
-
-			@media (max-width: 880px) {
-				border-bottom: 1px solid var(--color-border);
-			}
-		}
-
-		&--profile {
-			display: flex;
-			flex-direction: column;
-			row-gap: 64px;
-			border-bottom: 1px solid var(--color-border);
-
-			@media (max-width: 1024px) {
-				row-gap: 32px;
-			}
-
-			@media (max-width: 880px) {
-				row-gap: 20px;
-			}
-		}
-	}
-
-	header.aside__header {
+	.aside {
+		@include layout-padding;
 		display: flex;
 		flex-direction: column;
-		row-gap: 8px;
-	}
+		box-sizing: border-box;
+		border-right: var(--border-size-1) solid var(--border-1);
+		gap: var(--size-8);
+		max-height: 100dvh;
 
-	a.a {
-		color: var(--color-accent);
-		text-decoration: none;
-		transition: box-shadow 0.1s ease-in-out;
-		box-shadow: inset 0 -1px 0 var(--color-accent);
-
-		&:hover {
-			color: var(--color-neutral-10);
-			box-shadow: inset 0 -40px 0 var(--color-accent);
+		@media (max-width: $breakpoint-md) {
+			max-height: max-content;
+			border: unset;
 		}
 	}
 
-	h1.h1,
-	h2.h2,
-	p.p {
-		margin: unset;
-		text-wrap: balance;
-	}
-
-	h1.h1 {
-		font-family: 'JetBrains Mono', monospace;
-		font-weight: 100;
-		font-size: 24px;
-		line-height: 135%;
-		color: var(--color-neutral-50);
-
-		@media (max-width: 880px) {
-			font-size: 18px;
-		}
-	}
-
-	h2.h2 {
-		font-size: 32px;
-		line-height: 1.1em;
-		letter-spacing: -0.05em;
-		font-weight: 600;
-		color: var(--color-neutral-95);
-
-		@media (max-width: 880px) {
-			font-size: 26px;
-		}
-	}
-
-	p.p {
-		font-size: 16px;
-		line-height: 120%;
-
-		@media (max-width: 880px) {
-			font-size: 14px;
-		}
-
-		&--in-aside {
-			color: var(--color-accent);
-		}
-	}
-
-	nav.social {
+	.header {
 		display: flex;
-		gap: 12px;
-		transform: translate(-6px, 6px);
-	}
+		flex-direction: column;
+		gap: var(--size-5);
+		max-width: var(--size-header-3);
 
-	a.social__a {
-		display: flex;
-		align-items: center;
-		opacity: 0.25;
-		padding: 6px;
-		filter: invert(1); // Logo is black, so invert it to white in "light mode"
+		&__h1,
+		&__p {
+			margin: 0;
+			text-wrap: balance;
+			font-weight: var(--font-weight-1);
+			color: var(--text-2);
+			line-height: var(--font-lineheight-2);
+			font-size: var(--size-5);
+			max-width: var(--size-content-3);
 
-		@media (prefers-color-scheme: dark) {
-			filter: unset;
+			@media (max-width: $breakpoint-lg) {
+				font-size: var(--size-4);
+			}
+
+			@media (max-width: $breakpoint-sm) {
+				font-size: var(--size-3);
+			}
 		}
 
-		&:hover {
-			opacity: 1;
+		strong {
+			color: var(--text-1);
+			letter-spacing: var(--font-letterspacing-0);
+		}
+
+		em {
+			font-style: unset;
+			color: var(--accent);
+		}
+
+		@mixin header-a {
+			@include a;
+		}
+
+		&__a {
+			&:not(.header__a--mobile-only) {
+				@include header-a;
+			}
+
+			&--mobile-only {
+				@media (min-width: $breakpoint-md) {
+					text-decoration: unset;
+					color: inherit;
+					pointer-events: none;
+				}
+
+				@media (max-width: $breakpoint-md) {
+					@include header-a;
+				}
+			}
+		}
+	}
+
+	.icons {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100%;
+		gap: var(--size-4);
+
+		@media (max-width: $breakpoint-md) {
+			flex-direction: unset;
+		}
+
+		&__nav {
+			display: flex;
+			gap: var(--size-4);
+
+			&:first-child {
+				@media (max-width: $breakpoint-sm) {
+					width: 100%;
+					justify-content: space-between;
+				}
+			}
+
+			&:last-child {
+				@media (max-width: $breakpoint-sm) {
+					border-left: 1px solid var(--border-1);
+					padding-left: var(--size-4);
+				}
+			}
+		}
+
+		&__button {
+			background-color: transparent;
+			border: none;
+			padding: unset;
+			cursor: pointer;
+		}
+
+		&__button,
+		&__a {
+			display: flex;
+			align-items: center;
+			opacity: 0.5;
+			transition: opacity 250ms;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -239,8 +306,9 @@
 		height: 100%;
 		max-height: 100dvh;
 		overflow-y: auto;
+		background-color: var(--background-2);
 
-		@media (max-width: 880px) {
+		@media (max-width: $breakpoint-md) {
 			justify-content: center;
 			max-height: unset;
 			overflow-y: unset;

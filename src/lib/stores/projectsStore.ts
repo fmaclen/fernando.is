@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 
 const GITHUB_API_BASE_URL = 'https://api.github.com/repos';
 const LOCAL_STORAGE_PROJECTS_KEY = 'projects';
-const LOCAL_STORAGE_LAST_CHECK_KEY = 'lastCheck';
+const LOCAL_STORAGE_LAST_CHECK_KEY = 'fernando.is-lastCheck';
 const ONE_HOUR_IN_MS = 60 * 60 * 1000; // Number of milliseconds in an hour
 
 export interface Project {

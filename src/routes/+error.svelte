@@ -1,38 +1,24 @@
 <section class="error">
   <h2 class="error__h2">Error 404</h2>
-  <p class="error__p">No content found. Perhaps there's a typo in the address or followed a broken link.</p>
+  <p class="error__p"><strong>No content found.</strong> Perhaps there's a typo in the address or followed a broken link. <a href="/" class="error__a">Try starting over</a>.</p>
 </section>
 
 <style lang="scss">
+  @import '$lib/mixins';
+
   section.error {
+    @include layout-padding;
+
     display: flex;
     justify-content: center;
-    gap: 24px;
-    padding-inline: 64px;
-    padding-block: 64px;
     height: 100%;
     box-sizing: border-box;
     margin-block: auto;
+    margin-inline: auto;
+    gap: var(--size-fluid-4);
 
-    @media (max-width: 1366px) {
+    @media (max-width: $breakpoint-xl) {
       flex-direction: column;
-      text-align: center;
-      max-width: 50%;
-      margin-inline: auto;
-      gap: 12px;
-			padding-inline: 48px;
-			padding-block: 48px;
-		}
-
-		@media (max-width: 1024px) {
-			padding-inline: 32px;
-      max-width: 75%;
-		}
-
-		@media (max-width: 880px) {
-			padding-block: 32px;
-			padding-inline: 24px;
-      max-width: 100%;
 		}
   }
 
@@ -40,24 +26,44 @@
   p.error__p {
     margin-block: unset;
     place-self: center;
+
+    @media (max-width: $breakpoint-xl) {
+      place-self: unset;
+    }
   }
 
   h2.error__h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-neutral-100);
+    text-wrap: nowrap;
+    color: var(--text-1);
+    font-size: var(--size-6);
 
-    @media (max-width: 880px) {
-      font-size: 16px;
+    @media (max-width: $breakpoint-md) {
+      font-size: var(--size-5);
+		}
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: var(--size-6);
+      letter-spacing: var(--font-letterspacing-0);
 		}
   }
 
   p.error__p {
-    font-size: 16px;
-    color: var(--color-neutral-50);
+    text-wrap: balance;
+    color: var(--text-2);
+    font-weight: var(--font-weight-1);
+    max-width: var(--size-content-3);
+    font-size: var(--size-4);
 
-    @media (max-width: 880px) {
-      font-size: 14px;
+    strong {
+      color: var(--text-1);
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: var(--size-3);
 		}
+  }
+
+  a.error__a {
+    @include a;
   }
 </style>
