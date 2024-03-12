@@ -185,7 +185,9 @@
 	}
 
 	.aside {
-		@include layout-padding;
+		@include layout-padding-inline;
+		@include layout-padding-block;
+
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
@@ -308,6 +310,7 @@
 	}
 
 	.main {
+		display: flex;
 		width: 100%;
 		height: 100%;
 		max-height: 100dvh;
@@ -321,8 +324,9 @@
 		}
 
 		&__container {
-			@include layout-padding;
-			height: 100%;
+			@include layout-padding-inline;
+
+			margin-inline: auto;
 			box-sizing: border-box;
 		}
 	}

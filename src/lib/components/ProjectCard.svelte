@@ -5,7 +5,7 @@
 	import type { Project } from '$lib/stores/projectsStore';
 	import Time from '$lib/components/Time.svelte';
 	import Icon from '$lib/components/icons/Icon.svelte';
-	import { Icons, IconModifier } from "$lib/components/icons/icons";
+	import { Icons, IconModifier } from '$lib/components/icons/icons';
 
 	export let project: Project;
 	let dialog: HTMLDialogElement;
@@ -40,10 +40,7 @@
 
 	onMount(() => {
 		window.addEventListener('keydown', handleKeydown);
-
-		return () => {
-			window.removeEventListener('keydown', handleKeydown);
-		};
+		return () => window.removeEventListener('keydown', handleKeydown);
 	});
 </script>
 
@@ -188,7 +185,7 @@
 		}
 
 		&--pantai {
-			background-color: hsl(222, 33%, 45%);;
+			background-color: hsl(222, 33%, 45%);
 		}
 
 		&__time {
@@ -352,7 +349,7 @@
 			// height: fit-content;
 			object-fit: contain;
 			margin-inline: auto;
-			border-radius: var(--radius-3);
+			border-radius: var(--radius-2);
 			box-shadow: var(--shadow-2);
 		}
 

@@ -15,8 +15,8 @@
 	@import '$lib/mixins';
 
 	ul.ul {
-		column-gap: var(--size-2);
-		padding: unset;
+		@include layout-padding-block;
+		padding-inline: unset;
 		position: relative;
 		list-style: none;
 		margin-block: unset;
@@ -24,6 +24,7 @@
 		margin-inline: auto;
 		column-count: 2;
 		min-height: 100dvh;
+		column-gap: var(--size-2);
 		max-width: $breakpoint-xl;
 
 		&::before {

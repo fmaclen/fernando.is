@@ -6,21 +6,35 @@ $breakpoint-md: 768px;
 $breakpoint-sm: 480px;
 // $breakpoint-xs: 360px;
 
-@mixin layout-padding {
-  padding: var(--size-fluid-5);
+@mixin layout-padding-inline {
+  padding-inline: var(--size-fluid-5);
 
   @media (max-width: $breakpoint-lg) {
-    padding: var(--size-8);
+    padding-inline: var(--size-8);
   }
 
   @media (max-width: $breakpoint-md) {
-    padding-block: var(--size-9);
     padding-inline: var(--size-9);
   }
 
   @media (max-width: $breakpoint-sm) {
-    padding-block: var(--size-8);
     padding-inline: var(--size-6);
+  }
+}
+
+@mixin layout-padding-block {
+  padding-block: var(--size-fluid-5);
+
+  @media (max-width: $breakpoint-lg) {
+    padding-block: var(--size-8);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding-block: var(--size-9);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-block: var(--size-8);
   }
 }
 
