@@ -12,14 +12,16 @@
 	let html: HTMLElement | null = null;
 	let isDarkMode = true;
 
-	function toggleTheme() {
+	function setTheme() {
 		if (!html) return;
-
-		isDarkMode = !isDarkMode;
 		html.dataset.theme = isDarkMode ? THEME_DARK : THEME_LIGHT;
+	}
 
+	function toggleTheme() {
+		isDarkMode = !isDarkMode;
 		// Store the user's preference in localStorage
 		localStorage.setItem(THEME_KEY, isDarkMode ? THEME_DARK : THEME_LIGHT);
+		setTheme();
 	}
 
 	onMount(() => {
@@ -37,6 +39,7 @@
 		}
 
 		html = document.querySelector('html');
+		setTheme();
 	});
 </script>
 
@@ -124,6 +127,7 @@
 		--text-2: var(--dark-text-2);
 
 		background-color: var(--background-1);
+
 		@media (max-width: $breakpoint-sm) {
 			scroll-behavior: smooth;
 		}
