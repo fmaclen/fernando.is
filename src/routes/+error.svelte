@@ -7,8 +7,6 @@
   @import '$lib/mixins';
 
   section.error {
-    @include layout-padding;
-
     display: flex;
     justify-content: center;
     height: 100%;

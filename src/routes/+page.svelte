@@ -5,9 +5,9 @@
 
 <ul class="ul">
 	{#each $projectsStore as project}
-		<li class="ul__li">
-			<ProjectCard {project} />
-		</li>
+	<li class="ul__li">
+		<ProjectCard {project} />
+	</li>
 	{/each}
 </ul>
 
@@ -16,7 +16,7 @@
 
 	ul.ul {
 		column-gap: var(--size-2);
-		padding: var(--size-fluid-5);
+		padding: unset;
 		position: relative;
 		list-style: none;
 		margin-block: unset;
@@ -50,8 +50,6 @@
 				border-right: unset;
 			}
 		}
-
-		@include layout-padding;
 
 		&:hover .ul__li:not(:hover) {
 			@media (hover: hover) {

@@ -91,7 +91,9 @@
 	</aside>
 
 	<main id="recent-work" class="main">
-		<slot />
+		<div class="main__container">
+			<slot />
+		</div>
 	</main>
 </div>
 
@@ -301,7 +303,7 @@
 		}
 	}
 
-	main.main {
+	.main {
 		width: 100%;
 		height: 100%;
 		max-height: 100dvh;
@@ -312,6 +314,12 @@
 			justify-content: center;
 			max-height: unset;
 			overflow-y: unset;
+		}
+
+		&__container {
+			@include layout-padding;
+			height: 100%;
+			box-sizing: border-box;
 		}
 	}
 </style>
