@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 
-	import IconGithub from '$lib/components/icons/IconGithub.svg.svelte';
 	import type { Project } from '$lib/stores/projectsStore';
 	import Time from '$lib/components/Time.svelte';
 	import Icon from '$lib/components/icons/Icon.svelte';
@@ -302,7 +301,21 @@
 		padding: unset;
 		width: 100dvw;
 		height: 100dvh;
-		background-color: var(--background-2);
+		background-color: var(--background-1);
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: url('/background-checkers.svg');
+			background-size: var(--size-6);
+			opacity: 0.025;
+			z-index: var(--layer-1);
+		}
+
+		> * {
+			z-index: var(--layer-2);
+		}
 
 		&:modal {
 			display: grid;
@@ -325,14 +338,18 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			gap: 8px;
 			box-sizing: border-box;
-			padding-inline: 16px;
+			padding-inline: var(--size-2);
+			padding-block: var(--size-3);
+			overflow-y: hidden;
+			text-align: center;
 		}
 
 		&__img {
+			max-height: 100%;
 			max-width: 100%;
-			max-height: 90dvh;
+			// width: fit-content;
+			// height: fit-content;
 			object-fit: contain;
 			margin-inline: auto;
 			border-radius: var(--radius-3);
@@ -351,7 +368,7 @@
 			border: unset;
 			padding: unset;
 			background: unset;
-			opacity: 0.33;
+			opacity: 0.5;
 			outline: unset;
 			cursor: pointer;
 
