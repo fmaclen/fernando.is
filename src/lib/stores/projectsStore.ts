@@ -25,6 +25,18 @@ let projects: Project[] = [
 		theme: 'fernando-is'
 	},
 	{
+		title: 'Hollama',
+		description: 'A minimal web-UI for talking to Ollama servers',
+		url: 'https://hollama.fernando.is',
+		repo: 'fmaclen/hollama',
+		theme: 'hollama',
+		images: [
+			'hollama-session.png',
+			'hollama-settings.png',
+			'hollama-session-new.png'
+		]
+	},
+	{
 		title: 'Canutin',
 		description: 'A personal finance application for macOS, Windows & Linux',
 		url: 'https://demo.canutin.com',

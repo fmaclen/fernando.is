@@ -159,6 +159,10 @@
 			background-color: #111;
 		}
 
+		&--hollama {
+			background-color: #333;
+		}
+
 		&--svelte-currency-input {
 			background-color: #e25f36;
 		}
