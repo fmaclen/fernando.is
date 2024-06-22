@@ -178,7 +178,7 @@ if (shouldGetLastProjectUpdate) {
 	}
 }
 
-// When the site is updated, this repo is always the last one to be updated
+// When the site is updated, this repo is often the last one to be updated
 // which means it's always the first project in the list.
 // Sorting it to the end of the list because it doesn't need to be the first project.
 const CURRENT_REPO = 'fmaclen/fernando.is';
