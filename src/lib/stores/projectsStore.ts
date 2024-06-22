@@ -178,9 +178,18 @@ if (shouldGetLastProjectUpdate) {
 	}
 }
 
+// When the site is updated, this repo is always the last one to be updated
+// which means it's always the first project in the list.
+// Sorting it to the end of the list because it doesn't need to be the first project.
+const CURRENT_REPO = 'fmaclen/fernando.is';
+
 projectsStore.subscribe((projects) => {
+	
 	// Sort the projects by last updated
 	projects.sort((a, b) => {
+		if (a.repo === 'fmaclen/fernando.is') return 1; // Always sort 'fernando.is' project to the end
+		if (b.repo === 'fmaclen/fernando.is') return -1;
+
 		if (!a.updatedAt) return 1;
 		if (!b.updatedAt) return -1;
 		return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
