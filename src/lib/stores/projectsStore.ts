@@ -39,7 +39,7 @@ let projects: Project[] = [
 	{
 		title: 'Canutin',
 		description: 'A personal finance application for macOS, Windows & Linux',
-		url: 'https://demo.canutin.com',
+		url: 'https://canutin.com',
 		repo: 'fmaclen/canutin-desktop',
 		theme: 'canutin',
 		images: [
