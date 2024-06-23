@@ -187,8 +187,8 @@ projectsStore.subscribe((projects) => {
 	
 	// Sort the projects by last updated
 	projects.sort((a, b) => {
-		if (a.repo === 'fmaclen/fernando.is') return 1; // Always sort 'fernando.is' project to the end
-		if (b.repo === 'fmaclen/fernando.is') return -1;
+		if (a.repo === CURRENT_REPO) return 1; // Always sort 'fernando.is' project to the end
+		if (b.repo === CURRENT_REPO) return -1;
 
 		if (!a.updatedAt) return 1;
 		if (!b.updatedAt) return -1;
