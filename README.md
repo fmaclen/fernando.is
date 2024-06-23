@@ -1,6 +1,6 @@
 # fernando.is
 
-![image](https://github.com/fmaclen/fernando.is/assets/1434675/544434b7-7994-4056-9904-29920e5ebbae)
+![fernando is_](https://github.com/fmaclen/fernando.is/assets/1434675/b6e81811-b62b-4a7e-b7ff-4cc40d1ab06c)
 
 ## Developing
 
@@ -16,6 +16,7 @@ npm run dev -- --open
 ## Building
 
 To create a production version of your app:
+
 
 ```bash
 npm run build
