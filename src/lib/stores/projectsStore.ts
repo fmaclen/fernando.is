@@ -160,7 +160,6 @@ const shouldGetLastProjectUpdate =
 	!localStorageLastChecked ||
 	new Date().getTime() - new Date(localStorageLastChecked).getTime() > ONE_HOUR_IN_MS;
 
-const localStorageProjects = browser ? window.localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY) : [];
 const projectsStore = writable<Project[]>([]);
 
 async function getLastProjectUpdate(project: Project) {
@@ -188,10 +187,7 @@ async function fetchAllProjectsUpdates(projects: Project[]) {
 if (shouldGetLastProjectUpdate) {
 	fetchAllProjectsUpdates(projects);
 } else {
-	if (typeof localStorageProjects === 'string') {
-		projects = JSON.parse(localStorageProjects) as Project[];
-		projectsStore.set(projects);
-	}
+	projectsStore.set(projects);
 }
 
 // When the site is updated, this repo is often the last one to be updated
@@ -211,10 +207,9 @@ projectsStore.subscribe((projects) => {
 		return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
 	});
 
-	// Cache the projects with the `updatedAt` value to local storage
+	// Only store the last check timestamp
 	if (!browser) return;
 	if (shouldGetLastProjectUpdate) {
-		window.localStorage.setItem(LOCAL_STORAGE_PROJECTS_KEY, JSON.stringify(projects));
 		window.localStorage.setItem(LOCAL_STORAGE_LAST_CHECK_KEY, new Date().toISOString());
 	}
 });

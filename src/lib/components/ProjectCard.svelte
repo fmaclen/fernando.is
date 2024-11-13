@@ -7,9 +7,13 @@
 	import Icon from '$lib/components/icons/Icon.svelte';
 	import { Icons, IconModifier } from '$lib/components/icons/icons';
 
-	export let project: Project;
-	let dialog: HTMLDialogElement;
-	let dialogImageIndex: number = 0;
+	interface Props {
+		project: Project;
+	}
+
+	let { project }: Props = $props();
+	let dialog: HTMLDialogElement | undefined = $state();
+	let dialogImageIndex: number = $state(0);
 
 	function imagePath(image: string) {
 		return `/projects/${image}`;
@@ -17,7 +21,7 @@
 
 	function loadDialogGallery(index: number) {
 		dialogImageIndex = index;
-		dialog.showModal();
+		dialog?.showModal();
 	}
 
 	function previousImage() {
@@ -60,13 +64,13 @@
 		</div>
 
 		<nav class="dialog__nav">
-			<button class="dialog__button" type="button" on:click={previousImage}>
+			<button class="dialog__button" type="button" onclick={previousImage}>
 				<Icon icon={Icons.PREVIOUS} modifier={IconModifier.IN_DIALOG} />
 			</button>
-			<button class="dialog__button" type="button" on:click={() => dialog.close()}>
+			<button class="dialog__button" type="button" onclick={() => dialog?.close()}>
 				<Icon icon={Icons.CLOSE} modifier={IconModifier.IN_DIALOG} />
 			</button>
-			<button class="dialog__button" type="button" on:click={nextImage}>
+			<button class="dialog__button" type="button" onclick={nextImage}>
 				<Icon icon={Icons.NEXT} modifier={IconModifier.IN_DIALOG} />
 			</button>
 		</nav>
@@ -99,7 +103,7 @@
 		>
 			<div class="gallery__container">
 				{#each project.images as image, index}
-					<button class="gallery__button" on:click={() => loadDialogGallery(index)}>
+					<button class="gallery__button" onclick={() => loadDialogGallery(index)}>
 						<img
 							class="gallery__img {project.images.length === 1 ? 'gallery__img--single-image' : ''}"
 							src={imagePath(image)}

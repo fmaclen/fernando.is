@@ -12,8 +12,12 @@
 	import IconPrevious from './IconPrevious.svg.svelte';
 	import { Icons, IconModifier } from './icons';
 
-	export let icon: Icons;
-	export let modifier: IconModifier | undefined = undefined;
+	interface Props {
+		icon: Icons;
+		modifier?: IconModifier | undefined;
+	}
+
+	let { icon, modifier = undefined }: Props = $props();
 </script>
 
 <span class="icon {modifier ? `icon--${modifier}` : ''}">

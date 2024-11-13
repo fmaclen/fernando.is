@@ -4,13 +4,18 @@
 
 	import Icon from '$lib/components/icons/Icon.svelte';
 	import { Icons, IconModifier } from '$lib/components/icons/icons';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	const THEME_KEY = 'fernando.is-colorTheme';
 	const THEME_DARK = 'dark';
 	const THEME_LIGHT = 'light';
 
 	let html: HTMLElement | null = null;
-	let isDarkMode = true;
+	let isDarkMode = $state(true);
 
 	function setTheme() {
 		if (!html) return;
@@ -82,7 +87,7 @@
 			</nav>
 
 			<nav class="icons__nav icons--theme-toggle">
-				<button class="icons__button" on:click={toggleTheme}>
+				<button class="icons__button" onclick={toggleTheme}>
 					{#if isDarkMode}
 						<Icon icon={Icons.LIGHT} modifier={IconModifier.DARK_MODE} />
 					{:else}
@@ -95,7 +100,7 @@
 
 	<main id="recent-work" class="main">
 		<div class="main__container">
-			<slot />
+			{@render children?.()}
 		</div>
 	</main>
 </div>
