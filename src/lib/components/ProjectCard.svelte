@@ -192,6 +192,10 @@
 			background-color: hsl(222, 33%, 45%);
 		}
 
+		&--palfrey-press {
+			background-color: hsl(32, 15%, 30%);
+		}
+
 		&__time {
 			margin-left: auto;
 		}

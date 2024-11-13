@@ -132,6 +132,22 @@ let projects: Project[] = [
 			'pantai-careers.png',
 			'pantai-about.png',
 		]
+	},
+	{
+		title: 'Palfrey Press',
+		description: 'A specialist publisher producing authoritative books on obscure historical subjects, heraldry, oral histories, & other antiquarian matters',
+		url: 'https://palfreypress.com',
+		updatedAt: '2024-11-13T00:00:00Z',
+		theme: 'palfrey-press',
+		images: [
+			'palfrey-press-homepage.png',
+			'palfrey-press-catalog.png',
+			'palfrey-press-about.png',
+			'palfrey-press-card-1.png',
+			'palfrey-press-card-2.png',
+			'palfrey-press-card-3.png',
+			'palfrey-press-card-4.png'
+		]
 	}
 ];
 
