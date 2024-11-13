@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { formatDistance } from 'date-fns';
 
-	export let date: string | undefined;
+	interface Props {
+		date: string | undefined;
+	}
+
+	let { date }: Props = $props();
 	const currentDate = date ? new Date(date).toDateString() : undefined;
 	const timeAgoInWords = date
 		? formatDistance(new Date(date), new Date(), { addSuffix: true })
