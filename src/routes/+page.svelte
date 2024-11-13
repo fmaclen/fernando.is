@@ -51,12 +51,6 @@
 				border-right: unset;
 			}
 		}
-
-		&:hover .ul__li:not(:hover) {
-			@media (hover: hover) {
-				filter: brightness(0.33) grayscale(0.66) contrast(0.8);
-			}
-		}
 	}
 
 	li.ul__li {
