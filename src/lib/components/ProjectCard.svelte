@@ -133,7 +133,7 @@
 	}
 
 	p.p {
-		max-width: var(--size-header-3);
+		max-width: 65ch;
 		font-weight: var(--font-weight-1);
 		text-wrap: balance;
 		opacity: 0.66;

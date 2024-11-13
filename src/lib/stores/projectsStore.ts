@@ -141,12 +141,12 @@ let projects: Project[] = [
 		theme: 'palfrey-press',
 		images: [
 			'palfrey-press-homepage.png',
-			'palfrey-press-catalog.png',
 			'palfrey-press-about.png',
+			'palfrey-press-card-3.png',
 			'palfrey-press-card-1.png',
 			'palfrey-press-card-2.png',
-			'palfrey-press-card-3.png',
-			'palfrey-press-card-4.png'
+			'palfrey-press-card-4.png',
+			'palfrey-press-catalog.png'
 		]
 	}
 ];
