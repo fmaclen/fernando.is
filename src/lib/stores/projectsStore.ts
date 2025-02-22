@@ -18,6 +18,17 @@ export interface Project {
 
 let projects: Project[] = [
 	{
+		title: 'Chromabox',
+		description: 'A color palette generator for designers and developers',
+		url: 'https://chromabox.fernando.is',
+		repo: 'fmaclen/chromabox',
+		theme: 'chromabox',
+		images: [
+			'chromabox-app.png',
+			'chromabox-website.png',
+		]
+	},
+	{
 		title: 'fernando.is',
 		description: 'This very website',
 		url: 'https://fernando.is',

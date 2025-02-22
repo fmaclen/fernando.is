@@ -179,9 +179,13 @@
 			background-color: #488e3c;
 		}
 
-		&--promptspree {
+		&--chromabox {
 			background-image: linear-gradient(45deg, #4c5eff 4.62%, #f25e5e 54.67%, #f2c65e 99.78%);
 			background-color: #4c5eff;
+		}
+
+		&--promptspree {
+			background-color: #8f9f40;
 		}
 
 		&--rule-of-three {
@@ -230,7 +234,6 @@
 			display: flex;
 			flex-direction: column;
 			text-decoration: unset;
-			color: #fff;
 			row-gap: var(--size-1);
 			padding-inline: var(--size-5);
 			padding-block: var(--size-5);
