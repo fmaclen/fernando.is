@@ -126,6 +126,7 @@
 	h3.h3 {
 		font-size: var(--font-size-fluid-0);
 		margin: unset;
+		color: white;
 
 		&--in-dialog {
 			color: var(--text-1);
