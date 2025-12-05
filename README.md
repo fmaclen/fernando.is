@@ -2,24 +2,30 @@
 
 ![fernando is_](https://github.com/fmaclen/fernando.is/assets/1434675/b6e81811-b62b-4a7e-b7ff-4cc40d1ab06c)
 
-## Developing
+## Setup
 
-Once you've created a project and installed dependencies with `npm install`, start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```sh
+bun install
 ```
 
-## Building
+Next run `bun run dev` and visit [http://localhost:5173](http://localhost:5173)
 
-To create a production version of your app:
+## Commands
 
+### Main
 
-```bash
-npm run build
-```
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `bun run dev`     | Start development server |
+| `bun run build`   | Build for production     |
+| `bun run quality` | Format, lint, type check |
 
-You can preview the production build with `npm run preview`.
+### Additional
+
+| Command               | Description              |
+| --------------------- | ------------------------ |
+| `bun run preview`     | Preview build            |
+| `bun run check`       | Type check               |
+| `bun run check:watch` | Type check in watch mode |
+| `bun run format`      | Format code              |
+| `bun run lint`        | Lint code                |
