@@ -129,3 +129,9 @@
 		--sidebar-width: 40vw !important;
 	}
 }
+
+@media (min-width: 1280px) {
+	[data-slot='sidebar'] {
+		--sidebar-width: min(25vw, 400px) !important;
+	}
+}
