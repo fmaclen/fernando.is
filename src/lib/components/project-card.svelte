@@ -47,12 +47,17 @@
 
 <article class="rounded-lg shadow-lg overflow-hidden font-mono max-w-2xl {themeClass}">
 	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	<nav class="flex items-center gap-3 px-5 xl:px-6 pt-4 xl:pt-5 pb-2 xl:pb-3">
+	<nav
+		class="flex items-center gap-3 px-5 xl:px-6 pt-4 xl:pt-5 {project.images &&
+		project.images.length > 0
+			? ''
+			: 'pb-4 xl:pb-5'}"
+	>
 		<a
 			href={project.url}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="opacity-40 hover:opacity-100 transition-opacity text-white"
+			class="opacity-40 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity text-white"
 			aria-label="Visit project"
 		>
 			<LinkIcon class="size-4" />
@@ -62,7 +67,7 @@
 				href={`https://github.com/${project.repo}`}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="opacity-40 hover:opacity-100 transition-opacity text-white"
+				class="opacity-40 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity text-white"
 				aria-label="View on GitHub"
 			>
 				<GithubIcon class="size-4" />
