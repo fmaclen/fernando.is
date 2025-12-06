@@ -1,50 +1,48 @@
-import canutinBalanceSheet from './projects/canutin-balance-sheet.png?enhanced';
-import canutinDashboardDark from './projects/canutin-dashboard-dark.png?enhanced';
-import canutinDashboard from './projects/canutin-dashboard.png?enhanced';
-import canutinData from './projects/canutin-data.png?enhanced';
-import canutinTransactions from './projects/canutin-transactions.png?enhanced';
-import canutinTrends from './projects/canutin-trends.png?enhanced';
-import chromaboxApp from './projects/chromabox-app.png?enhanced';
-import chromaboxWebsite from './projects/chromabox-website.png?enhanced';
-import hollamaSessionNew from './projects/hollama-session-new.png?enhanced';
-import hollamaSession from './projects/hollama-session.png?enhanced';
-import hollamaSettings from './projects/hollama-settings.png?enhanced';
-import juliaSanfranciscoBaghdad from './projects/julia-sanfrancisco-baghdad.png?enhanced';
-import juliaSanfranciscoHeadquarters from './projects/julia-sanfrancisco-headquarters.png?enhanced';
-import juliaSanfranciscoHouseDetective from './projects/julia-sanfrancisco-house-detective.png?enhanced';
-import juliaSanfranciscoMessenger from './projects/julia-sanfrancisco-messenger.png?enhanced';
-import juliaSanfranciscoMontreal from './projects/julia-sanfrancisco-montreal.png?enhanced';
-import juliaSanfranciscoParis from './projects/julia-sanfrancisco-paris.png?enhanced';
-import juliaSanfranciscoRome from './projects/julia-sanfrancisco-rome.png?enhanced';
-import juliaSanfranciscoSingapore from './projects/julia-sanfrancisco-singapore.png?enhanced';
-import juliaSanfranciscoSplash from './projects/julia-sanfrancisco-splash.png?enhanced';
-import juliaSanfranciscoStevedore from './projects/julia-sanfrancisco-stevedore.png?enhanced';
-import juliaSanfranciscoStreetMerchant from './projects/julia-sanfrancisco-street-merchant.png?enhanced';
-import oakHallCover from './projects/oak-hall-cover.png?enhanced';
-import oakHallFooter from './projects/oak-hall-footer.png?enhanced';
-import oakHallGardens from './projects/oak-hall-gardens.png?enhanced';
-import oakHallLibrary from './projects/oak-hall-library.png?enhanced';
-import palfreyPressAbout from './projects/palfrey-press-about.png?enhanced';
-import palfreyPressCard1 from './projects/palfrey-press-card-1.png?enhanced';
-import palfreyPressCard2 from './projects/palfrey-press-card-2.png?enhanced';
-import palfreyPressCard3 from './projects/palfrey-press-card-3.png?enhanced';
-import palfreyPressCard4 from './projects/palfrey-press-card-4.png?enhanced';
-import palfreyPressCatalog from './projects/palfrey-press-catalog.png?enhanced';
-import palfreyPressHomepage from './projects/palfrey-press-homepage.png?enhanced';
-import pantaiAbout from './projects/pantai-about.png?enhanced';
-import pantaiCareers from './projects/pantai-careers.png?enhanced';
-import pantaiHomepage from './projects/pantai-homepage.png?enhanced';
-import pantaiLegal from './projects/pantai-legal.png?enhanced';
-import promptspreeArticle from './projects/promptspree-article.png?enhanced';
-import promptspreeChat from './projects/promptspree-chat.png?enhanced';
-import promptspreeCompletion from './projects/promptspree-completion.png?enhanced';
-import promptspreeFooter from './projects/promptspree-footer.png?enhanced';
-import promptspreeHomepage from './projects/promptspree-homepage.png?enhanced';
-import ruleOfThreeDefault from './projects/rule-of-three-default.png?enhanced';
+import canutinBalanceSheet from './projects/canutin-balance-sheet.png';
+import canutinDashboardDark from './projects/canutin-dashboard-dark.png';
+import canutinDashboard from './projects/canutin-dashboard.png';
+import canutinData from './projects/canutin-data.png';
+import canutinTransactions from './projects/canutin-transactions.png';
+import canutinTrends from './projects/canutin-trends.png';
+import chromaboxApp from './projects/chromabox-app.png';
+import chromaboxWebsite from './projects/chromabox-website.png';
+import hollamaSessionNew from './projects/hollama-session-new.png';
+import hollamaSession from './projects/hollama-session.png';
+import hollamaSettings from './projects/hollama-settings.png';
+import juliaSanfranciscoBaghdad from './projects/julia-sanfrancisco-baghdad.png';
+import juliaSanfranciscoHeadquarters from './projects/julia-sanfrancisco-headquarters.png';
+import juliaSanfranciscoHouseDetective from './projects/julia-sanfrancisco-house-detective.png';
+import juliaSanfranciscoMessenger from './projects/julia-sanfrancisco-messenger.png';
+import juliaSanfranciscoMontreal from './projects/julia-sanfrancisco-montreal.png';
+import juliaSanfranciscoParis from './projects/julia-sanfrancisco-paris.png';
+import juliaSanfranciscoRome from './projects/julia-sanfrancisco-rome.png';
+import juliaSanfranciscoSingapore from './projects/julia-sanfrancisco-singapore.png';
+import juliaSanfranciscoSplash from './projects/julia-sanfrancisco-splash.png';
+import juliaSanfranciscoStevedore from './projects/julia-sanfrancisco-stevedore.png';
+import juliaSanfranciscoStreetMerchant from './projects/julia-sanfrancisco-street-merchant.png';
+import oakHallCover from './projects/oak-hall-cover.png';
+import oakHallFooter from './projects/oak-hall-footer.png';
+import oakHallGardens from './projects/oak-hall-gardens.png';
+import oakHallLibrary from './projects/oak-hall-library.png';
+import palfreyPressAbout from './projects/palfrey-press-about.png';
+import palfreyPressCard1 from './projects/palfrey-press-card-1.png';
+import palfreyPressCard2 from './projects/palfrey-press-card-2.png';
+import palfreyPressCard3 from './projects/palfrey-press-card-3.png';
+import palfreyPressCard4 from './projects/palfrey-press-card-4.png';
+import palfreyPressCatalog from './projects/palfrey-press-catalog.png';
+import palfreyPressHomepage from './projects/palfrey-press-homepage.png';
+import pantaiAbout from './projects/pantai-about.png';
+import pantaiCareers from './projects/pantai-careers.png';
+import pantaiHomepage from './projects/pantai-homepage.png';
+import pantaiLegal from './projects/pantai-legal.png';
+import promptspreeArticle from './projects/promptspree-article.png';
+import promptspreeChat from './projects/promptspree-chat.png';
+import promptspreeCompletion from './projects/promptspree-completion.png';
+import promptspreeFooter from './projects/promptspree-footer.png';
+import promptspreeHomepage from './projects/promptspree-homepage.png';
+import ruleOfThreeDefault from './projects/rule-of-three-default.png';
 
-import type { Picture } from 'vite-imagetools';
-
-const images: Record<string, Picture> = {
+const images: Record<string, string> = {
 	'canutin-balance-sheet.png': canutinBalanceSheet,
 	'canutin-dashboard-dark.png': canutinDashboardDark,
 	'canutin-dashboard.png': canutinDashboard,
@@ -90,6 +88,6 @@ const images: Record<string, Picture> = {
 	'rule-of-three-default.png': ruleOfThreeDefault
 };
 
-export function getProjectImage(filename: string): Picture | undefined {
+export function getProjectImage(filename: string): string | undefined {
 	return images[filename];
 }

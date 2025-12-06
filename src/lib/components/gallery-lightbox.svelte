@@ -4,6 +4,7 @@
 	import XIcon from '@lucide/svelte/icons/x';
 	import { getProjectImage } from '$lib/assets/project-images.js';
 	import { gallery } from './gallery.svelte.js';
+	import { Image } from '@unpic/svelte';
 
 	let dialog: HTMLDialogElement | undefined = $state();
 
@@ -45,10 +46,11 @@
 
 			<div class="flex-1 flex items-center justify-center p-4 overflow-hidden">
 				{#if src}
-					<enhanced:img
+					<Image
 						{src}
 						alt={`Screenshot ${gallery.index + 1} of ${gallery.project.title}`}
 						class="max-h-full max-w-full object-contain rounded shadow-2xl"
+						layout="fullWidth"
 					/>
 				{/if}
 			</div>
