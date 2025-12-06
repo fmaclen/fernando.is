@@ -18,6 +18,19 @@ const CURRENT_REPO = 'fmaclen/fernando.is';
 
 const baseProjects: Project[] = [
 	{
+		title: "The Merchant Discoverers' Company",
+		description: 'Medalists and engravers specializing in custom insignia and heraldic work',
+		url: 'https://merchantdiscoverers.com',
+		updatedAt: '2025-12-06T00:00:00Z',
+		theme: 'merchant-discoverers',
+		images: [
+			'merchant-discoverers-insignia-1.png',
+			'merchant-discoverers-insignia-2.png',
+			'merchant-discoverers-insignia-3.png',
+			'merchant-discoverers-insignia-4.png'
+		]
+	},
+	{
 		title: 'Chromabox',
 		description: 'A color palette generator for designers and developers',
 		url: 'https://chromabox.fernando.is',

@@ -39,7 +39,8 @@
 		'rule-of-three': 'bg-[#35325a]',
 		'oak-hall': 'bg-[#a28b67]',
 		pantai: 'bg-[hsl(222,33%,45%)]',
-		'palfrey-press': 'bg-[hsl(32,15%,30%)]'
+		'palfrey-press': 'bg-[hsl(32,15%,30%)]',
+		'merchant-discoverers': 'bg-[#10282f]'
 	};
 
 	let themeClass = $derived(project.theme ? themeClasses[project.theme] : 'bg-zinc-800');

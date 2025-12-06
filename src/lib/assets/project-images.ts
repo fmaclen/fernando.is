@@ -41,6 +41,10 @@ import promptspreeCompletion from './projects/promptspree-completion.png';
 import promptspreeFooter from './projects/promptspree-footer.png';
 import promptspreeHomepage from './projects/promptspree-homepage.png';
 import ruleOfThreeDefault from './projects/rule-of-three-default.png';
+import merchantDiscoverersInsignia1 from './projects/merchant-discoverers-insignia-1.png';
+import merchantDiscoverersInsignia2 from './projects/merchant-discoverers-insignia-2.png';
+import merchantDiscoverersInsignia3 from './projects/merchant-discoverers-insignia-3.png';
+import merchantDiscoverersInsignia4 from './projects/merchant-discoverers-insignia-4.png';
 
 const images: Record<string, string> = {
 	'canutin-balance-sheet.png': canutinBalanceSheet,
@@ -85,7 +89,11 @@ const images: Record<string, string> = {
 	'promptspree-completion.png': promptspreeCompletion,
 	'promptspree-footer.png': promptspreeFooter,
 	'promptspree-homepage.png': promptspreeHomepage,
-	'rule-of-three-default.png': ruleOfThreeDefault
+	'rule-of-three-default.png': ruleOfThreeDefault,
+	'merchant-discoverers-insignia-1.png': merchantDiscoverersInsignia1,
+	'merchant-discoverers-insignia-2.png': merchantDiscoverersInsignia2,
+	'merchant-discoverers-insignia-3.png': merchantDiscoverersInsignia3,
+	'merchant-discoverers-insignia-4.png': merchantDiscoverersInsignia4
 };
 
 export function getProjectImage(filename: string): string | undefined {
