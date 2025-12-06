@@ -1,3 +1,5 @@
+import { browser } from '$app/environment';
+
 export interface Project {
 	title: string;
 	description: string;
@@ -8,7 +10,13 @@ export interface Project {
 	images?: string[];
 }
 
-export const projects: Project[] = [
+const GITHUB_API_BASE_URL = 'https://api.github.com/repos';
+const LOCAL_STORAGE_LAST_CHECK_KEY = 'fernando.is-lastCheck';
+const LOCAL_STORAGE_PROJECTS_KEY = 'fernando.is-projects';
+const ONE_HOUR_IN_MS = 60 * 60 * 1000;
+const CURRENT_REPO = 'fmaclen/fernando.is';
+
+const baseProjects: Project[] = [
 	{
 		title: 'Chromabox',
 		description: 'A color palette generator for designers and developers',
@@ -144,3 +152,72 @@ export const projects: Project[] = [
 		]
 	}
 ];
+
+function sortProjects(projects: Project[]): Project[] {
+	return [...projects].sort((a, b) => {
+		if (a.repo === CURRENT_REPO) return 1;
+		if (b.repo === CURRENT_REPO) return -1;
+		if (!a.updatedAt) return 1;
+		if (!b.updatedAt) return -1;
+		return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+	});
+}
+
+async function fetchProjectUpdate(project: Project): Promise<Project> {
+	if (!project.repo) return project;
+
+	try {
+		const response = await fetch(`${GITHUB_API_BASE_URL}/${project.repo}`);
+		if (!response.ok) return project;
+
+		const data = await response.json();
+		return {
+			...project,
+			updatedAt: data.pushed_at || project.updatedAt
+		};
+	} catch {
+		return project;
+	}
+}
+
+function createProjectsStore() {
+	let projects = $state<Project[]>(sortProjects(baseProjects));
+
+	async function fetchUpdates() {
+		if (!browser) return;
+
+		const lastCheck = localStorage.getItem(LOCAL_STORAGE_LAST_CHECK_KEY);
+		const shouldFetch =
+			!lastCheck || new Date().getTime() - new Date(lastCheck).getTime() > ONE_HOUR_IN_MS;
+
+		if (!shouldFetch) {
+			const cached = localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY);
+			if (cached) {
+				try {
+					projects = JSON.parse(cached);
+					return;
+				} catch {
+					// Continue to fetch if cache is invalid
+				}
+			}
+		}
+
+		const updatedProjects = await Promise.all(baseProjects.map(fetchProjectUpdate));
+		projects = sortProjects(updatedProjects);
+
+		localStorage.setItem(LOCAL_STORAGE_LAST_CHECK_KEY, new Date().toISOString());
+		localStorage.setItem(LOCAL_STORAGE_PROJECTS_KEY, JSON.stringify(projects));
+	}
+
+	if (browser) {
+		fetchUpdates();
+	}
+
+	return {
+		get list() {
+			return projects;
+		}
+	};
+}
+
+export const projectsStore = createProjectsStore();

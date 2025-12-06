@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Project } from '$lib/data/projects.js';
+	import type { Project } from '$lib/data/projects.svelte.js';
 	import LinkIcon from '@lucide/svelte/icons/link';
 	import GithubIcon from '@lucide/svelte/icons/github';
 
