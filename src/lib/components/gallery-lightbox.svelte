@@ -20,7 +20,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <Dialog.Root {open} onOpenChange={(isOpen) => !isOpen && gallery.close()}>
-	<Dialog.Content class="max-w-screen max-h-screen w-screen h-screen p-0 border-0">
+	<Dialog.Content fullscreen showCloseButton={false}>
 		{#if gallery.project && gallery.images.length > 0}
 			{@const currentImage = gallery.images[gallery.index]}
 			{@const src = getProjectImage(currentImage)}
