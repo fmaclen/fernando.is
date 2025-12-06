@@ -21,7 +21,7 @@
 		<p class="m-0">
 			I'm <strong class="font-bold">Fernando Maclen</strong>, a Miami-based
 			<strong class="font-bold">designer & software developer</strong>;
-			<span class="text-yellow-400">truly full-stack.</span>
+			<span class="text-indigo-500 dark:text-yellow-400">truly full-stack.</span>
 		</p>
 
 		<p class="text-base md:text-lg m-0">
@@ -30,8 +30,9 @@
 
 		<p class="text-base md:text-lg m-0">
 			If you have an interesting project that could benefit from my end-to-end abilities,
-			<a href="mailto:hello@fernando.is" class="text-yellow-400 underline hover:no-underline"
-				>let's talk</a
+			<a
+				href="mailto:hello@fernando.is"
+				class="text-indigo-500 dark:text-yellow-400 underline hover:no-underline">let's talk</a
 			>.
 		</p>
 
@@ -41,7 +42,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="X/Twitter"
-				class="opacity-30 hover:opacity-100 transition-opacity"
+				class="opacity-30 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity"
 			>
 				<svg class="size-5" viewBox="0 0 24 24" fill="currentColor">
 					<path d="M10.8423 15.1515L4.40655 22.5H0.841797L9.1773 12.978L10.8423 15.1515Z" />
@@ -56,7 +57,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="GitHub"
-				class="opacity-30 hover:opacity-100 transition-opacity"
+				class="opacity-30 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity"
 			>
 				<GithubIcon class="size-5" />
 			</a>
@@ -65,7 +66,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="Dribbble"
-				class="opacity-30 hover:opacity-100 transition-opacity"
+				class="opacity-30 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity"
 			>
 				<DribbbleIcon class="size-5" />
 			</a>
@@ -74,14 +75,14 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="LinkedIn"
-				class="opacity-30 hover:opacity-100 transition-opacity"
+				class="opacity-30 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity"
 			>
 				<LinkedinIcon class="size-5" />
 			</a>
 			<a
 				href="mailto:hello@fernando.is"
 				aria-label="Email"
-				class="opacity-30 hover:opacity-100 transition-opacity"
+				class="opacity-30 hover:opacity-100 hover:text-indigo-500 dark:hover:text-yellow-400 transition-opacity"
 			>
 				<AtSignIcon class="size-5" />
 			</a>
