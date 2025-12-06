@@ -59,7 +59,7 @@
 				<button
 					type="button"
 					onclick={() => gallery.previous()}
-					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity"
+					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
 					aria-label="Previous image"
 				>
 					<ChevronLeftIcon class="size-6" />
@@ -67,7 +67,7 @@
 				<button
 					type="button"
 					onclick={() => gallery.close()}
-					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity"
+					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
 					aria-label="Close gallery"
 				>
 					<XIcon class="size-6" />
@@ -75,7 +75,7 @@
 				<button
 					type="button"
 					onclick={() => gallery.next()}
-					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity"
+					class="p-2 text-foreground opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
 					aria-label="Next image"
 				>
 					<ChevronRightIcon class="size-6" />

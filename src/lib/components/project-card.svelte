@@ -87,7 +87,7 @@
 						<button
 							type="button"
 							onclick={() => gallery.open(project, index)}
-							class="flex-shrink-0 hover:scale-[1.02] transition-transform"
+							class="flex-shrink-0 hover:scale-[1.02] transition-transform cursor-pointer"
 							aria-label={`View screenshot ${index + 1} of ${project.title}`}
 						>
 							<Image

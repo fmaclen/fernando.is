@@ -93,13 +93,13 @@
 		<button
 			type="button"
 			onclick={() => theme.toggle()}
-			class="opacity-50 hover:opacity-100 transition-opacity"
+			class="opacity-50 hover:opacity-100 transition-opacity cursor-pointer w-fit"
 			aria-label="Toggle theme"
 		>
 			{#if theme.current === 'dark'}
-				<SunIcon class="size-4 text-yellow-400" />
+				<SunIcon class="size-5 text-yellow-400" />
 			{:else}
-				<MoonIcon class="size-4 text-gray-800" />
+				<MoonIcon class="size-5 text-gray-800" />
 			{/if}
 		</button>
 	</Sidebar.Footer>
