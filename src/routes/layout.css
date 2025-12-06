@@ -123,3 +123,9 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+@media (min-width: 768px) and (max-width: 1279px) {
+	[data-slot='sidebar'] {
+		--sidebar-width: 40vw !important;
+	}
+}
