@@ -21,7 +21,7 @@ function createTheme() {
 	}
 
 	if (browser) {
-		apply(current);
+		apply(getInitialTheme());
 	}
 
 	return {
