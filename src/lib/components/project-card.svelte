@@ -92,7 +92,7 @@
 							<enhanced:img
 								{src}
 								alt={`Screenshot of ${project.title}`}
-								class="max-h-80 rounded shadow-md object-cover"
+								class="h-80 w-auto rounded shadow-md"
 							/>
 						</button>
 					{/if}

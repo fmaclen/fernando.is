@@ -20,7 +20,7 @@
 				<Sidebar.Trigger />
 				<Separator orientation="vertical" class="mr-2 !h-4 bg-foreground/20" />
 				<nav aria-label="breadcrumb">
-					<span class="font-mono text-sm font-thin text-muted-foreground"
+					<span class="font-mono text-xs text-muted-foreground uppercase tracking-wide"
 						>What I've been building</span
 					>
 				</nav>
