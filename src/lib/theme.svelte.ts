@@ -20,9 +20,9 @@ function createTheme() {
 		localStorage.setItem('theme', theme);
 	}
 
-	$effect(() => {
+	if (browser) {
 		apply(current);
-	});
+	}
 
 	return {
 		get current() {

@@ -124,18 +124,6 @@
 	}
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
-	[data-slot='sidebar'] {
-		--sidebar-width: 40vw !important;
-	}
-}
-
-@media (min-width: 1280px) {
-	[data-slot='sidebar'] {
-		--sidebar-width: min(25vw, 400px) !important;
-	}
-}
-
 .bg-checkered {
 	background-color: oklch(0.96 0 0);
 	background-image:
