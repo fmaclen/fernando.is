@@ -24,10 +24,11 @@ const baseProjects: Project[] = [
 		updatedAt: '2025-12-06T00:00:00Z',
 		theme: 'merchant-discoverers',
 		images: [
-			'merchant-discoverers-insignia-1.png',
-			'merchant-discoverers-insignia-2.png',
-			'merchant-discoverers-insignia-3.png',
-			'merchant-discoverers-insignia-4.png'
+			'merchant-discoverers-homepage.png',
+			'merchant-discoverers-insignia.png',
+			'merchant-discoverers-atelier.png',
+			'merchant-discoverers-arms.png',
+			'merchant-discoverers-engravings.png'
 		]
 	},
 	{

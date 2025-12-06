@@ -41,10 +41,11 @@ import promptspreeCompletion from './projects/promptspree-completion.png';
 import promptspreeFooter from './projects/promptspree-footer.png';
 import promptspreeHomepage from './projects/promptspree-homepage.png';
 import ruleOfThreeDefault from './projects/rule-of-three-default.png';
-import merchantDiscoverersInsignia1 from './projects/merchant-discoverers-insignia-1.png';
-import merchantDiscoverersInsignia2 from './projects/merchant-discoverers-insignia-2.png';
-import merchantDiscoverersInsignia3 from './projects/merchant-discoverers-insignia-3.png';
-import merchantDiscoverersInsignia4 from './projects/merchant-discoverers-insignia-4.png';
+import merchantDiscoverersHomepage from './projects/merchant-discoverers-homepage.png';
+import merchantDiscoverersInsignia from './projects/merchant-discoverers-insignia.png';
+import merchantDiscoverersAtelier from './projects/merchant-discoverers-atelier.png';
+import merchantDiscoverersArms from './projects/merchant-discoverers-arms.png';
+import merchantDiscoverersEngravings from './projects/merchant-discoverers-engravings.png';
 
 const images: Record<string, string> = {
 	'canutin-balance-sheet.png': canutinBalanceSheet,
@@ -90,10 +91,11 @@ const images: Record<string, string> = {
 	'promptspree-footer.png': promptspreeFooter,
 	'promptspree-homepage.png': promptspreeHomepage,
 	'rule-of-three-default.png': ruleOfThreeDefault,
-	'merchant-discoverers-insignia-1.png': merchantDiscoverersInsignia1,
-	'merchant-discoverers-insignia-2.png': merchantDiscoverersInsignia2,
-	'merchant-discoverers-insignia-3.png': merchantDiscoverersInsignia3,
-	'merchant-discoverers-insignia-4.png': merchantDiscoverersInsignia4
+	'merchant-discoverers-homepage.png': merchantDiscoverersHomepage,
+	'merchant-discoverers-insignia.png': merchantDiscoverersInsignia,
+	'merchant-discoverers-atelier.png': merchantDiscoverersAtelier,
+	'merchant-discoverers-arms.png': merchantDiscoverersArms,
+	'merchant-discoverers-engravings.png': merchantDiscoverersEngravings
 };
 
 export function getProjectImage(filename: string): string | undefined {
