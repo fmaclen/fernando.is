@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Fernando Maclen ~ Designer & software developer</title>
 		<meta
 			name="description"
@@ -10,13 +12,37 @@
 			name="keywords"
 			content="branding, design, software, development, web, mobile, apps, ux, ui, user, interface, experience, design, designer, developer, portfolio, projects, work, remote, florida, miami, typescript, svelte, python, ruby, full-stack"
 		/>
-		<meta charset="utf-8" />
+		<meta property="og:title" content="Fernando Maclen ~ Designer & software developer" />
+		<meta
+			property="og:description"
+			content="I'm designer and software developer currently based in Florida and remote since ~2007. This is my portfolio of recent projects."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://fernando.is" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Fernando Maclen ~ Designer & software developer" />
+		<meta
+			name="twitter:description"
+			content="I'm designer and software developer currently based in Florida and remote since ~2007. This is my portfolio of recent projects."
+		/>
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script defer data-domain="fernando.is" data-api="https://management.fernando.is/api/event" src="https://management.fernando.is/js/script.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;700&display=swap"
+			rel="stylesheet"
+		/>
+		<script>
+			(function () {
+				const stored = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = stored || (prefersDark ? 'dark' : 'light');
+				if (theme === 'dark') document.documentElement.classList.add('dark');
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" class="body">
+	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
