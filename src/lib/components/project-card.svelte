@@ -47,7 +47,7 @@
 
 <article class="rounded-lg shadow-lg overflow-hidden font-mono max-w-2xl {themeClass}">
 	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	<nav class="flex items-center gap-3 px-5 xl:px-6 py-4 xl:py-5">
+	<nav class="flex items-center gap-3 px-5 xl:px-6 pt-4 xl:pt-5 pb-2 xl:pb-3">
 		<a
 			href={project.url}
 			target="_blank"
@@ -77,7 +77,7 @@
 
 	{#if project.images && project.images.length > 0}
 		<div
-			class="overflow-hidden px-5 xl:px-6 pb-5 xl:pb-6 cursor-grab"
+			class="overflow-hidden p-5 xl:p-6 cursor-grab"
 			use:emblaCarouselSvelte={{ options: { skipSnaps: true, align: 'start' }, plugins: [] }}
 		>
 			<div class="flex gap-2">
