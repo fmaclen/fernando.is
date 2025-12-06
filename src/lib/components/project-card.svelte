@@ -69,7 +69,7 @@
 			</a>
 		{/if}
 		{#if project.updatedAt}
-			<span class="ml-auto text-xs text-white/50 text-balance">
+			<span class="ml-auto text-xs text-white/50 text-balance uppercase tracking-wide">
 				{getRelativeTime(project.updatedAt)}
 			</span>
 		{/if}
