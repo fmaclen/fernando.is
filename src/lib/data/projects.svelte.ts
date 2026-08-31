@@ -56,9 +56,9 @@ const baseProjects: Project[] = [
 	},
 	{
 		title: 'Canutin',
-		description: 'A personal finance application for macOS, Windows & Linux',
+		description: 'Open-source, self-hosted personal finance platform',
 		url: 'https://canutin.com',
-		repo: 'fmaclen/canutin-desktop',
+		repo: 'fmaclen/canutin',
 		theme: 'canutin',
 		images: [
 			'canutin-dashboard.png',
