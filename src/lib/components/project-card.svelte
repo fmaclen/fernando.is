@@ -5,7 +5,6 @@
 	import GithubIcon from '@lucide/svelte/icons/github';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import { gallery } from './gallery.svelte.js';
-	import { Image } from '@unpic/svelte';
 
 	interface Props {
 		project: Project;
@@ -28,6 +27,7 @@
 	}
 
 	const themeClasses: Record<string, string> = {
+		boomerang: 'bg-gradient-to-br from-[#5f9a35] via-[#b8862a] to-[#b5521f]',
 		canutin: 'bg-[#1347ff]',
 		'fernando-is': 'bg-[#111]',
 		hollama: 'bg-[#333]',
@@ -96,11 +96,10 @@
 							class="flex-shrink-0 hover:scale-[1.02] transition-transform cursor-pointer"
 							aria-label={`View screenshot ${index + 1} of ${project.title}`}
 						>
-							<Image
+							<enhanced:img
 								{src}
 								alt={`Screenshot of ${project.title}`}
 								class="h-96 w-auto rounded shadow-md"
-								layout="constrained"
 							/>
 						</button>
 					{/if}

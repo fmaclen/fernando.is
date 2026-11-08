@@ -4,7 +4,6 @@
 	import XIcon from '@lucide/svelte/icons/x';
 	import { getProjectImage } from '$lib/assets/project-images.js';
 	import { gallery } from './gallery.svelte.js';
-	import { Image } from '@unpic/svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	function handleKeydown(event: KeyboardEvent) {
@@ -34,13 +33,13 @@
 					</div>
 				</header>
 
-				<div class="flex-1 flex items-center justify-center p-4 overflow-hidden">
+				<!-- `*:contents` flattens enhanced-img's <picture> wrapper so the <img> is the flex item and max-h-full resolves -->
+				<div class="flex-1 flex items-center justify-center p-4 overflow-hidden *:contents">
 					{#if src}
-						<Image
+						<enhanced:img
 							{src}
 							alt={`Screenshot ${gallery.index + 1} of ${gallery.project.title}`}
-							class="max-h-full max-w-full object-contain rounded shadow-2xl"
-							layout="fullWidth"
+							class="max-h-full max-w-full w-auto h-auto rounded shadow-2xl"
 						/>
 					{/if}
 				</div>

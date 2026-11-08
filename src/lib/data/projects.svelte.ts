@@ -32,6 +32,19 @@ const baseProjects: Project[] = [
 		]
 	},
 	{
+		title: 'Boomerang',
+		description: 'A speed test for your home lab',
+		url: 'https://boomerang.fernando.is',
+		repo: 'fmaclen/boomerang',
+		theme: 'boomerang',
+		images: [
+			'boomerang-idle-phone.png',
+			'boomerang-upload.png',
+			'boomerang-adaptive-result-phone.png',
+			'boomerang-history.png'
+		]
+	},
+	{
 		title: 'Chromabox',
 		description: 'A color palette generator for designers and developers',
 		url: 'https://chromabox.fernando.is',
