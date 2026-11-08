@@ -27,6 +27,7 @@
 	}
 
 	const themeClasses: Record<string, string> = {
+		boomerang: 'bg-gradient-to-br from-[#5f9a35] via-[#b8862a] to-[#b5521f]',
 		canutin: 'bg-[#1347ff]',
 		'fernando-is': 'bg-[#111]',
 		hollama: 'bg-[#333]',
