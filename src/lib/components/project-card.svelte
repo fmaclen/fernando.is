@@ -5,7 +5,6 @@
 	import GithubIcon from '@lucide/svelte/icons/github';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import { gallery } from './gallery.svelte.js';
-	import { Image } from '@unpic/svelte';
 
 	interface Props {
 		project: Project;
@@ -96,11 +95,10 @@
 							class="flex-shrink-0 hover:scale-[1.02] transition-transform cursor-pointer"
 							aria-label={`View screenshot ${index + 1} of ${project.title}`}
 						>
-							<Image
+							<enhanced:img
 								{src}
 								alt={`Screenshot of ${project.title}`}
 								class="h-96 w-auto rounded shadow-md"
-								layout="constrained"
 							/>
 						</button>
 					{/if}
